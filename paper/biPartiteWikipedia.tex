@@ -1,0 +1,188 @@
+% THIS IS SIGPROC-SP.TEX - VERSION 3.1
+% WORKS WITH V3.2SP OF ACM_PROC_ARTICLE-SP.CLS
+% APRIL 2009
+%
+% It is an example file showing how to use the 'acm_proc_article-sp.cls' V3.2SP
+% LaTeX2e document class file for Conference Proceedings submissions.
+% ----------------------------------------------------------------------------------------------------------------
+% This .tex file (and associated .cls V3.2SP) *DOES NOT* produce:
+%       1) The Permission Statement
+%       2) The Conference (location) Info information
+%       3) The Copyright Line with ACM data
+%       4) Page numbering
+% ---------------------------------------------------------------------------------------------------------------
+% It is an example which *does* use the .bib file (from which the .bbl file
+% is produced).
+% REMEMBER HOWEVER: After having produced the .bbl file,
+% and prior to final submission,
+% you need to 'insert'  your .bbl file into your source .tex file so as to provide
+% ONE 'self-contained' source file.
+%
+% Questions regarding SIGS should be sent to
+% Adrienne Griscti ---> griscti@acm.org
+%
+% Questions/suggestions regarding the guidelines, .tex and .cls files, etc. to
+% Gerald Murray ---> murray@hq.acm.org
+%
+% For tracking purposes - this is V3.1SP - APRIL 2009
+
+\documentclass{acm_proc_article-sp}
+
+\usepackage{url}
+
+\begin{document}
+
+\title{Title}
+%\subtitle{[Extended Abstract]
+%\titlenote{A full version of this paper is available as
+%\textit{Author's Guide to Preparing ACM SIG Proceedings Using
+%\LaTeX$2_\epsilon$\ and BibTeX} at
+%\texttt{www.acm.org/eaddress.htm}}}
+%
+% You need the command \numberofauthors to handle the 'placement
+% and alignment' of the authors beneath the title.
+%
+% For aesthetic reasons, we recommend 'three authors at a time'
+% i.e. three 'name/affiliation blocks' be placed beneath the title.
+%
+% NOTE: You are NOT restricted in how many 'rows' of
+% "name/affiliations" may appear. We just ask that you restrict
+% the number of 'columns' to three.
+%
+% Because of the available 'opening page real-estate'
+% we ask you to refrain from putting more than six authors
+% (two rows with three columns) beneath the article title.
+% More than six makes the first-page appear very cluttered indeed.
+%
+% Use the \alignauthor commands to handle the names
+% and affiliations for an 'aesthetic maximum' of six authors.
+% Add names, affiliations, addresses for
+% the seventh etc. author(s) as the argument for the
+% \additionalauthors command.
+% These 'additional authors' will be output/set for you
+% without further effort on your part as the last section in
+% the body of your article BEFORE References or any Appendices.
+
+\numberofauthors{3} %  in this sample file, there are a *total*
+% of EIGHT authors. SIX appear on the 'first-page' (for formatting
+% reasons) and the remaining two appear in the \additionalauthors section.
+%
+\author{
+% You can go ahead and credit any number of authors here,
+% e.g. one 'row of three' or two rows (consisting of one row of three
+% and a second row of one, two or three).
+%
+% The command \alignauthor (no curly braces needed) should
+% precede each author name, affiliation/snail-mail address and
+% e-mail address. Additionally, tag each line of
+% affiliation/address with \affaddr, and tag the
+% e-mail address with \email.
+%
+% 1st. author
+\alignauthor
+Maximilian Klein\\%\titlenote{Dr.~Trovato insisted his name be first.}\\
+       %\affaddr{School of Information}\\
+       %\affaddr{ University of California, Berkeley, 102 South Hall}\\
+       %\affaddr{Berkeley, CA 94720}\\
+       \email{foo@foo}
+% 2st. author
+\alignauthor
+Thomas Maillart\\%\titlenote{Dr.~Trovato insisted his name be first.}\\
+       \affaddr{School of Information}\\
+       \affaddr{ University of California, Berkeley, 102 South Hall}\\
+       \affaddr{Berkeley, CA 94720}\\
+       \email{thomas.maillart@ischool.berkeley.edu}
+% 3rd. author
+\alignauthor
+John Chuang\\%\titlenote{Dr.~Trovato insisted his name be first.}\\
+       \affaddr{School of Information}\\
+       \affaddr{ University of California, Berkeley, 102 South Hall}\\
+       \affaddr{Berkeley, CA 94720}\\
+       \email{chuang@ischool.berkeley.edu}
+}
+
+
+
+
+
+\date{30 July 1999}
+% Just remember to make sure that the TOTAL number of authors
+% is the number that will appear on the first page PLUS the
+% number that will appear in the \additionalauthors section.
+
+\maketitle
+\begin{abstract}
+Abstract
+\end{abstract}
+
+% A category with the (minimum) three required fields
+\category{H.4}{Information Systems Applications}{Miscellaneous}
+%A category including the fourth, optional field follows...
+\category{D.2.8}{Software Engineering}{Metrics}[complexity measures, performance measures]
+
+\terms{to be completed}
+
+\keywords{to be completed, if necessary} % NOT required for Proceedings
+
+\section{Introduction}
+
+\section{Method}
+
+1. The current investigation involved collecting historical data of edition and quality metrics, from 10 categories of articles in Wikipedia, with focus on fine-grained edits by contributors to articles.
+
+2. The chosen categories contain between 100 and 1000 articles, and between 100 and 500 contributors have edited at least 100'000 times all the articles over their history. (c.f. table \ref{tab:statistics} for summary statistics on the categories). 
+
+3. For each category, we constructed 10 snapshots of equal number of contributions / we constructed snapshots of 10'000 edits. For each snapshot, we constructed the matrix $\mathbf{M}$ of contributors versus edited articles. For each snapshot, the values in $\mathbf{M}$ are defined as the number of edits made by contributors to each article in the category until the snapshot timestamp. The matrix $\mathbf{M}$ constitutes the basic input for implementing the $\mathbf{FQ}$ algorithm. It has a typical triangular structure as shown on Figure \ref{fig:matrix}. We also collected standard metrics of contributor expertise \cite{} and of article quality \cite{your work}, to test the quality of the $\mathbf{FQ}$ algorithm in the context of group collaboration.
+
+4. We then applied the most general implementation of the $\mathbf{FQ}$ algorithm as developed for modeling the economy and competitiveness of countries \cite{}.
+
+5. While the implementation presented here is strictly similar to \ref{}, the interpretation is slightly different in the context of group collaboration. Indeed, while countries competes for selling products, the hypothesis here is that Wikipedia contributors cooperate, at least in a very informal way, for improving the quality of articles.
+
+6. {\it Refer to problems here, if any.}
+
+\begin{table}
+\centering
+\caption{Summary statistics for each category}
+\begin{tabular}{|c|c|l|} \hline
+Non-English or Math&Frequency&Comments\\ \hline
+\O & 1 in 1,000& For Swedish names\\ \hline
+$\pi$ & 1 in 5& Common in math\\ \hline
+\$ & 4 in 5 & Used in business\\ \hline
+$\Psi^2_1$ & 1 in 40,000& Unexplained usage\\
+\hline\end{tabular}
+\label{tab:statistics}
+\end{table}
+
+
+\begin{figure}
+\centering
+%\epsfig{file=fly.eps}
+\caption{Matrix $\mathbf{M}$ ordered by decreasing order of edits on both contributors and articles dimensions.}
+\label{fig:matrix}
+\end{figure}
+
+\section{Conclusions}
+
+%ACKNOWLEDGMENTS are optional
+%\section{Acknowledgments}
+
+%
+% The following two commands are all you need in the
+% initial runs of your .tex file to
+% produce the bibliography for the citations in your paper.
+\bibliographystyle{abbrv}
+\bibliography{sigproc}  % sigproc.bib is the name of the Bibliography in this case
+% You must have a proper ".bib" file
+%  and remember to run:
+% latex bibtex latex latex
+% to resolve all references
+%
+% ACM needs 'a single self-contained file'!
+%
+%APPENDICES are optional
+%\balancecolumns
+%\appendix
+%Appendix A
+%\section{Headings in Appendices}
+
+\end{document}
