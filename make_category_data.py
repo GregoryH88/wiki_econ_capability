@@ -18,7 +18,9 @@ import os
 import json
 import re
 import MySQLdb
+from matplotlib.mlab import PCA
 
+enwp = pywikibot.Site('en', 'wikipedia')
 
 class bipartite_data():
     def __init__(self, category_name):
@@ -106,12 +108,8 @@ class bipartite_data():
         return exogenous_ranks_sorted
     
     def make_exogenous_article_metrics(self):            
-            exogenous_articles = dict()
-            
-            for article in self.article_dict.iterkeys():
-                exogenous_articles[article] = calculate_article_metric(article, 'articlelength')
-            
-            self.exogenous_articles_ranked = self.rank_exogenous_dict(exogenous_articles)
+        aggregates_ranks_sorted = calculate_article_metrics_pca(self.article_dict.iterkeys())
+        self.exogenous_articles_ranked = aggregates_ranks_sorted
     
     def make_exogenous_user_metrics(self):
         exogenous_users = dict()
@@ -147,19 +145,24 @@ class bipartite_data():
     
     def do_everything(self):
         self.load_arts()
+        print 'loaded arts'
         self.make_revision_df()
+        print 'made revisions'        
         self.remove_bots()
+        print 'removed bot edits'
         self.remove_min_editors()
+        print 'remvoed min editors'
         self.make_user_art_dicts()
+        print 'made user and art dicts'
         self.make_contributor_matrix()
+        print 'made contributor matrix'
         self.make_exogenous_article_metrics()
+        print 'made exo articlse'
         self.make_exogenous_user_metrics()
+        print 'made exo users'
         self.save_everything()
+        print 'saved files'
 
-# <codecell>
-
-
-# <codecell>
 
 #Infonoise metric of Stvilia (2005) in concept, although the implementation may differ since we are not stopping and stemming words, because of the multiple languages we need to handle
 
@@ -222,10 +225,47 @@ def report_actionable_metrics(wikicode, completeness_weight=0.8, infonoise_weigh
 
 def calculate_article_metric(article_name, metric):
     page = pywikibot.Page(enwp, article_name)
-    page_text = page.get()
+    try:
+        page_text = page.get()
+    except pywikibot.exceptions.IsRedirectPage:
+        redir_page = page.getRedirectTarget()
+        page_text = redir_page.get()
     wikicode = pfh.parse(page_text)
     metrics = report_actionable_metrics(wikicode)
     return metrics[metric]
+
+def calculate_article_metrics_pca(article_names):
+
+    def make_article_exogenous_df(article_names):
+        exogenous_arts = dict()
+        for article_name in article_names:
+            page = pywikibot.Page(enwp, article_name)
+            try:
+                page_text = page.get()
+            except pywikibot.IsRedirectPage:
+                redir_page = page.getRedirectTarget()
+                page_text = redir_page.get()
+            wikicode = pfh.parse(page_text)
+            metrics = report_actionable_metrics(wikicode)
+            for metric, val in metrics.iteritems():
+                exogenous_arts[article_name] = metrics
+        
+        exogenous_df = pd.DataFrame.from_dict(exogenous_arts, orient='index')
+        return exogenous_df.convert_objects(convert_numeric=True)
+    
+    article_exogenous_df = make_article_exogenous_df(article_names)
+    #print article_exogenous_df
+    article_exogenous_matrix = article_exogenous_df.as_matrix()
+    pca_obj = PCA(article_exogenous_matrix)
+    print 'PCA fractions: ', pca_obj.fracs
+    #get the principal component the zscores in the PCA domain
+    agg_metrics = pca_obj.Y[:,0]
+    named_aggregates = zip(list(article_exogenous_df.index), agg_metrics)
+    #print named_aggregates
+    aggregates_sorted = sorted(named_aggregates, key=operator.itemgetter(1))
+    aggregates_ranks_sorted = [(identup[0], aggregates_sorted.index(identup)) for identup in aggregates_sorted]
+    
+    return aggregates_ranks_sorted
 
 
 def calculate_edit_hours(user, cursor):
@@ -277,18 +317,19 @@ def calculate_edit_hours(user, cursor):
 
     took = datetime.datetime.now() - starttime
     tooksecs = took.total_seconds()
-    print 'timestamps per second: ', len(timestamps)/float(tooksecs)
+    #print 'timestamps per second: ', len(timestamps)/float(tooksecs)
     #returning total hours                                                                                                                                     
     return total_time / float(3600)
 
 if __name__ == '__main__':
-	cats = ['Category:Feminist_writers', 'Category:Works_based_on_Sherlock_Holmes', 'Category:Non-Euclidean_geometry', 'Category:Military_history_of_the_United_States', 'Category:Yoga']
-	for cat in cats:
-		stime = datetime.datetime.now()
-		print 'doing', cat
-		bp = bipartite_data(cat)
-		bp.do_everything()
-		print datetime.datetime.now() - stime, 'time to do ', cat
-
+    print 'we begin'
+    cats = json.load(open('cats_to_do.json', 'r'))
+    for cat in cats:
+        stime = datetime.datetime.now()
+        print 'doing', cat
+        bp = bipartite_data(cat)
+        bp.do_everything()
+        print datetime.datetime.now() - stime, 'time to do ', cat
+    print 'done'
 
 
