@@ -84,7 +84,7 @@ Maximilian Klein\\%\titlenote{Dr.~Trovato insisted his name be first.}\\
        %\affaddr{School of Information}\\
        %\affaddr{ University of California, Berkeley, 102 South Hall}\\
        %\affaddr{Berkeley, CA 94720}\\
-       \email{foo@foo}
+       \email{confusing@notconfusing.com}
 % 2st. author
 \alignauthor
 Thomas Maillart\\%\titlenote{Dr.~Trovato insisted his name be first.}\\
@@ -130,9 +130,9 @@ Abstract
 
 1. The current investigation involved collecting historical data of edition and quality metrics, from 10 categories of articles in Wikipedia, with focus on fine-grained edits by contributors to articles.
 
-2. The chosen categories contain between 100 and 1000 articles, and between 100 and 500 contributors have edited at least 100'000 times all the articles over their history. (c.f. table \ref{tab:statistics} for summary statistics on the categories). 
+2. The chosen categories contain between 50 and 4000 articles, and between 50 and 5000 contributors have edited at least 100'000 times all the articles over their history. (c.f. table \ref{tab:statistics} for summary statistics on the categories). 
 
-3. For each category, we constructed 10 snapshots of equal number of contributions / we constructed snapshots of 10'000 edits. For each snapshot, we constructed the matrix $\mathbf{M}$ of contributors versus edited articles. For each snapshot, the values in $\mathbf{M}$ are defined as the number of edits made by contributors to each article in the category until the snapshot timestamp. The matrix $\mathbf{M}$ constitutes the basic input for implementing the $\mathbf{FQ}$ algorithm. It has a typical triangular structure as shown on Figure \ref{fig:matrix}. We also collected standard metrics of contributor expertise \cite{} and of article quality \cite{your work}, to test the quality of the $\mathbf{FQ}$ algorithm in the context of group collaboration.
+3. For each category, we constructed 10 accumulative snapshots each starting from the first edit in the category until 10\% more of the categories total edits have occurred. \ref{fig:accumulative_snapshots}\includegraphics[scale=1]{accumulative snapshot points for Feminist Writers.png}  . For each snapshot, we constructed the matrix $\mathbf{M}$ of contributors versus edited articles. For each snapshot, the values in $\mathbf{M}$ are defined as the number of edits made by contributors to each article in the category until the snapshot timestamp. The matrix $\mathbf{M}$ constitutes the basic input for implementing the $\mathbf{FQ}$ algorithm. It has a typical triangular structure as shown on Figure \ref{fig:triangular_matrix}. We also collected standard metrics of contributor expertise \cite{} and of article quality \cite{your work}, to test the quality of the $\mathbf{FQ}$ algorithm in the context of group collaboration.
 
 4. We then applied the most general implementation of the $\mathbf{FQ}$ algorithm as developed for modeling the economy and competitiveness of countries \cite{}.
 
