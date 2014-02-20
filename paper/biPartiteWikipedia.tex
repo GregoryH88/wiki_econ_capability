@@ -94,28 +94,29 @@ Thomas Maillart\\
        \affaddr{School of Information}\\
        \affaddr{ University of California, Berkeley, 102 South Hall}\\
        \affaddr{Berkeley, CA 94720}\\
-       \email{thomas.maillart@ischool.berkeley.edu}
+       \email{thomas.maillart\\@ischool.berkeley.edu}
 % 3rd. author
 \alignauthor
 John Chuang\\
        \affaddr{School of Information}\\
        \affaddr{ University of California, Berkeley, 102 South Hall}\\
        \affaddr{Berkeley, CA 94720}\\
-       \email{chuang@ischool.berkeley.edu}
+       \email{chuang\\@ischool.berkeley.edu}
 }
 
 
 
 
 
-\date{14 February 2014}
+\date{23 February 2014}
 % Just remember to make sure that the TOTAL number of authors
 % is the number that will appear on the first page PLUS the
 % number that will appear in the \additionalauthors section.
 
 \maketitle
 \begin{abstract}
-Abstract
+
+
 \end{abstract}
 
 % A category with the (minimum) three required fields
@@ -128,6 +129,15 @@ Abstract
 \keywords{to be completed, if necessary} % NOT required for Proceedings
 
 \section{Introduction}
+Ranking and assigning correct value to content and people on the Web has received much attention recently due to the economic benefits that can be derived from these measures. (None of these metrics is intrinsically good and they are all subjected to some level of subjectivity. Some words on markets as mechanisms to reveal the ``true" value ?). For instance, LinkedIn has based large parts of its business model on selling expertise information of hundreds of millions workers to potential employers, and the success of Amazon as an online retailer is largely due to product rating. 
+
+In massively distributed collaboration systems, the evaluation of content and expertise of contributors is mainly based on peer-review, like for scientific research.
+
+Slashdot promotion system \cite{}
+Wikipedia issue \cite{halfaker2013}
+
+%Theory of ranking  \cite{Blumm2012}
+
 
 3 elements. Literature. Question. Data. The need for a new metric.
 
@@ -189,12 +199,39 @@ In the economic domain, the best products are those that are made by the fewest 
 
 
 \section{Method}
+For this study, we collected historical contribution data with focus on fine-grained edits, from 10 categories of articles in English Wikipedia. The chosen categories contain between 50 and 4000 articles, and between 50 and 5000 contributors have edited at least 100'000 times all the articles over their history. (c.f. table \ref{tab:statistics} for summary statistics on the categories). 
 
-1. The current investigation involved collecting historical data of edition and quality metrics, from 10 categories of articles in English Wikipedia, with focus on fine-grained edits by contributors to articles.
+\begin{table}
+\centering
+\caption{Summary statistics for each category}
+\begin{tabular}{|c|c|c|} \hline
+{\bf Category} & {\bf \#Articles} & {\bf \#Editors} \\ \hline
+Bicycle Parts &   ? & ? \\ \hline
+Counterculture Festivals &   ? & ? \\ \hline
+Economic Theories &   ? & ? \\ \hline
+Feminist Writers &   ? & ? \\ \hline
+Gender Studies & ? & ?  \\ \hline
+Military History of the U.S. & ? & ?  \\ \hline
+Non-Euclidean Geometry & ? & ?  \\ \hline
+Sexual Actis & ? & ?  \\ \hline
+Works based on Sherlock Holmes & ? & ?  \\ \hline
+Yoga & ? & ?  \\ \hline
+\end{tabular}
+\label{tab:statistics}
+\end{table}
 
-2. The chosen categories contain between 50 and 4000 articles, and between 50 and 5000 contributors have edited at least 100'000 times all the articles over their history. (c.f. table \ref{tab:statistics} for summary statistics on the categories). 
 
-3. For each category, we constructed 10 accumulative snapshots, that is each starting from the first edit in the category until 10\% more of the categories total edits have occurred. \ref{fig:accumulative_snapshots}\includegraphics[scale=1]{accumulative snapshot points for Feminist Writers.png}. For each snapshot, we constructed the matrix $\mathbf{M_{e,a}}$ of contributors versus edited articles, similar to the country versus products matrix of the Economics Domain. For each snapshot, the values in $\mathbf{M_{e,a}}$ are defined as the number of edits made by editor $e$ on article $a$ in the category occurring in the snapshot time. Note that the final snapshot represents the entire history of the category up to the present date. 
+3. For each category, we constructed 10 cumulative snapshots, that is each starting from the first edit in the category until 10\% more of the categories total edits have occurred. \ref{fig:accumulative_snapshots}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.9\columnwidth]{Figures/cumulative_snapshots_Feminist_Writers.eps}
+\caption{cumulative snapshots Feminist Writers eps }
+\label{fig:figure1}
+\end{figure}
+
+
+For each snapshot, we constructed the matrix $\mathbf{M_{e,a}}$ of contributors versus edited articles, similar to the country versus products matrix of the Economics Domain. For each snapshot, the values in $\mathbf{M_{e,a}}$ are defined as the number of edits made by editor $e$ on article $a$ in the category occurring in the snapshot time. Note that the final snapshot represents the entire history of the category up to the present date. 
 
 \subsection{Triangular Matrices}
 1. Matrix is triangular.
@@ -242,7 +279,7 @@ It might be opposite or negative.
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.9\columnwidth]{accumulative snapshot points for Feminist Writers.png}.
+%\includegraphics[width=0.9\columnwidth]{accumulative snapshot points for Feminist Writers.png}.
 \caption{Cumulative snapshots, Feminist Writer}
 \label{fig:cumsnaps}
 \end{figure}
@@ -282,7 +319,14 @@ The exogenous metric for editors $v_e$ we take is $labour hours$. For each edito
 For an exogenous measure of article quality, $ v_a$,  we use a group of 5 text analysis metrics performed on Wikipedia articles at the lastest time in the snapshot. These are ratio of mark-up to readable text, number of headings, article length, citations per article length, and outgoing intrawiki links. To reduce the dimensionality of these 5 metrics, we perform Principal Component Analysis, and accept the principal component. Variance explained by the first principal component, was as high as .7 and never below .5 http://www-users.cs.umn.edu/~morten/publications/wikisym2013-tellmemore.pdf, http://mailer.fsu.edu/~bstvilia/papers/quantWiki.pdf \cite{ Morten}.
 
 
-\subsection{Calibrating}
+\subsection{Testing against Wikipedia Metrics}
+We turn to the evaluation of the method against metrics 
+
+\begin{itemize}
+  \item 
+  \item 
+\end{itemize}
+
 
 Having our endogenous and exegenous variables now, we perform a recursive grid search over the two dimensions of $\alpha$ and $\beta$ to find a maximum correlation between our rankings from $\mathbf{w^*}$ and our exogenous variables. Our grid search operates on the interval $[-5,5]$ with a resolution of 0.2 in on each axis. Importantly we search for negative values of $\alpha$ and $\beta$, which is not done in the Economics Domain. t
 
@@ -292,22 +336,14 @@ Having our endogenous and exegenous variables now, we perform a recursive grid s
 
 \section{Results}
 
+
+
+
 \section{Discussion}
 
 6. {\it Refer to problems here, if any.}
 
-\begin{table}
-\centering
-\caption{Summary statistics for each category}
-\begin{tabular}{|c|c|l|} \hline
-Non-English or Math&Frequency&Comments\\ \hline
-\O & 1 in 1,000& For Swedish names\\ \hline
-$\pi$ & 1 in 5& Common in math\\ \hline
-\$ & 4 in 5 & Used in business\\ \hline
-$\Psi^2_1$ & 1 in 40,000& Unexplained usage\\
-\hline\end{tabular}
-\label{tab:statistics}
-\end{table}
+
 
 
 \begin{figure}
