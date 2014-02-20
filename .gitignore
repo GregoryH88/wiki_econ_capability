@@ -1,0 +1,15 @@
+
+## temp files
+.DS_Store
+*.*~
+
+
+## LaTeX
+*.aux
+*.log
+*.bbl
+*.blg
+*.toc
+paper/biPartiteWikipedia.pdf
+paper/biPartiteWikipedia.synctex.gz
+paper/biPartiteWikipedia.dvi
