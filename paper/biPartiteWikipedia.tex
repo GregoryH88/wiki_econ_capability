@@ -10,6 +10,7 @@
 %       2) The Conference (location) Info information
 %       3) The Copyright Line with ACM data
 %       4) Page numbering
+\pagenumbering{arabic}
 % ---------------------------------------------------------------------------------------------------------------
 % It is an example which *does* use the .bib file (from which the .bbl file
 % is produced).
@@ -30,8 +31,6 @@
 
 \usepackage{url}
 \usepackage{booktabs}
-
-\pagenumbering{arabic}
 
 \begin{document}
 
@@ -94,28 +93,28 @@ Thomas Maillart\\
        \affaddr{School of Information}\\
        \affaddr{ University of California, Berkeley, 102 South Hall}\\
        \affaddr{Berkeley, CA 94720}\\
-       \email{thomas.maillart\\@ischool.berkeley.edu}
+       \email{thomas.maillart@ischool.berkeley.edu}
 % 3rd. author
 \alignauthor
 John Chuang\\
        \affaddr{School of Information}\\
        \affaddr{ University of California, Berkeley, 102 South Hall}\\
        \affaddr{Berkeley, CA 94720}\\
-       \email{chuang\\@ischool.berkeley.edu}
+       \email{chuang@ischool.berkeley.edu}
 }
 
 
 
 
 
-\date{23 February 2014}
+\date{14 February 2014}
 % Just remember to make sure that the TOTAL number of authors
 % is the number that will appear on the first page PLUS the
 % number that will appear in the \additionalauthors section.
 
 \maketitle
 \begin{abstract}
-We introduce a new method to jointly rank the quality of articles and the expertise of editors in Categories of Wikipedia, based on the bi-partite network information of who has contributed at least once to an article on the one hand, and what are the articles that have edited at least once by a given author on the other hand. We show that this ``reflexive" ranking method exhibits high correlations with usual article quality and user expertise metrics, which account for quality on Wikipedia (that we assume to be a grand truth here). In particular, we find that the quality of an article can be captured very well by our method right after a few edits, while capturing right the expertise of editors requires 
+Abstract
 \end{abstract}
 
 % A category with the (minimum) three required fields
@@ -128,21 +127,6 @@ We introduce a new method to jointly rank the quality of articles and the expert
 \keywords{to be completed, if necessary} % NOT required for Proceedings
 
 \section{Introduction}
-
-
-Ranking and assigning correct value to content and people on the Web has received much attention recently due to the economic benefits that can be derived from these measures. (None of these metrics is intrinsically good and they are all subjected to some level of subjectivity. Some words on markets as mechanisms to reveal the ``true" value ?). For instance, LinkedIn has based large parts of its business model on selling expertise information of hundreds of millions workers to potential employers, and the success of Amazon as an online retailer is largely due to product rating. 
-
-In massively distributed collaboration systems, the evaluation of content and expertise of contributors is mainly based on peer-review, like for scientific research.
-
-Slashdot promotion system \cite{}
-Wikipedia issue \cite{halfaker2013}
-
-%Theory of ranking  \cite{Blumm2012}
-
-
-3 elements. Literature. Question. Data. The need for a new metric.
-
-2. We also inadvertently develop a new measure for the convtroversialness of articles, and the collaborativeness of a group of editors.
 
 \subsection{criticism of alternative economy}
 we are not really saying much about how the economy of wikipedia, i.e. inputs and outputs.
@@ -197,42 +181,6 @@ w^*_p = B(\sum^{N_c}_{c=1} M_{cp}k_c^{-\beta})k_p^{-\alpha}
 At each iterative step we simultaneously rank editor "fitness", and article "ubiquity". In the linear model, the first iteration of "fitness" is the sum of articles to which that editor has contributed, and the "ubiquity" is the sum of editor who have contributed to that article. In the second iteration, say a user is as fit as the average the ubiquities of the of the pages edited. But this is all things being equal.
 
 In the economic domain, the best products are those that are made by the fewest countries. Therefore in our average we want to give more weight to those best producing countries. This measure of good contributors being more important to success, is measured by alpha. A higher alpha means that a good product needs to be exported by the best countries. In Caldarelli, to correlate best with GDP rankings alpha = 1.5 Our result we find the  opposite - negative values of alpha. in the not competitive but collaborative wikipedia, where the best articles are produced by the highest number of editors
-
-
-\section{Method}
-For this study, we collected historical contribution data with focus on fine-grained edits, from 10 categories of articles in English Wikipedia. The chosen categories contain between 50 and 4000 articles, and between 50 and 5000 contributors have edited at least 100'000 times all the articles over their history. (c.f. table \ref{tab:statistics} for summary statistics on the categories). 
-
-\begin{table}
-\centering
-\caption{Summary statistics for each category}
-\begin{tabular}{|c|c|c|} \hline
-{\bf Category} & {\bf \#Articles} & {\bf \#Editors} \\ \hline
-Bicycle Parts &   ? & ? \\ \hline
-Counterculture Festivals &   ? & ? \\ \hline
-Economic Theories &   ? & ? \\ \hline
-Feminist Writers &   ? & ? \\ \hline
-Gender Studies & ? & ?  \\ \hline
-Military History of the U.S. & ? & ?  \\ \hline
-Non-Euclidean Geometry & ? & ?  \\ \hline
-Sexual Actis & ? & ?  \\ \hline
-Works based on Sherlock Holmes & ? & ?  \\ \hline
-Yoga & ? & ?  \\ \hline
-\end{tabular}
-\label{tab:statistics}
-\end{table}
-
-
-3. For each category, we constructed 10 cumulative snapshots, that is each starting from the first edit in the category until 10\% more of the categories total edits have occurred. \ref{fig:accumulative_snapshots}
-
-\begin{figure}[!t]
-\centering
-\includegraphics[width=0.9\columnwidth]{Figures/cumulative_snapshots_Feminist_Writers.eps}
-\caption{cumulative snapshots Feminist Writers eps }
-\label{fig:figure1}
-\end{figure}
-
-
-For each snapshot, we constructed the matrix $\mathbf{M_{e,a}}$ of contributors versus edited articles, similar to the country versus products matrix of the Economics Domain. For each snapshot, the values in $\mathbf{M_{e,a}}$ are defined as the number of edits made by editor $e$ on article $a$ in the category occurring in the snapshot time. Note that the final snapshot represents the entire history of the category up to the present date. 
 
 \subsection{Triangular Matrices}
 1. Matrix is triangular.
@@ -300,7 +248,7 @@ Yoga &   730 &      123 &   25315 \\
 
 \begin{figure}[!t]
 \centering
-%\includegraphics[width=0.9\columnwidth]{accumulative snapshot points for Feminist Writers.png}.
+\includegraphics[width=0.9\columnwidth]{accumulative snapshot points for Feminist Writers.png}.
 \caption{Cumulative snapshots, Feminist Writer}
 \label{fig:cumsnaps}
 \end{figure}
@@ -309,6 +257,7 @@ Yoga &   730 &      123 &   25315 \\
 
 
  
+
 The matrix $\mathbf{\hat{M}_{e,a}}$ is a binary representation of $\mathbf{M_{e,a}}$ where each nonzero entry is replaced with $1$. This represents if editors have touched which articles rather than how much they have touched each article. In the economics domain, the distinction of making a binary matrix out of the data is interpreted an alternative metric to GDP per capita, rather than GDP. Here we could also see the distinction as normalized editor fitness.
 
 It has a typical triangular structure as shown on Figure \ref{fig:triangular_matrix}.
@@ -334,52 +283,13 @@ Yes, indeed for authors, what we are measuring is a weaker proxy for the gnomien
 
 but for artilces the exogenous metric is quite, good, i.e. similar to what we are measuring
 
-
 The exogenous metric for editors $v_e$ we take is $labour hours$. For each editor the contribution history upto the snapshot point,  divide into strings of $edit sessions$, edits that occur within 1 hour of the previous edit. Then $labour hours$ are determined by subtracting the looking at the total time between the first and last edit in each edit session, and then summing the labours of each edit session. \cite{Geiger, Halfaker}. 
 
 For an exogenous measure of article quality, $ v_a$,  we use a group of 5 text analysis metrics performed on Wikipedia articles at the lastest time in the snapshot. These are ratio of mark-up to readable text, number of headings, article length, citations per article length, and outgoing intrawiki links. To reduce the dimensionality of these 5 metrics, we perform Principal Component Analysis, and accept the principal component. Variance explained by the first principal component, was as high as .7 and never below .5 http://www-users.cs.umn.edu/~morten/publications/wikisym2013-tellmemore.pdf, http://mailer.fsu.edu/~bstvilia/papers/quantWiki.pdf \cite{ Morten}.
 
 
-\subsection{Testing against Wikipedia Metrics}
-We turn to the evaluation of the method against metrics 
+\subsection{Calibrating}
 
-\begin{itemize}
-  \item 
-  \item 
-\end{itemize}
-
-
-Having our endogenous and exegenous variables now, we perform a recursive grid search over the two dimensions of $\alpha$ and $\beta$ to find a maximum correlation between our rankings from $\mathbf{w^*}$ and our exogenous variables. Our grid search operates on the interval $[-5,5]$ with a resolution of 0.2 in on each axis. Importantly we search for negative values of $\alpha$ and $\beta$, which is not done in the Economics Domain. t
-
-\subsection{Finding trends}
-
-5. While the implementation presented here is strictly similar to \ref{}, the interpretation is slightly different in the context of group collaboration. Indeed, while countries competes for selling products, the hypothesis here is that Wikipedia contributors cooperate, at least in a very informal way, for improving the quality of articles.
-
-\section{Results}
-
-
-
-
-\section{Discussion}
-
-6. {\it Refer to problems here, if any.}
-
-
-
-
-\begin{figure}
-\centering
-%\epsfig{file=fly.eps}
-\caption{Matrix $\mathbf{M}$ ordered by decreasing order of edits on both contributors and articles dimensions.}
-\label{fig:matrix}
-\end{figure}
-
-\section{Conclusions}
-
-%ACKNOWLEDGMENTS are optional
-%\section{Acknowledgments}
-
-%
 Having our endogenous and exogenous variables now, we perform a recursive grid search over the two dimensions of $\alpha$ and $\beta$ to find a maximum correlation between our rankings from $\mathbf{w^*}$ and our exogenous variables. Our grid search operates on the interval $[-5,5]$ with a resolution of 0.2 in on each axis.
 
 
@@ -419,7 +329,6 @@ From snapshotting we see view $\rho$ as  a function of time. In the case of edit
 
 
 
-
 %$\alpha$ is a measure of how important it is for quality that many users edit, with lower alpha, we have a more collaborative category, where edits are more equal and egalitarean. With alpha high, the category is more rewarding users that operate more individualistically. Beta is inversely related to alpha so the same can be said but the directions of the arguments reversed. This means we can talk of the characteristic of a category, compared to one another and compared over time. 
 
 \subsection{Negative values of $\alpha$ and $\beta$}
@@ -429,7 +338,7 @@ Another surprising result is that we find at times, negative values for $\alpha$
 For editors, maximum $\rho$ always occurs strictly within a radius of 0.01 around the origin on the  $\alpha$-$\beta$ plane. The $(0,0)$ solution is significant in that it represents unbiased arithmetic averages.
 \ref{fig:landscape}
 
-For articles, the solutions have varied solutions, possibly including a negative alpha. For instance in Category Economic Theories we find a class of maximizing solutions with a negative values of $\alpha$ and $\beta$. \ref{fig:landscape} 
+For articles, the solutions have varied solutions, possibly including a negative alpha. For instance in Category Economic Theories we find a class of maximizing solutions with a negative values of $\alpha$ and $\beta$. Why there should be this large swath optimizing solutions is due to the ranking correlation. Since we are comparing only ranks, positions, there are many ways to achieve our best-prediction list and perturbing $\alpha$ and $\beta$ do not affect the rank being produced. \ref{fig:landscape} 
 %move to discussionIf $\alpha$ show the importance of the fittest editors contributing, negative alpha goes to imply that in these cases its actually important that less fit editors contribute at these points. This shows anti-competetiveness. Negative beta would mean that for an editor the production of ubiquitious, common, heavily otherwise-edited articles are important. Which again is a reward for anti-competitive behaviour.
 
 \begin{figure}[!t]
@@ -460,7 +369,6 @@ In Wikipedia there has been discussion about the importance of super-users who r
 % initial runs of your .tex file to
 % produce the bibliography for the citations in your paper.
 \bibliographystyle{abbrv}
-
 \bibliography{sigproc}  
 
 % sigproc.bib is the name of the Bibliography in this case
@@ -478,3 +386,4 @@ In Wikipedia there has been discussion about the importance of super-users who r
 %\section{Headings in Appendices}
 
 \end{document}
+
