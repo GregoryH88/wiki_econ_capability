@@ -35,7 +35,7 @@
 
 \begin{document}
 
-\title{Wikipedia as a Bipartite Network}
+\title{The Article/Editor Ranking : Bringing Order to Wikipedia}
 %\subtitle{[Extended Abstract]
 %\titlenote{A full version of this paper is available as
 %\textit{Author's Guide to Preparing ACM SIG Proceedings Using
@@ -105,9 +105,6 @@ John Chuang\\
 }
 
 
-
-
-
 \date{23 February 2014}
 % Just remember to make sure that the TOTAL number of authors
 % is the number that will appear on the first page PLUS the
@@ -115,7 +112,18 @@ John Chuang\\
 
 \maketitle
 \begin{abstract}
-We introduce a new method to jointly rank the quality of articles and the expertise of editors in Categories of Wikipedia, based on the bi-partite network information of who has contributed at least once to an article on the one hand, and what are the articles that have edited at least once by a given author on the other hand. We show that this ``reflexive" ranking method exhibits high correlations with usual article quality and user expertise metrics, which account for quality on Wikipedia (that we assume to be a grand truth here). In particular, we find that the quality of an article can be captured very well by our method right after a few edits, while capturing right the expertise of editors requires 
+We introduce a new method to jointly rank the quality of articles and the expertise
+ of editors in Categories of Wikipedia, based on the bi-partite network information 
+ of who has contributed at least once to an article on the one hand, and what are 
+ the articles that have edited at least once by a given author on the other hand.
+  We show that this ``reflexive" ranking method exhibits high correlations with 
+  usual article quality and user expertise metrics, which account for quality on 
+  Wikipedia (that we assume to be a grand truth here). In particular, we find that 
+  the quality of an article can be captured very well by our method right after a few 
+  edits, while the expertise of editors is captured increasingly better over time. 
+  Our results suggest that it is easier to predict the quality of an article from the 
+  editors who touched it, rather than editor expertise from articles they have 
+  edited.
 \end{abstract}
 
 % A category with the (minimum) three required fields
@@ -128,62 +136,44 @@ We introduce a new method to jointly rank the quality of articles and the expert
 \keywords{to be completed, if necessary} % NOT required for Proceedings
 
 \section{Introduction}
+From product reviews to online collaboration platforms, the World Wide Web is increasingly populated with knowledge contributed by the crowds. One positive aspect is the immediate sharing of information, which in turn helps others take more informed decisions about the quality of a product, the cleanliness of a restaurant, whether it is worth buying a book. But the reliability of the contribution is limited by the level of expertise of the person who made the contribution. In many case, repeated contributions of the same type by several individuals (e.g., reviews) average out idiosyncracies (assuming that individual do not influence each others). Many crowd sourcing mechanisms have been designed in this way \cite{}. The reliability/quality of a contribution is however more critical  when the same contribution is not necessarily repeated, or repeatable. Open source collaboration projects face such an issue: rewriting several times Wikipedia or the whole open source software codebase would be simply be impossible. Yet these open collaboration projects can achieve remarkable quality \cite{nature paper}. This is achieved through {\it peer-production} a labor organization, which mainly relies on two main ingredients : (i) task self-selection and (ii) peer-review : individuals choose the tasks they believe they are more qualified for, and they review the work of others also according to their skills \cite{benkler2002}. These rules have been initially used for open source software development \cite{raymond1999}, for which it is possible to ultimately test the quality of the work by executing the code. However, for natural language knowledge, like  Wikipedia, there is no ``machine" to execute the code. Therefore the quality of knowledge remains subjective, and it is mainly tied to the expertise of the person in the domain of contribution, and to the number of persons (and their respective expertise) who have contributed to a piece of knowledge (e.g., an article). The level of expertise in one domain can in turn be approximated by the number of related articles contributed by the same individual, and so on. 
 
+On Wikipedia, is there a way to assess relative quality of both articles and editors by only considering whose editor has touched which article ? This is the problem we are addressing in this paper. 
 
-Ranking and assigning correct value to content and people on the Web has received much attention recently due to the economic benefits that can be derived from these measures. (None of these metrics is intrinsically good and they are all subjected to some level of subjectivity. Some words on markets as mechanisms to reveal the ``true" value ?). For instance, LinkedIn has based large parts of its business model on selling expertise information of hundreds of millions workers to potential employers, and the success of Amazon as an online retailer is largely due to product rating. 
+The rest of this paper is organized as follows. With begin with discussion of related work, followed by a description of the method. We then present the results and conclude. 
 
-In massively distributed collaboration systems, the evaluation of content and expertise of contributors is mainly based on peer-review, like for scientific research.
+\begin{figure}[!t]
+\centering
+%\includegraphics[width=0.9\columnwidth]{accumulative snapshot points for Feminist Writers.png}.
+\caption{Matrix}
+\label{fig:triangle_matrix}
+\end{figure}
 
-Slashdot promotion system \cite{}
-Wikipedia issue \cite{halfaker2013}
 
 %Theory of ranking  \cite{Blumm2012}
 
+%\subsection{criticism of alternative economy}
+%we are not really saying much about how the economy of wikipedia, i.e. inputs and outputs.
+%
+%but still we can say something about the fact peer production, is indeed different from tradition economy.
+%
+%but still might be useful to justify why we are using HH model, and what we expect as differences. 
 
-3 elements. Literature. Question. Data. The need for a new metric.
+%\subsection{criticism of improving rankings approach}
+%no reliable metrics for ranking people, there is never a benchmark to say that we have a "BETTER" metric in terms of measuring quality, precisely because we use those to calibrate.
 
-2. We also inadvertently develop a new measure for the convtroversialness of articles, and the collaborativeness of a group of editors.
+%but still can say it is an effecient alternative metric, 
 
-\subsection{criticism of alternative economy}
-we are not really saying much about how the economy of wikipedia, i.e. inputs and outputs.
-but still we can say something about the fact peer production, is indeed different from tradition economy.
+%\subsection{issue of possible overfitting}
+%how do we justify the existence of alpha and beta as the parameters we calibrate
 
-but still might be useful to justify why we are using HH model, and what we expect as differences. 
-
-
-\subsection{criticism of improving rankings approach}
-no reliable metrics for ranking people, there is never a benchmark to say that we have a "BETTER" metric in terms of measuring quality, precisely because we use those to calibrate.
-
-but still can say it is an effecient alternative metric, 
-
-\subsection{issue of possible overfitting}
-how do we justify the existence of alpha and beta as the parameter we calibrates
-
-\subsection{ on HH method}
-They had the origin of the method, and we use a refined technique.
-
-\subsection{other}
-
-
-3 elements. Literature. Question. Data. The need for a new metric.
-
-1. A stream of economics research found success in predicting the fitness and ubiquity of products, by performing analysis on the bipartite graph of countries exporting products. Based on the casual observation that fitter countries produce less ubiquitous products, countries can be characterized and scored by their exports relative to the world market.
-
-With some imagination Wikipedia, and many other online collaborative projects can be viewed as such a market. (Here we only consider English Wikipedia). We consider Wikipedia Editors to be our "countries", and Wikipedia Articles to be "products". Therefore a country producing a product is interpreted as an editor editing an article. We also inherit the assumption that the better editors will be those who edit the rarer articles, although we re-adjust that assumption in instructive ways later on. 
-
-
-2. We develop a new measure for the degree of collaborativity of category.
-
-Questions. Can this economics theory be applied, into other "economies"? Which is the other side of a Wikipedia question, which is "What are better ways to rank Wikipedia editor and articles, since the flawed Edit Counts and Article Metrics, are used as proxies"?
-
-
-
- 
-
-\section{Method}
-
-\subsection{Model Description}
-4. We need an intuitive way of understanding the iterative algorithm
+\section{Related Work}
+The model we present here is deeply influenced by a recent stream of research in economics that aims at explaining the GDP of countries based on the nature of goods they produce and export. The first model was proposed by \cite{hidalgo2007,hidalgo2009}, and reworked by 
+	
+A network analysis of countries’ export flows: firm grounds for the building blocks of the economy \cite{caldarelli2012network}; A new metrics for countries' fitness and products' complexity \cite{tacchella2012new}; Measuring the Intangibles: A Metrics for the Economic Complexity of Countries and Products \cite{cristelli2013measuring}; Economic complexity: Conceptual grounding of a new metrics for global competitiveness \cite{tacchella2013economic}; Competitors’ communities and taxonomy of products according to export fluxes
+  \cite{cristelli2012competitors}
+  
+The model proposed by Caldarelli et al. \cite{caldarelli2012network} is a sort of two-dimensional PageRank algorithm \cite{pagerank}. Instead of jumping from web page to webpage, the random walker goes from country to products, and from products to countries.
 
 We then applied the most general implementation of the $\mathbf{FQ}$ algorithm as developed for modelling the economy and competitiveness of countries. The $\mathbf{FQ}$ is a nonlinear generalization of the Hidalgo Hausman "Reflections Method". \cite{Caldarelli}. The algorithm has both a stochastic, iterative implementation, and an analytic solution. We demonstrate the iterative solution, to gain some intuition for the algorithm.
 
@@ -198,31 +188,85 @@ At each iterative step we simultaneously rank editor "fitness", and article "ubi
 
 In the economic domain, the best products are those that are made by the fewest countries. Therefore in our average we want to give more weight to those best producing countries. This measure of good contributors being more important to success, is measured by alpha. A higher alpha means that a good product needs to be exported by the best countries. In Caldarelli, to correlate best with GDP rankings alpha = 1.5 Our result we find the  opposite - negative values of alpha. in the not competitive but collaborative wikipedia, where the best articles are produced by the highest number of editors
 
-
 \section{Method}
-For this study, we collected historical contribution data with focus on fine-grained edits, from 10 categories of articles in English Wikipedia. The chosen categories contain between 50 and 4000 articles, and between 50 and 5000 contributors have edited at least 100'000 times all the articles over their history. (c.f. table \ref{tab:statistics} for summary statistics on the categories). 
+While it relies on the same principles as in \cite{caldarelli2012network}, our proposed model is conceptually different : our ``products" are Wikipedia articles, which are not the basis for competitions but rather for cooperation. Editors enrich the articles together to make best articles. However, like countries, editors have limited capabilities and limited resources (e.g., time), which force them make choices on their contributions.
 
-\begin{table}
+The matrix $\mathbf{M}$ shown in Figure \ref{fig:triangle_matrix} shows when an article has changed at some point by a given editor. The matrix is ordered on both dimensions by decreasing order of editors who have changed more articles (vertical axis) and by decreasing order of articles that have been changed by most editors (horizontal axis) for a category of Wikipedia articles (here Feminist Writers). Although it is a rough count, the matrix tells already about the experience of an editor in the given category, and the attention an article has gotten from editors, which is an implicit quality measure according to the second principle of peer-production : peer-review. This count is the zero order of the Article/Editor ranking algorithm, and thus the initiation step is given by 
+
+\begin{equation}
+\begin{cases}
+ w^*_c = \\
+ w^*_p =
+\end{cases}
+\end{equation}
+
+Now, let's consider the second step :  if an article has been changed by editors who edited more articles, then the quality of the article should be higher. Similarly, if an editor has edited articles that have been edited by more editors, then the expertise of the editor should be higher (the only reason for making this claim is the collaborative nature of Wikipedia, and learning by imitation). Accordingly, the third step is the following : if an article has been changed by editors who edited more articles that have edited by more editors, then the quality of the article should be higher. Similarly, if an editor has edited articles that have been edited by more editors that have edited more articles, then the expertise of the editor should be higher. The algorithm goes on recursively, incorporating the quality (resp. expertise) information of the article (resp. editor) at the previous step. 
+
+{\bf tell about the stochastic process here} \cite{caldarelli2012network}
+
+{\bf say that it is a ranking algorithm. We care only about the ranking of articles and editors}
+
+The algorithm at step $n$ then writes,
+
+\begin{equation}
+\begin{cases}
+ w^*_c = \\
+ w^*_p =
+\end{cases}
+\end{equation}
+
+As shown on Figure \ref{fig:convergence}, the algorithm converges in a non-trivial way {\bf (explanation for this?)}. In the iterative solution we see how certain editors start low, but then climb in rankings. This means that they are editing few articles, but those articles are of higher quality. Likewise certain articles climb over iterations, they are edited by relatively few editors, but those editors are fitter.
+
+and an analytical solution can be found :
+
+\begin{equation}
+\begin{cases}
+ w^*_c = A(\sum^{N_p}_{p=1} M_{cp}k_p^{-\alpha})k_c^{-\beta} \\
+w^*_p = B(\sum^{N_c}_{c=1} M_{cp}k_c^{-\beta})k_p^{-\alpha}
+\end{cases}
+\end{equation}
+
+that we use onwards.
+
+
+\begin{figure}[!t]
 \centering
-\caption{Summary statistics for each category}
-\begin{tabular}{|c|c|c|} \hline
-{\bf Category} & {\bf \#Articles} & {\bf \#Editors} \\ \hline
-Bicycle Parts &   ? & ? \\ \hline
-Counterculture Festivals &   ? & ? \\ \hline
-Economic Theories &   ? & ? \\ \hline
-Feminist Writers &   ? & ? \\ \hline
-Gender Studies & ? & ?  \\ \hline
-Military History of the U.S. & ? & ?  \\ \hline
-Non-Euclidean Geometry & ? & ?  \\ \hline
-Sexual Actis & ? & ?  \\ \hline
-Works based on Sherlock Holmes & ? & ?  \\ \hline
-Yoga & ? & ?  \\ \hline
-\end{tabular}
+%\includegraphics[width=0.9\columnwidth]{accumulative snapshot points for Feminist Writers.png}.
+\caption{Convergence}
+\label{fig:convergence}
+\end{figure}
+
+%With some imagination Wikipedia, and many other online collaborative projects can be viewed as such a market. (Here we only consider English Wikipedia). We consider Wikipedia Editors to be our "countries", and Wikipedia Articles to be "products". Therefore a country producing a product is interpreted as an editor editing an article. We also inherit the assumption that the better editors will be those who edit the rarer articles, although we re-adjust that assumption in instructive ways later on. 
+
+
+%2. We develop a new measure for the degree of collaborativity of category.
+
+%Questions. Can this economics theory be applied, into other "economies"? Which is the other side of a Wikipedia question, which is "What are better ways to rank Wikipedia editor and articles, since the flawed Edit Counts and Article Metrics, are used as proxies"?
+
+
+\section{Data}
+The main input of the Article/Editors ranking algorithm is the matrix $M$ which determines, for a category on Wikipedia, which articles have modified at least once by each editor. We collected contribution data for articles in 10 categories (c.f. table \ref{tab:statistics} for summary statistics on the categories). In addition, we made 10 snapshots of equal number of edits to account for the evolution over time of each category (see Figure \ref{fig:accumulative_snapshots}
+).
+
+\begin{tabular}{llll}
+\toprule
+Category & Users & Articles &  Edits \\
+\midrule
+2013 films &  5215 &     1896 &  150956 \\
+American male novelists &  9946 &     2460 &  224783 \\
+American women novelists &  5968 &     1936 &  138716 \\
+Bicycle parts &   210 &       70 &    4981 \\
+Computability theory &   272 &       92 &    7117 \\
+Counterculture festivals &   578 &       66 &   10515 \\
+Economic theories &  1145 &      212 &   28658 \\
+Feminist writers &  1357 &      233 &   25738 \\
+Military history of the US &   854 &      180 &   20172 \\
+Nobel Peace Prize laureates &  4165 &      104 &   91522 \\
+Sexual acts &  2190 &       93 &   45901 \\
+Yoga &   730 &      123 &   25315 \\
+\bottomrule
 \label{tab:statistics}
-\end{table}
-
-
-3. For each category, we constructed 10 cumulative snapshots, that is each starting from the first edit in the category until 10\% more of the categories total edits have occurred. \ref{fig:accumulative_snapshots}
+\end{tabular}
 
 \begin{figure}[!t]
 \centering
@@ -231,19 +275,18 @@ Yoga & ? & ?  \\ \hline
 \label{fig:figure1}
 \end{figure}
 
+ For each snapshot, we constructed the matrix $\mathbf{M_{e,a}}$ of contributors versus edited articles, similar to the country versus products matrix of the Economics Domain. For each snapshot, the values in $\mathbf{M_{e,a}}$ are defined as the number of edits made by editor $e$ on article $a$ in the category occurring in the snapshot time. Note that the final snapshot represents the entire history of the category up to the present date.
+  
+The matrix $\mathbf{\hat{M}_{e,a}}$ is a binary representation of $\mathbf{M_{e,a}}$ where each nonzero entry is replaced with $1$. This represents if editors have touched which articles rather than how much they have touched each article. In the economics domain, the distinction of making a binary matrix out of the data is interpreted an alternative metric to GDP per capita, rather than GDP. Here we could also see the distinction as normalized editor fitness. It has a typical triangular structure as shown on Figure \ref{fig:triangular_matrix}. The matrix $\mathbf{\hat{M}_{e,a}}$ constitutes the basic input for implementing the Biased Markov Chain Approach, which we will call the $\mathbf{w^*}$ algorithm, which is an analytic solution to the iterative $\mathbf{W}$ algorithm. \cite{Caldarelli} 
 
-For each snapshot, we constructed the matrix $\mathbf{M_{e,a}}$ of contributors versus edited articles, similar to the country versus products matrix of the Economics Domain. For each snapshot, the values in $\mathbf{M_{e,a}}$ are defined as the number of edits made by editor $e$ on article $a$ in the category occurring in the snapshot time. Note that the final snapshot represents the entire history of the category up to the present date. 
+The exogenous metric for editors $v_e$ we take is $labour hours$. For each editor the contribution history upto the snapshot point,  divide into strings of $edit sessions$, edits that occur within 1 hour of the previous edit. Then $labour hours$ are determined by subtracting the looking at the total time between the first and last edit in each edit session, and then summing the labours of each edit session. \cite{Geiger, Halfaker}. 
 
-\subsection{Triangular Matrices}
-1. Matrix is triangular.
-Perhaps not as clean as the country products matrix, but it's still triangular.
+For an exogenous measure of article quality, $ v_a$,  we use a group of 5 text analysis metrics performed on Wikipedia articles at the lastest time in the snapshot. These are ratio of mark-up to readable text, number of headings, article length, citations per article length, and outgoing intrawiki links. To reduce the dimensionality of these 5 metrics, we perform Principal Component Analysis, and accept the principal component. Variance explained by the first principal component, was as high as .7 and never below .5 http://www-users.cs.umn.edu/~morten/publications/wikisym2013-tellmemore.pdf, http://mailer.fsu.edu/~bstvilia/papers/quantWiki.pdf \cite{ Morten}.
 
-\begin{figure}[!t]
-\centering
-%\includegraphics[width=0.9\columnwidth]{accumulative snapshot points for Feminist Writers.png}.
-\caption{Triangular matrix}
-\label{fig:triangle_matrix}
-\end{figure}
+
+
+
+%For each snapshot, we constructed the matrix $\mathbf{M_{e,a}}$ of contributors versus edited articles, similar to the country versus products matrix of the Economics Domain. For each snapshot, the values in $\mathbf{M_{e,a}}$ are defined as the number of edits made by editor $e$ on article $a$ in the category occurring in the snapshot time. Note that the final snapshot represents the entire history of the category up to the present date. 
 
 \subsection{Interpretation of w* algorithm in the context of open collaboration}
 
@@ -264,38 +307,13 @@ As beta approaches one from infinity then editors are less judge by their the am
 The lower beta, the more a diversified editor will be successful in a Category, and the higher beta, the more a targeted quality-writing author will be successful.
 
 
-\subsection{Theory of Ranking in Open Collaboration}
-How this would used in an setting
+%\subsection{Theory of Ranking in Open Collaboration}
+%How this would used in an setting
 
-\subsection{How do w* algorithm should behave in open collaboration (theory)}
-
-It might be opposite or negative.
-
-\subsection{Data}
-1. The current investigation involved collecting historical data of edition and quality metrics, from 10 categories of articles in English Wikipedia, with focus on fine-grained edits by contributors to articles.
-
-2. The chosen categories contain between 50 and 4000 articles, and between 50 and 5000 contributors have edited at least 100,000 times all the articles over their history. (c.f. table \ref{tab:statistics} for summary statistics on the categories). 
-
-3. For each category, we constructed 10 accumulative snapshots, that is each starting from the first edit in the category until 10\% more of the categories total edits have occurred. \ref{fig:accumulative_snapshots}
-
-\begin{figure}[!t]
-\centering
-%\includegraphics[width=0.9\columnwidth]{accumulative snapshot points for Feminist Writers.png}.
-\caption{Cumulative snapshots, Feminist Writer}
-\label{fig:cumsnaps}
-\end{figure}
-
- For each snapshot, we constructed the matrix $\mathbf{M_{e,a}}$ of contributors versus edited articles, similar to the country versus products matrix of the Economics Domain. For each snapshot, the values in $\mathbf{M_{e,a}}$ are defined as the number of edits made by editor $e$ on article $a$ in the category occurring in the snapshot time. Note that the final snapshot represents the entire history of the category up to the present date.
+%\subsection{How do w* algorithm should behave in open collaboration (theory)}
+%It might be opposite or negative.
 
 
- 
-The matrix $\mathbf{\hat{M}_{e,a}}$ is a binary representation of $\mathbf{M_{e,a}}$ where each nonzero entry is replaced with $1$. This represents if editors have touched which articles rather than how much they have touched each article. In the economics domain, the distinction of making a binary matrix out of the data is interpreted an alternative metric to GDP per capita, rather than GDP. Here we could also see the distinction as normalized editor fitness.
-
-It has a typical triangular structure as shown on Figure \ref{fig:triangular_matrix}.
-
-The matrix $\mathbf{\hat{M}_{e,a}}$ constitutes the basic input for implementing the Biased Markov Chain Approach, which we will call the $\mathbf{w^*}$ algorithm, which is an analytic solution to the iterative $\mathbf{W}$ algorithm. \cite{Caldarelli} 
-
-In the iterative solution we see how certain editors start low, but then climb in rankings. This means that they are editing few articles, but those articles are of higher quality. Likewise certain articles climb over iterations, they are edited by relatively few editors, but those editors are fitter.
 
 The output of $\mathbf{w^*}$ are a pair of rankings $ w^*_e$ and $ w^*_a$ for editors and articles respectively.
 
@@ -313,11 +331,6 @@ It is important to note that we are not competing with these metrics, but take t
 Yes, indeed for authors, what we are measuring is a weaker proxy for the gnomieness.
 
 but for artilces the exogenous metric is quite, good, i.e. similar to what we are measuring
-
-
-The exogenous metric for editors $v_e$ we take is $labour hours$. For each editor the contribution history upto the snapshot point,  divide into strings of $edit sessions$, edits that occur within 1 hour of the previous edit. Then $labour hours$ are determined by subtracting the looking at the total time between the first and last edit in each edit session, and then summing the labours of each edit session. \cite{Geiger, Halfaker}. 
-
-For an exogenous measure of article quality, $ v_a$,  we use a group of 5 text analysis metrics performed on Wikipedia articles at the lastest time in the snapshot. These are ratio of mark-up to readable text, number of headings, article length, citations per article length, and outgoing intrawiki links. To reduce the dimensionality of these 5 metrics, we perform Principal Component Analysis, and accept the principal component. Variance explained by the first principal component, was as high as .7 and never below .5 http://www-users.cs.umn.edu/~morten/publications/wikisym2013-tellmemore.pdf, http://mailer.fsu.edu/~bstvilia/papers/quantWiki.pdf \cite{ Morten}.
 
 
 \subsection{Testing against Wikipedia Metrics}
@@ -499,25 +512,20 @@ And that the super-users contribute more to sexism.\cite{website:wikinewsreporte
  Now we have measures of importance of superuser-contributors. 
 
 
-\begin{tabular}{llll}
-\toprule
-Category & Users & Articles &  Edits \\
-\midrule
-2013\_films &  5215 &     1896 &  150956 \\
-American\_male\_novelists &  9946 &     2460 &  224783 \\
-American\_women\_novelists &  5968 &     1936 &  138716 \\
-Bicycle\_parts &   210 &       70 &    4981 \\
-Computability\_theory &   272 &       92 &    7117 \\
-Counterculture\_festivals &   578 &       66 &   10515 \\
-Economic\_theories &  1145 &      212 &   28658 \\
-Feminist\_writers &  1357 &      233 &   25738 \\
-Military\_history\_of\_the\_United\_States &   854 &      180 &   20172 \\
-Nobel\_Peace\_Prize\_laureates &  4165 &      104 &   91522 \\
-Sexual\_acts &  2190 &       93 &   45901 \\
-Yoga &   730 &      123 &   25315 \\
-\bottomrule
-\label{tab:statistics}
-\end{tabular}
+
+
+\section{Limitations}
+
+We do not directly measure the {\it capabilities} of editors. For instance, what does one editor do best to improve an article, among the five metrics (ratio of mark-up to readable text, number of headings, article length, citations per article length, and outgoing intrawiki links) we have used to assess the quality of an article ? 
+
+We have not looked at the evolution of the quality of correlation as a function of iteration steps.
+
+``less is more" : Why is it that when we incorporate more information in the matrix M, the results are not better ?
+
+Quality of the exogenous metrics, especially for editors. It would be definitely make to look at real capabilities.
+
+We only look at the ranking not at the real quality/expertise values ? Can we learn more the real values about the gap between articles/editors ?
+
 
 %\begin{figure}
 %\caption{Matrix $\mathbf{\hat{M}}$ ordered by decreasing order of edits on both contributors and articles dimensions.}
