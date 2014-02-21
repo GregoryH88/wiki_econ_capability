@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.3.4)  21 FEB 2014 00:10
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.3.4)  21 FEB 2014 10:16
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -223,18 +223,18 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 (./biPartiteWikipedia.aux)
 \openout1 = `biPartiteWikipedia.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
 
 (/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -297,92 +297,106 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for U+msa on input line 113.
+LaTeX Font Info:    Try loading font information for U+msa on input line 112.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 113.
+LaTeX Font Info:    Try loading font information for U+msb on input line 112.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 113.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 112.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-Overfull \hbox (1.26794pt too wide) in paragraph at lines 132--133
+Overfull \hbox (65.70558pt too wide) in paragraph at lines 112--112
+ []\eaddfnt thomas.maillart@ischool.berkeley.edu| 
+ []
+
+
+Overfull \hbox (23.41823pt too wide) in paragraph at lines 112--112
+ []\eaddfnt chuang@ischool.berkeley.edu| 
+ []
+
+
+Overfull \hbox (1.26794pt too wide) in paragraph at lines 131--132
 \T1/aer/m/n/9 H.4 [\T1/aer/bx/n/9 Information Sys-tems Ap-pli-ca-tions\T1/aer/m
 /n/9 ]: Mis-cel-la-neous;
  []
 
 
-LaTeX Warning: Citation `nature paper' on page 1 undefined on input line 139.
+LaTeX Warning: Citation `nature paper' on page \thepage  undefined on input lin
+e 138.
 
 
-LaTeX Warning: Citation `benkler2002' on page 1 undefined on input line 139.
+LaTeX Warning: Citation `benkler2002' on page \thepage  undefined on input line
+ 138.
 
 
-LaTeX Warning: Citation `raymond1999' on page 1 undefined on input line 139.
+LaTeX Warning: Citation `raymond1999' on page \thepage  undefined on input line
+ 138.
 
 
-LaTeX Warning: Citation `hidalgo2007' on page 1 undefined on input line 171.
+LaTeX Warning: Citation `hidalgo2007' on page \thepage  undefined on input line
+ 170.
 
 
-LaTeX Warning: Citation `hidalgo2009' on page 1 undefined on input line 171.
+LaTeX Warning: Citation `hidalgo2009' on page \thepage  undefined on input line
+ 170.
 
 
-LaTeX Warning: Citation `caldarelli2012network' on page 1 undefined on input li
-ne 173.
+LaTeX Warning: Citation `caldarelli2012network' on page \thepage  undefined on 
+input line 172.
 
 
-LaTeX Warning: Citation `tacchella2012new' on page 1 undefined on input line 17
-3.
+LaTeX Warning: Citation `tacchella2012new' on page \thepage  undefined on input
+ line 172.
 
 
-LaTeX Warning: Citation `cristelli2013measuring' on page 1 undefined on input l
-ine 173.
+LaTeX Warning: Citation `cristelli2013measuring' on page \thepage  undefined on
+ input line 172.
 
 
-LaTeX Warning: Citation `tacchella2013economic' on page 1 undefined on input li
-ne 173.
+LaTeX Warning: Citation `tacchella2013economic' on page \thepage  undefined on 
+input line 172.
 
 
-LaTeX Warning: Citation `cristelli2012competitors' on page 1 undefined on input
- line 174.
+LaTeX Warning: Citation `cristelli2012competitors' on page \thepage  undefined 
+on input line 173.
 
-
-Underfull \vbox (badness 3088) has occurred while \output is active []
-
- [1{/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+[1{/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
 
-LaTeX Warning: Citation `caldarelli2012network' on page 2 undefined on input li
-ne 176.
+LaTeX Warning: Citation `caldarelli2012network' on page \thepage  undefined on 
+input line 175.
 
 
-LaTeX Warning: Citation `pagerank' on page 2 undefined on input line 176.
+LaTeX Warning: Citation `pagerank' on page \thepage  undefined on input line 17
+5.
 
 
-LaTeX Warning: Citation `Caldarelli' on page 2 undefined on input line 178.
+LaTeX Warning: Citation `Caldarelli' on page \thepage  undefined on input line 
+177.
 
 
-LaTeX Warning: Citation `caldarelli2012network' on page 2 undefined on input li
-ne 192.
+LaTeX Warning: Citation `caldarelli2012network' on page \thepage  undefined on 
+input line 191.
 
 
-LaTeX Warning: Citation `caldarelli2012network' on page 2 undefined on input li
-ne 205.
+LaTeX Warning: Citation `caldarelli2012network' on page \thepage  undefined on 
+input line 204.
 
 
-LaTeX Warning: Reference `fig:accumulative_snapshots' on page 2 undefined on in
-put line 248.
+LaTeX Warning: Reference `fig:accumulative_snapshots' on page \thepage  undefin
+ed on input line 247.
 
 
-Overfull \hbox (1.49013pt too wide) in paragraph at lines 248--250
+Overfull \hbox (1.49013pt too wide) in paragraph at lines 247--249
 \T1/aer/m/n/9 the ma-trix $\OML/cmm/m/it/9 M$ \T1/aer/m/n/9 which de-ter-mines,
  for a cat-e-gory on Wikipedia,
  []
@@ -399,7 +413,7 @@ ers-eps-converted-to.pdf>
 (epstopdf)             Command: <epstopdf --outfile=Figures/cumulative_snapshot
 s_Feminist_Writers-eps-converted-to.pdf Figures/cumulative_snapshots_Feminist_W
 riters.eps>
-(epstopdf)             \includegraphics on input line 273.
+(epstopdf)             \includegraphics on input line 272.
 Package epstopdf Info: Output file is already uptodate.
 
 <Figures/cumulative_snapshots_Feminist_Writers-eps-converted-to.pdf, id=21, 384
@@ -409,76 +423,127 @@ c file (type pdf)
 
 <use Figures/cumulative_snapshots_Feminist_Writers-eps-converted-to.pdf>
 Package pdftex.def Info: Figures/cumulative_snapshots_Feminist_Writers-eps-conv
-erted-to.pdf used on input line 273.
+erted-to.pdf used on input line 272.
 (pdftex.def)             Requested size: 215.99854pt x 225.592pt.
 
 
-LaTeX Warning: Reference `fig:triangular_matrix' on page 3 undefined on input l
-ine 280.
+LaTeX Warning: Reference `fig:triangular_matrix' on page \thepage  undefined on
+ input line 279.
 
 
-LaTeX Warning: Citation `Caldarelli' on page 3 undefined on input line 280.
+LaTeX Warning: Citation `Caldarelli' on page \thepage  undefined on input line 
+279.
 
 
-LaTeX Warning: Citation `Geiger' on page 3 undefined on input line 282.
+LaTeX Warning: Citation `Geiger' on page \thepage  undefined on input line 281.
 
 
-LaTeX Warning: Citation `Halfaker' on page 3 undefined on input line 282.
+
+LaTeX Warning: Citation `Halfaker' on page \thepage  undefined on input line 28
+1.
 
 
-LaTeX Warning: Citation `Morten' on page 3 undefined on input line 284.
+LaTeX Warning: Citation `Morten' on page \thepage  undefined on input line 283.
 
 
-Overfull \hbox (27.95187pt too wide) in paragraph at lines 284--285
+
+Overfull \hbox (27.95187pt too wide) in paragraph at lines 283--284
 \T1/aer/m/n/9 http://www-users.cs.umn.edu/ morten/publications/wikisym2013-
  []
 
 
-Overfull \hbox (41.17032pt too wide) in paragraph at lines 284--285
+Overfull \hbox (41.17032pt too wide) in paragraph at lines 283--284
 \T1/aer/m/n/9 tellmemore.pdf, http://mailer.fsu.edu/ bstvilia/papers/quantWiki.
 pdf
  []
 
+[3 <./Figures/cumulative_snapshots_Feminist_Writers-eps-converted-to.pdf>]
 
-Underfull \vbox (badness 6396) has occurred while \output is active []
-
- [3 <./Figures/cumulative_snapshots_Feminist_Writers-eps-converted-to.pdf>]
-
-LaTeX Warning: Reference `' on page 4 undefined on input line 349.
+LaTeX Warning: Reference `fig:accumulative_snapshots' on page \thepage  undefin
+ed on input line 323.
 
 
-Overfull \hbox (10.26459pt too wide) in paragraph at lines 349--350
+Overfull \hbox (35.31458pt too wide) in paragraph at lines 325--344
+[][] 
+ []
+
+
+LaTeX Warning: File `accumulative snapshot points for Feminist Writers.png' not
+ found on input line 347.
+
+
+<accumulative snapshot points for Feminist Writers.png, id=31, 384.43625pt x 40
+1.5pt>
+File: accumulative snapshot points for Feminist Writers.png Graphic file (type 
+png)
+ <use accumulative snapshot points for Feminist Writers.png>
+Package pdftex.def Info: accumulative snapshot points for Feminist Writers.png 
+used on input line 347.
+(pdftex.def)             Requested size: 215.99854pt x 225.592pt.
+
+Underfull \vbox (badness 1430) has occurred while \output is active []
+
+
+
+LaTeX Warning: Reference `' on page \thepage  undefined on input line 389.
+
+
+Overfull \hbox (10.26459pt too wide) in paragraph at lines 389--390
 \T1/aer/m/n/9 petes for sell-ing prod-ucts, the hy-poth-e-sis here is that Wiki
 pedia
  []
 
 
-Overfull \hbox (4.80998pt too wide) in paragraph at lines 397--397
-[]\secfnt high Cor-re-la-tions with Ex-oge-nous Vari-able 
+LaTeX Warning: Citation `Geiger' on page \thepage  undefined on input line 401.
+
+
+
+LaTeX Warning: Citation `Halfaker' on page \thepage  undefined on input line 40
+1.
+
+[4 <./accumulative snapshot points for Feminist Writers.png>]
+
+LaTeX Warning: Citation `Morten' on page \thepage  undefined on input line 403.
+
+
+
+Overfull \hbox (27.95187pt too wide) in paragraph at lines 403--404
+\T1/aer/m/n/9 http://www-users.cs.umn.edu/ morten/publications/wikisym2013-
  []
 
-[4]
 
-LaTeX Warning: Citation `bloom' on page 5 undefined on input line 487.
-
-
-LaTeX Warning: Citation `website:nyt' on page 5 undefined on input line 508.
-
-
-LaTeX Warning: Citation `website:wikinewsreporter' on page 5 undefined on input
- line 510.
-
-
-Overfull \hbox (11.15817pt too wide) in paragraph at lines 512--513
-[]\T1/aer/m/n/9 Now we have mea-sures of im-por-tance of superuser-contributors
-. 
+Overfull \hbox (41.17032pt too wide) in paragraph at lines 403--404
+\T1/aer/m/n/9 tellmemore.pdf, http://mailer.fsu.edu/ bstvilia/papers/quantWiki.
+pdf
  []
 
-[5]
+
+LaTeX Warning: Reference `fig:rhotime' on page \thepage  undefined on input lin
+e 436.
+
+<rho_combined.png, id=37, 732.7375pt x 1198.4775pt>
+File: rho_combined.png Graphic file (type png)
+ <use rho_combined.png>
+Package pdftex.def Info: rho_combined.png used on input line 440.
+(pdftex.def)             Requested size: 215.99854pt x 353.27348pt.
+
+[5 <./rho_combined.png>] <landscape.png, id=42, 661.47125pt x 625.33624pt>
+File: landscape.png Graphic file (type png)
+
+<use landscape.png>
+Package pdftex.def Info: landscape.png used on input line 460.
+(pdftex.def)             Requested size: 215.99854pt x 204.19559pt.
+
+
+LaTeX Warning: Citation `Caldarelli' on page \thepage  undefined on input line 
+470.
+
+
+LaTeX Warning: Citation `website:wikinewsreporter' on page \thepage  undefined 
+on input line 472.
+
 No file biPartiteWikipedia.bbl.
-[6
-
-] (./biPartiteWikipedia.aux)
+[6 <./landscape.png>] (./biPartiteWikipedia.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -487,13 +552,13 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 2934 strings out of 493488
- 37698 string characters out of 3141327
- 99179 words of memory out of 3000000
- 6165 multiletter control sequences out of 15000+200000
+ 2949 strings out of 493488
+ 38125 string characters out of 3141327
+ 99159 words of memory out of 3000000
+ 6176 multiletter control sequences out of 15000+200000
  47936 words of font info for 66 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 41i,10n,26p,2175b,258s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,10n,26p,2175b,248s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/local/tex
 live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texli
@@ -509,10 +574,10 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2012/texmf
 ist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2012/texmf-dist/fon
 ts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type
 1/urw/times/utmb8a.pfb>
-Output written on biPartiteWikipedia.pdf (6 pages, 197206 bytes).
+Output written on biPartiteWikipedia.pdf (6 pages, 380310 bytes).
 PDF statistics:
- 85 PDF objects out of 1000 (max. 8388607)
- 59 compressed objects within 1 object stream
+ 92 PDF objects out of 1000 (max. 8388607)
+ 60 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
