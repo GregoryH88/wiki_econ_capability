@@ -315,13 +315,10 @@ The calibration technique for a category is performed at each of the ten points 
 
 The results of calibrating our model are encouraging as we find high correlations between the results of our $w^*_e$ algorithm and our exogenous variables $v$. 
 
-We define $\rho$ at the maximum achievable spearman rank correlation between $w^*$ and $v$ for editors or articles, by category, and over time. The variation of $\rho$, by for editor for any category ranges from 0.75 to 0.46 with a mean 0.64.  That same range for articles is articles from 0.91 to 0.57 with a mean of 0.72.
+We define $\rho$ at the maximum achievable spearman rank correlation between $w^*$ and $v$ for editors or articles, by category, and over time. The variation of $\rho$, by for editor for any category ranges from 0.75 to 0.46 with a mean 0.64.  That same statistic for articles is articles from 0.91 to 0.57 with a mean of 0.72, which is overall higher.
 
  
 From snapshotting we see view $\rho$ as  a function of time. In the case of editors we see increasing trends in all categories over time. This means that $w^*_e$ benefits from incorporating more contribution history. As for articles, from the start of a category's history the correlations remain stable. \ref{fig:rhotime}
-
-\subsection{Maybe "finding trends" subsection goes here.}
-We inspect the $\rho$ maximum achievable  Spearman rank correlation between $w^*_e$ versus $v_e$ and $w^*_a$ versus $v_a$ for any values of $\alpha$ and $\beta$ over our snapshots. Behaviour of $\rho$ over time differ when considering editors, or articles. For editors, in all categories we see a trend of $\rho$ increasing over time. While the values of $\rho$ for articles are higher much higher at earlier points in the snapshots, they do not clearly increase over time, and even in some categories we see a small loss of predictive power. Since our exogenous metrics for editors and articles are different, the difference in the trend of correlation could be affected either by $w*_e$ evolving over time differently than $w*_a$, or the $v_e$ evolves over time differently than $v_a$, we did not manage to disentangle this problem.
 
 \begin{figure}[!t]
 \centering
@@ -331,23 +328,23 @@ We inspect the $\rho$ maximum achievable  Spearman rank correlation between $w^*
 \end{figure}
 
 
-Although $rho$ is stable and high, $\alpha$ and $\beta$ vary a lot between categories, and within a category. 
 
 
 %$\alpha$ is a measure of how important it is for quality that many users edit, with lower alpha, we have a more collaborative category, where edits are more equal and egalitarean. With alpha high, the category is more rewarding users that operate more individualistically. Beta is inversely related to alpha so the same can be said but the directions of the arguments reversed. This means we can talk of the characteristic of a category, compared to one another and compared over time. 
 
-\subsection{Negative values of alpha and beta}
-Another surprising result is that we find at times, negative values for $\alpha$ and $\beta$. See
+\subsection{Negative values of $\alpha$ and $\beta$}
+Another surprising result is that we find at times, negative values for $\alpha$ and $\beta$.
 
-This is different from the economics domain, where the best fits for GDP are only in the positive / positive $\alpha$-$\beta$ quadrant. 
 
-Do we see all +- combos? For instance see \ref{fig:landscape}
+For editors, maximum $\rho$ always occurs strictly within a radius of 0.01 around the origin on the  $\alpha$-$\beta$ plane. The $(0,0)$ solution is significant in that it represents unbiased arithmetic averages.
+\ref{fig:landscape}
 
+For articles, the solutions have varied solutions, possibly including a negative alpha. For instance in Category Economic Theories we find a class of maximizing solutions with a negative values of $\alpha$ and $\beta$. \ref{fig:landscape} 
 %move to discussionIf $\alpha$ show the importance of the fittest editors contributing, negative alpha goes to imply that in these cases its actually important that less fit editors contribute at these points. This shows anti-competetiveness. Negative beta would mean that for an editor the production of ubiquitious, common, heavily otherwise-edited articles are important. Which again is a reward for anti-competitive behaviour.
 
 \begin{figure}[!t]
 \centering
-%\includegraphics[width=0.9\columnwidth]{../Category:Bicycle_parts Articles_landscape.eps}.
+\includegraphics[width=0.9\columnwidth]{landscape.png}.
 \caption{Landscape}
 \label{fig:landscape}
 \end{figure}
@@ -355,25 +352,11 @@ Do we see all +- combos? For instance see \ref{fig:landscape}
 
 
 
-
-
-
 \section{Discussion}
 
-THIS IS EVEN BETTER THAN HH for ranking.
+One of the brightest results here is that in using the method described for predicting world economies by GDP, we not only can predict Wikipedia editor and article rankings, but outperform the original application. Whereas in Caldarelli the achieve a correlation of 0.4, \cite{Caldarelli} that is on the lower end of our results. A theory to explain this behaviour goes back to the original motivation in creating this method, that of trying to find "capabilities". In Economics there are circumstantial factors that influence a countries capabilities, e.g. Geography or Politics. However in Wikipedia all outputs are only due to the editors' true underlying capabilities. There are no commodities and articles have no intrinsic value until they are written. If this explained why our correlations were higher, it might also be true for other online collaboration sites, where users operate in a within a greater meritocracy.
 
-Why is this betth than HH, part of the product lie in the fact that is a natural resources, here all the value lie in the knowlegde production. so an artilce has no intrinsic value until its written. 
-
-so to apply to any collaborative media. its better here becaus we are capturing value which is exclusively due to the capabilities of the people.
-
-What do we say about the fact that user correlation is worse? 
-Maximum achievable correlation is worse for editors means that its not easy to talk about the fitness of an editor as from just the ubiquity of the pages they edit. Sometimes one edits articles that are very ubiquitous because they are easy to edit like pop culture, not because they are universally important topics and they have expertise. Likewise one could edit non-ubiquitous articles like obscure mathematics, because they have high capabilities, or sometimes those edits could be because the article is trivial.  For articles however, its clearer that their ubiquity is more related to the attention they receive from the fittest editors. This is because some of the reasons for volunteering is to be recognized for participating \cite{Heather makmende}
-
-Now we have measures of importance of superuser-contributors. We know that there are super-users contributing pareto law, now we have alpha as a measure of their success.
-
-Explaining negative alpha and beta.
-A way to explain negative alpha - better articles are made by less fit editors - is perhaps is edit-warring between fit editors. Two or more power users fighting over a page can leave it worse than not being touched at all. Another is that perhaps less fit editors have a greater tendency to collaborate. Or that less fit, "newbie" editors start editing quite obvious, and there for ubiquitous articles, which have high quality already.  Whatever the reason,  it shows an anti-competitiveness. It means the contributions of less fit authors are important. 
-
+In Wikipedia there has been discussion about the importance of super-users who represent a small fraction of editors but contribute a majority of content. \cite{website:wikinewsreporter}. It is possible now to take $\alpha$ as a measure of importance of superuser contributions. Since different categories we correlate more highly for different ranges of $\alpha$ it is possible to compare the success of super-users in different categories. Moreover we can also find which categories are most closely modelled by low or negative values of $\alpha$ which represents better articles are made by less fit editors . Ways to explain this pheonomena could be two or more power users fighting over a page can leave it worse than not being touched at all. Another is that perhaps less fit editors have a greater tendency to collaborate. Or that less fit, "newbie" editors start editing quite obvious, and there for ubiquitous articles, which have high quality already.  Whatever the reason,  it shows an anti-competitiveness. It means the contributions of less fit authors are important. This is a departure from the economics domain, where the best fits for GDP are only in the positive / positive $\alpha$-$\beta$ quadrant. 
 
 
 %\begin{figure}
