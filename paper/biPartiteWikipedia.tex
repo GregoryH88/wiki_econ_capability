@@ -188,7 +188,7 @@ Perhaps not as clean as the country products matrix, but it's still triangular.
 
 \begin{figure}[!t]
 \centering
-%\includegraphics[width=0.9\columnwidth]{accumulative snapshot points for Feminist Writers.png}.
+\includegraphics[width=0.9\columnwidth]{Category:Feminist_writerstriangle_matrix_corrected.png}.
 \caption{Triangular matrix}
 \label{fig:triangle_matrix}
 \end{figure}
@@ -225,6 +225,26 @@ It might be opposite or negative.
 2. The chosen categories contain between 50 and 4000 articles, and between 50 and 5000 contributors have edited at least 100,000 times all the articles over their history. (c.f. table \ref{tab:statistics} for summary statistics on the categories). 
 
 3. For each category, we constructed 10 accumulative snapshots, that is each starting from the first edit in the category until 10\% more of the categories total edits have occurred. \ref{fig:accumulative_snapshots}
+
+\begin{tabular}{llll}
+\toprule
+Category & Users & Articles &  Edits \\
+\midrule
+2013\_films &  5215 &     1896 &  150956 \\
+American\_male\_novelists &  9946 &     2460 &  224783 \\
+American\_women\_novelists &  5968 &     1936 &  138716 \\
+Bicycle\_parts &   210 &       70 &    4981 \\
+Computability\_theory &   272 &       92 &    7117 \\
+Counterculture\_festivals &   578 &       66 &   10515 \\
+Economic\_theories &  1145 &      212 &   28658 \\
+Feminist\_writers &  1357 &      233 &   25738 \\
+Military\_history\_of\_the\_United\_States &   854 &      180 &   20172 \\
+Nobel\_Peace\_Prize\_laureates &  4165 &      104 &   91522 \\
+Sexual\_acts &  2190 &       93 &   45901 \\
+Yoga &   730 &      123 &   25315 \\
+\bottomrule
+\label{tab:statistics}
+\end{tabular}
 
 \begin{figure}[!t]
 \centering
@@ -291,150 +311,75 @@ The calibration technique for a category is performed at each of the ten points 
 \section{Results}
 
 
-\subsection{high Correlations with Exogenous Variable}
+\subsection{Correlations with exogenous variables}
 
-THIS IS EVEN BETTER THAN HH
-and by the way we have an explanation. read on to find out.
+The results of calibrating our model are encouraging as we find high correlations between the results of our $w^*_e$ algorithm and our exogenous variables $v$. 
 
-2.Once we have fitted alpha and beta we achieve high correlations with exogenous variables. We our correllation $rho$ 
- on users ranges from x to y. And on articles its better going from w, to v. These are quite high, and means that our new editor and article metrics are related to the state-of-the-art metrics that exist at the moment on Wikipedia. This gives $w^*$ a basis as an alternative metric. 
+We define $\rho$ at the maximum achievable spearman rank correlation between $w^*$ and $v$ for editors or articles, by category, and over time. The variation of $\rho$, by for editor for any category ranges from 0.75 to 0.46 with a mean 0.64.  That same range for articles is articles from 0.91 to 0.57 with a mean of 0.72.
+
  
- Also from snapshotting we see that $rho$ increases over time, sometimes as much at 70\% from 2006 to 2014. This means that $w^*$ benefits from incorporating more contribution history.
-Is this true for both articles and users?
-
-What do we say about the fact that user correlation is worse?
--That infact editor fitness is not related to hours investment that much?
--That in the "alternative economy" we are less concerned anyway about measuring users because it all disappears in the collaborative approach to making artilces. 
- 
-Although $rho$ is stable and high, $\alpha$ and $\beta$ vary a lot between categories, and overtime within a category. $\alpha$ is a measure of how important it is for quality that many users edit, with lower alpha, we have a more collaborative category, where edits are more equal and egalitarean. With alpha high, the category is more being rewarding users that operate more individualistically. Beta is inversely related to alpha so the same can be said but the directions of the arguments reversed. This means we can talk of the characteristic of a category, compared to one another and compared over time. 
-
-\subsection{Negative values of alpha and beta}
-This is unexpected, and different from HH, but show anti-competitiveness. It means the contributions of less fit authors are important.
-
-\begin{figure}[!t]
-\centering
-%\includegraphics[width=0.9\columnwidth]{accumulative snapshot points for Feminist Writers.png}.
-\caption{Landscape}
-\label{fig:landscape}
-\end{figure}
-
-\subsection{Controversial Categories}
-We inspeceted controversial categories. And found alphas and betas that show...
+From snapshotting we see view $\rho$ as  a function of time. In the case of editors we see increasing trends in all categories over time. This means that $w^*_e$ benefits from incorporating more contribution history. As for articles, from the start of a category's history the correlations remain stable. \ref{fig:rhotime}
 
 \subsection{Maybe "finding trends" subsection goes here.}
 We inspect the $\rho$ maximum achievable  Spearman rank correlation between $w^*_e$ versus $v_e$ and $w^*_a$ versus $v_a$ for any values of $\alpha$ and $\beta$ over our snapshots. Behaviour of $\rho$ over time differ when considering editors, or articles. For editors, in all categories we see a trend of $\rho$ increasing over time. While the values of $\rho$ for articles are higher much higher at earlier points in the snapshots, they do not clearly increase over time, and even in some categories we see a small loss of predictive power. Since our exogenous metrics for editors and articles are different, the difference in the trend of correlation could be affected either by $w*_e$ evolving over time differently than $w*_a$, or the $v_e$ evolves over time differently than $v_a$, we did not manage to disentangle this problem.
 
 \begin{figure}[!t]
 \centering
-%\includegraphics[width=0.9\columnwidth]{accumulative snapshot points for Feminist Writers.png}.
-\caption{rtime}
-\label{fig:rtime}
+\includegraphics[width=0.9\columnwidth]{rho_combined.png}.
+\caption{$\rho$ over time, by category and type}
+\label{fig:rhotime}
 \end{figure}
 
-\subsection{correlation of alpha and beta as a single paramter metric for categories}
+
+Although $rho$ is stable and high, $\alpha$ and $\beta$ vary a lot between categories, and within a category. 
 
 
-We find that the maximizing values of $\alpha$ and $\beta$ are strongly anti-correlated. In particular for articles, the pearson correlation coefficient never drops is never below 0.8 for any category. For editors, the correlation is below 0.8 in three categories, and tend towards zero. The reduction in $\alpha$-$\beta$ anti-correlation, is itself correlated to the size of the category as determined by the number of edits, 0.65 for editors, and 0.85 for articles. 
+%$\alpha$ is a measure of how important it is for quality that many users edit, with lower alpha, we have a more collaborative category, where edits are more equal and egalitarean. With alpha high, the category is more rewarding users that operate more individualistically. Beta is inversely related to alpha so the same can be said but the directions of the arguments reversed. This means we can talk of the characteristic of a category, compared to one another and compared over time. 
 
-This would mean this in that for sufficiently small categories, approximately those with less  100,000 edits, or approaximately 1,500 articles in our data, we can make the subsitituion $\alpha = - \beta$
+\subsection{Negative values of alpha and beta}
+Another surprising result is that we find at times, negative values for $\alpha$ and $\beta$. See
 
+This is different from the economics domain, where the best fits for GDP are only in the positive / positive $\alpha$-$\beta$ quadrant. 
 
-This would mean that:
+Do we see all +- combos? For instance see \ref{fig:landscape}
 
-For editors
-Since alpha beta are correlated 
-high beta -> high gamma
-low beta -> low gamma
-high gamma -> best editors are less gnomie, more specialized
-low gamma -> best editors are more gnomie, less specialized
-
-
-For articles, as beta decreases from one and alpha increases then, the fitness of users become more important than the number of users editing. This is like, when collaboration fails because people are taking ownership. Lower alpha, and negative alpha mean more edits are more important to the success of an article.
-
-high beta/low alpha -> high gamma
-low beta/high alpha -> low gamma
-high gamma -> best articles characterized by high quantity of contributor
-low gamma -> best articles charachterized by high quality of contributors
-
-
-Most categories fluctuate in this measure over time. Sometime there are spikes in gamma to the positive end. This would indicate??
-
-If we look at articles in 2013 films, we do see a clear trend. Gamma starts high and ends low. That means that high quality articles shift from being edited from many people to being edited by few higher quality contributors.
-
-It seems natural to say that $\alpha$, the importance of editor article quality, and $\beta$ the importance of editor quality would be related. For articles this would mean that they lie on a spectrum from  edited by fewer specialized editors to  many diverse editors. For editors, this would mean that editors lie on spectrum of editing many ubiquitous articles to fewer obscure articles. Let us note that this does not necessarily have to be the case. It could be that the best articles are edit both by many people and also by many specialized editors, rather than "either-or". And likewise it could be the case that  the best editors edit both many ubiquitous, and many obscure articles."
-
-And in fact, gamma becomes less of a good assumption as the category size grows. 
-
-Except that $\alpha , \beta$ correlation is itsself correlated to the category size.
-
-
-
-
+%move to discussionIf $\alpha$ show the importance of the fittest editors contributing, negative alpha goes to imply that in these cases its actually important that less fit editors contribute at these points. This shows anti-competetiveness. Negative beta would mean that for an editor the production of ubiquitious, common, heavily otherwise-edited articles are important. Which again is a reward for anti-competitive behaviour.
 
 \begin{figure}[!t]
 \centering
-%\includegraphics[width=0.9\columnwidth]{accumulative snapshot points for Feminist Writers.png}.
-\caption{timeseries or maybe table}
-\label{timeseries or maybe table}
+%\includegraphics[width=0.9\columnwidth]{../Category:Bicycle_parts Articles_landscape.eps}.
+\caption{Landscape}
+\label{fig:landscape}
 \end{figure}
 
-\subsection{Ranking Evolution}
-We have three options for interpreting the evolution of ranking over time. First, what we observe is genuine to the category, that our results are specific to the categories we plot. Second, that this is a phenomena related to Wikipedia, or more generally online collaboration platforms. And third is that this an artefact of the properties of ranking. 
-
-This paper \cite{bloom} shows that it is not inherent to ranking, so at least it is peculiar to Wikipedia. 
-
-We have to design a small test, for instance based on hamming distance or similar, to account for the properties of ranking. 
 
 
-Super Users persist over time, see the band of 
-
-
-
-
-Improved correlations when remove bots. Higher correllations with binary matrices. 
-Implies that edit counts are a counter productive and 
-
-
-3. Highest correlations are when we have negative alpha and beta, which is about being anticompetetive. 
 
 
 
 
 \section{Discussion}
 
-A measure of controversy. Lately there have been conflicts in what categories represent.  \cite{website:nyt}
+THIS IS EVEN BETTER THAN HH for ranking.
 
-And that the super-users contribute more to sexism.\cite{website:wikinewsreporter}
+Why is this betth than HH, part of the product lie in the fact that is a natural resources, here all the value lie in the knowlegde production. so an artilce has no intrinsic value until its written. 
 
- Now we have measures of importance of superuser-contributors. 
+so to apply to any collaborative media. its better here becaus we are capturing value which is exclusively due to the capabilities of the people.
+
+What do we say about the fact that user correlation is worse? 
+Maximum achievable correlation is worse for editors means that its not easy to talk about the fitness of an editor as from just the ubiquity of the pages they edit. Sometimes one edits articles that are very ubiquitous because they are easy to edit like pop culture, not because they are universally important topics and they have expertise. Likewise one could edit non-ubiquitous articles like obscure mathematics, because they have high capabilities, or sometimes those edits could be because the article is trivial.  For articles however, its clearer that their ubiquity is more related to the attention they receive from the fittest editors. This is because some of the reasons for volunteering is to be recognized for participating \cite{Heather makmende}
+
+Now we have measures of importance of superuser-contributors. We know that there are super-users contributing pareto law, now we have alpha as a measure of their success.
+
+Explaining negative alpha and beta.
+A way to explain negative alpha - better articles are made by less fit editors - is perhaps is edit-warring between fit editors. Two or more power users fighting over a page can leave it worse than not being touched at all. Another is that perhaps less fit editors have a greater tendency to collaborate. Or that less fit, "newbie" editors start editing quite obvious, and there for ubiquitous articles, which have high quality already.  Whatever the reason,  it shows an anti-competitiveness. It means the contributions of less fit authors are important. 
 
 
-\begin{tabular}{llll}
-\toprule
-Category & Users & Articles &  Edits \\
-\midrule
-2013\_films &  5215 &     1896 &  150956 \\
-American\_male\_novelists &  9946 &     2460 &  224783 \\
-American\_women\_novelists &  5968 &     1936 &  138716 \\
-Bicycle\_parts &   210 &       70 &    4981 \\
-Computability\_theory &   272 &       92 &    7117 \\
-Counterculture\_festivals &   578 &       66 &   10515 \\
-Economic\_theories &  1145 &      212 &   28658 \\
-Feminist\_writers &  1357 &      233 &   25738 \\
-Military\_history\_of\_the\_United\_States &   854 &      180 &   20172 \\
-Nobel\_Peace\_Prize\_laureates &  4165 &      104 &   91522 \\
-Sexual\_acts &  2190 &       93 &   45901 \\
-Yoga &   730 &      123 &   25315 \\
-\bottomrule
-\label{tab:statistics}
-\end{tabular}
 
 %\begin{figure}
 %\caption{Matrix $\mathbf{\hat{M}}$ ordered by decreasing order of edits on both contributors and articles dimensions.}
 %\label{fig:matrix}
 %\end{figure}
-
-Conclusions go here
 %ACKNOWLEDGMENTS are optional
 %\section{Acknowledgments}
 
