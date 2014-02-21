@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.3.4)  21 FEB 2014 13:08
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.3.4)  21 FEB 2014 14:58
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -220,14 +220,7 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \@lastruleclass=\count112
 \@thisrulewidth=\dimen135
 )
-(./biPartiteWikipedia.aux
-
-LaTeX Warning: Label `fig:rhotime' multiply defined.
-
-
-LaTeX Warning: Label `fig:landscape' multiply defined.
-
-)
+(./biPartiteWikipedia.aux)
 \openout1 = `biPartiteWikipedia.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
@@ -242,7 +235,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
 LaTeX Font Info:    ... okay on input line 35.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
 LaTeX Font Info:    ... okay on input line 35.
- (/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
+
+(/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count113
 \scratchdimen=\dimen136
@@ -349,47 +343,55 @@ LaTeX Warning: Citation `raymond1999' on page \thepage  undefined on input line
 ) (./sections/related_work.tex
 
 LaTeX Warning: Citation `hidalgo2007' on page \thepage  undefined on input line
- 3.
+ 2.
 
 
 LaTeX Warning: Citation `hidalgo2009' on page \thepage  undefined on input line
- 3.
+ 2.
 
 
-LaTeX Warning: Citation `caldarelli2012network' on page \thepage  undefined on 
-input line 5.
-
-
-LaTeX Warning: Citation `tacchella2012new' on page \thepage  undefined on input
- line 5.
-
-
-LaTeX Warning: Citation `cristelli2013measuring' on page \thepage  undefined on
- input line 5.
-
-
-LaTeX Warning: Citation `tacchella2013economic' on page \thepage  undefined on 
-input line 5.
-
-
-LaTeX Warning: Citation `cristelli2012competitors' on page \thepage  undefined 
-on input line 6.
+LaTeX Warning: Citation `hidalgo2009' on page \thepage  undefined on input line
+ 2.
 
 [1{/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
 
+LaTeX Warning: Citation `tacchella2012new' on page \thepage  undefined on input
+ line 4.
+
+
+LaTeX Warning: Citation `cristelli2012competitors' on page \thepage  undefined 
+on input line 4.
+
+
+LaTeX Warning: Citation `tacchella2013economic' on page \thepage  undefined on 
+input line 4.
+
+
+LaTeX Warning: Citation `cristelli2013measuring' on page \thepage  undefined on
+ input line 4.
+
+
 LaTeX Warning: Citation `caldarelli2012network' on page \thepage  undefined on 
-input line 8.
+input line 4.
 
 
-LaTeX Warning: Citation `pagerank' on page \thepage  undefined on input line 8.
+LaTeX Warning: Citation `page1999pagerank' on page \thepage  undefined on input
+ line 4.
 
 
+LaTeX Warning: Citation `halfaker2013' on page \thepage  undefined on input lin
+e 18.
 
-LaTeX Warning: Citation `Caldarelli' on page \thepage  undefined on input line 
-10.
+
+LaTeX Warning: Citation `citation needed.' on page \thepage  undefined on input
+ line 20.
+
+
+LaTeX Warning: Citation `caldarelli2012network' on page \thepage  undefined on 
+input line 24.
 
 ) (./sections/method.tex
 
@@ -397,17 +399,33 @@ LaTeX Warning: Citation `caldarelli2012network' on page \thepage  undefined on
 input line 2.
 
 
+<Figures/Category_Feminist_writerstriangle_matrix_corrected.png, id=12, 1791.69
+376pt x 499.8675pt>
+File: Figures/Category_Feminist_writerstriangle_matrix_corrected.png Graphic fi
+le (type png)
+
+<use Figures/Category_Feminist_writerstriangle_matrix_corrected.png>
+Package pdftex.def Info: Figures/Category_Feminist_writerstriangle_matrix_corre
+cted.png used on input line 6.
+(pdftex.def)             Requested size: 480.0pt x 133.91345pt.
+
+
+LaTeX Warning: Reference `fig:triangle_matrix' on page \thepage  undefined on i
+nput line 12.
+
+
 LaTeX Warning: Citation `caldarelli2012network' on page \thepage  undefined on 
-input line 15.
+input line 23.
 
 
-LaTeX Warning: Reference `' on page \thepage  undefined on input line 37.
+LaTeX Warning: Reference `' on page \thepage  undefined on input line 45.
 
+[2]
 
 LaTeX Warning: Citation `caldarelli' on page \thepage  undefined on input line 
-45.
+53.
 
-[2]) (./sections/data.tex
+) (./sections/data.tex
 
 LaTeX Warning: Reference `fig:accumulative_snapshots' on page \thepage  undefin
 ed on input line 2.
@@ -432,7 +450,7 @@ riters.eps>
 (epstopdf)             \includegraphics on input line 27.
 Package epstopdf Info: Output file is already uptodate.
 
-<Figures/cumulative_snapshots_Feminist_Writers-eps-converted-to.pdf, id=25, 384
+<Figures/cumulative_snapshots_Feminist_Writers-eps-converted-to.pdf, id=26, 384
 .43625pt x 401.5pt>
 File: Figures/cumulative_snapshots_Feminist_Writers-eps-converted-to.pdf Graphi
 c file (type pdf)
@@ -442,6 +460,13 @@ Package pdftex.def Info: Figures/cumulative_snapshots_Feminist_Writers-eps-conv
 erted-to.pdf used on input line 27.
 (pdftex.def)             Requested size: 215.99854pt x 225.592pt.
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 6859) has occurred while \output is active []
+
+ [3 <./Figures/Category_Feminist_writerstriangle_matrix_corrected.png> <./Figur
+es/cumulative_snapshots_Feminist_Writers-eps-converted-to.pdf>]
 
 LaTeX Warning: Reference `fig:triangular_matrix' on page \thepage  undefined on
  input line 34.
@@ -461,30 +486,34 @@ LaTeX Warning: Citation `Halfaker' on page \thepage  undefined on input line 36
 LaTeX Warning: Citation `Morten' on page \thepage  undefined on input line 38.
 
 )
-Overfull \hbox (27.95187pt too wide) in paragraph at lines 38--179
+Overfull \hbox (27.95187pt too wide) in paragraph at lines 38--174
 \T1/aer/m/n/9 http://www-users.cs.umn.edu/ morten/publications/wikisym2013-
  []
 
 
-Overfull \hbox (41.17032pt too wide) in paragraph at lines 38--179
+Overfull \hbox (41.17032pt too wide) in paragraph at lines 38--174
 \T1/aer/m/n/9 tellmemore.pdf, http://mailer.fsu.edu/ bstvilia/papers/quantWiki.
 pdf
  []
 
-(./sections/results.tex <rho_combined.png, id=26, 732.7375pt x 1198.4775pt>
-File: rho_combined.png Graphic file (type png)
+(./sections/results.tex
+<Figures/rho_combined.png, id=36, 732.7375pt x 1198.4775pt>
+File: Figures/rho_combined.png Graphic file (type png)
 
-<use rho_combined.png>
-Package pdftex.def Info: rho_combined.png used on input line 15.
+<use Figures/rho_combined.png>
+Package pdftex.def Info: Figures/rho_combined.png used on input line 15.
 (pdftex.def)             Requested size: 215.99854pt x 353.27348pt.
- [3 <./Figures/cumulative_snapshots_Feminist_Writers-eps-converted-to.pdf>] <la
-ndscape.png, id=35, 661.47125pt x 625.33624pt>
-File: landscape.png Graphic file (type png)
 
-<use landscape.png>
-Package pdftex.def Info: landscape.png used on input line 35.
+<Figures/landscape.png, id=37, 661.47125pt x 625.33624pt>
+File: Figures/landscape.png Graphic file (type png)
+
+<use Figures/landscape.png>
+Package pdftex.def Info: Figures/landscape.png used on input line 35.
 (pdftex.def)             Requested size: 215.99854pt x 204.19559pt.
-) (./sections/discussion.tex
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4 <./Figures/rho_combined.png>]) (./sections/discussion.tex
 
 LaTeX Warning: Citation `Caldarelli' on page \thepage  undefined on input line 
 4.
@@ -493,8 +522,7 @@ LaTeX Warning: Citation `Caldarelli' on page \thepage  undefined on input line
 LaTeX Warning: Citation `website:wikinewsreporter' on page \thepage  undefined 
 on input line 6.
 
-) [4 <./rho_combined.png> <./landscape.png>] (./sections/limitations.tex)
-(./sections/discussion.tex
+) (./sections/limitations.tex) (./sections/discussion.tex
 
 LaTeX Warning: Citation `Caldarelli' on page \thepage  undefined on input line 
 4.
@@ -503,21 +531,21 @@ LaTeX Warning: Citation `Caldarelli' on page \thepage  undefined on input line
 LaTeX Warning: Citation `website:wikinewsreporter' on page \thepage  undefined 
 on input line 6.
 
-) (./sections/limitations.tex) (./sections/conclusion.tex)
+) (./sections/limitations.tex [5 <./Figures/landscape.png>])
+(./sections/conclusion.tex)
 No file biPartiteWikipedia.bbl.
-[5] (./biPartiteWikipedia.aux)
+[6
+
+] (./biPartiteWikipedia.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 2972 strings out of 493488
- 38396 string characters out of 3141327
- 99182 words of memory out of 3000000
- 6169 multiletter control sequences out of 15000+200000
+ 2979 strings out of 493488
+ 38821 string characters out of 3141327
+ 101135 words of memory out of 3000000
+ 6175 multiletter control sequences out of 15000+200000
  47936 words of font info for 66 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  41i,10n,26p,2202b,248s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -538,10 +566,10 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2012/texmf
 ist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2012/texmf-dist/fon
 ts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type
 1/urw/times/utmb8a.pfb>
-Output written on biPartiteWikipedia.pdf (5 pages, 375004 bytes).
+Output written on biPartiteWikipedia.pdf (6 pages, 419751 bytes).
 PDF statistics:
- 95 PDF objects out of 1000 (max. 8388607)
- 64 compressed objects within 1 object stream
+ 100 PDF objects out of 1000 (max. 8388607)
+ 66 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
