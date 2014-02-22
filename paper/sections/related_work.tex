@@ -1,0 +1,26 @@
+\section{Related Work}
+
+The model we present here is deeply influenced by a recent stream of research in economics that aims at explaining the GDP of countries based on the nature of goods they produce and export. The first model was proposed by \cite{hidalgo2007,hidalgo2009}, and reworked by 
+	
+A network analysis of countries’ export flows: firm grounds for the building blocks of the economy \cite{caldarelli2012network}; A new metrics for countries' fitness and products' complexity \cite{tacchella2012new}; Measuring the Intangibles: A Metrics for the Economic Complexity of Countries and Products \cite{cristelli2013measuring}; Economic complexity: Conceptual grounding of a new metrics for global competitiveness \cite{tacchella2013economic}; Competitors’ communities and taxonomy of products according to export fluxes
+  \cite{cristelli2012competitors}
+  
+The model proposed by Caldarelli et al. \cite{caldarelli2012network} is a sort of two-dimensional PageRank algorithm \cite{pagerank}. Instead of jumping from web page to webpage, the random walker goes from country to products, and from products to countries.
+
+We then applied the most general implementation of the $\mathbf{FQ}$ algorithm as developed for modelling the economy and competitiveness of countries. The $\mathbf{FQ}$ is a nonlinear generalization of the Hidalgo Hausman "Reflections Method". \cite{Caldarelli}. The algorithm has both a stochastic, iterative implementation, and an analytic solution. We demonstrate the iterative solution, to gain some intuition for the algorithm.
+
+\begin{equation}
+\begin{cases}
+ w^*_c = A(\sum^{N_p}_{p=1} M_{cp}k_p^{-\alpha})k_c^{-\beta} \\
+w^*_p = B(\sum^{N_c}_{c=1} M_{cp}k_c^{-\beta})k_p^{-\alpha}
+\end{cases}
+\end{equation}
+
+At each iterative step we simultaneously rank editor "fitness", and article "ubiquity". In the linear model, the first iteration of "fitness" is the sum of articles to which that editor has contributed, and the "ubiquity" is the sum of editor who have contributed to that article. In the second iteration, say a user is as fit as the average the ubiquities of the of the pages edited. But this is all things being equal.
+
+In the economic domain, the best products are those that are made by the fewest countries. Therefore in our average we want to give more weight to those best producing countries. This measure of good contributors being more important to success, is measured by alpha. A higher alpha means that a good product needs to be exported by the best countries. In Caldarelli, to correlate best with GDP rankings alpha = 1.5 Our result we find the  opposite - negative values of alpha. in the not competitive but collaborative wikipedia, where the best articles are produced by the highest number of editors
+
+
+Page Rank \cite{}
+
+

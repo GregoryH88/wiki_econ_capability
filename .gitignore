@@ -17,3 +17,8 @@ paper/biPartiteWikipedia.log
 
 #save
 savedata
+
+./*.png
+./*.eps
+./*.pickle
+

@@ -194,8 +194,8 @@ The matrix $\mathbf{M}$ shown in Figure \ref{fig:triangle_matrix} shows when an 
 
 \begin{equation}
 \begin{cases}
- w^*_c = \\
- w^*_p =
+ w^{0}_{editors}(\alpha , \beta) = \sum_{articles} \mathbf{M}_{editors,articles} \\
+ w^{0}_{articles}(\alpha , \beta) = \sum_{editors} \mathbf{M}_{editors,articles} 
 \end{cases}
 \end{equation}
 
@@ -209,19 +209,24 @@ The algorithm at step $n$ then writes,
 
 \begin{equation}
 \begin{cases}
- w^*_c = \\
- w^*_p =
+ w^{n+1}_{e}(\alpha , \beta) = \sum\limits_{a}\mathbf{G}_{e,a}(\beta)w^{n}_{a}(\alpha , \beta) \\
+ w^{n+1}_{a}(\alpha , \beta) = \sum\limits_{e}\mathbf{G}_{a,e}(\beta)w^{n}_{e}(\alpha , \beta) 
 \end{cases}
 \end{equation}
+\begin{equation}
+\begin{cases}
+\mathbf{G}_{e,a}( \beta)  = \frac{\mathbf{M}_{e,a}k_{e}^{-\beta}}   {\sum_{e'=1}\mathbf{M}_{e',a}k_{e'}^{-\beta}} \\
+\mathbf{G}_{a,e}(\alpha)  = \frac{\mathbf{M}_{e,a}k_{a}^{-\alpha}}   {\sum_{a'=1}\mathbf{M}_{e,a'}k_{a'}^{-\alpha}}\end{cases}
+\end{equation}
 
-As shown on Figure \ref{fig:convergence}, the algorithm converges in a non-trivial way {\bf (explanation for this?)}. In the iterative solution we see how certain editors start low, but then climb in rankings. This means that they are editing few articles, but those articles are of higher quality. Likewise certain articles climb over iterations, they are edited by relatively few editors, but those editors are fitter.
+As shown on Figure \ref{fig:convergence}, the algorithm converges in a non-trivial way, because they can be reduced ergodic Markov chains. In the iterative solution we see how certain editors start low, but then climb in rankings. This means that they are editing few articles, but those articles are less ubiquitous. We see a lot of top ranked editors drop very quickly at first, because its we don't 
 
 and an analytical solution can be found :
 
 \begin{equation}
 \begin{cases}
- w^*_c = A(\sum^{N_p}_{p=1} M_{cp}k_p^{-\alpha})k_c^{-\beta} \\
-w^*_p = B(\sum^{N_c}_{c=1} M_{cp}k_c^{-\beta})k_p^{-\alpha}
+w^*_e = A(\sum\limits_{a=1} \mathbf{M}_{e,a}k_a^{-\alpha})k_e^{-\beta} \\
+w^*_a = B(\sum\limits_{e=1} \mathbf{M}_{e,a}k_e^{-\beta})k_a^{-\alpha}
 \end{cases}
 \end{equation}
 
@@ -230,8 +235,8 @@ that we use onwards.
 
 \begin{figure}[!t]
 \centering
-%\includegraphics[width=0.9\columnwidth]{accumulative snapshot points for Feminist Writers.png}.
-\caption{Convergence}
+\includegraphics[width=0.9\columnwidth]{fem_editors_iter_converge.png}.
+\caption{Convergence of $w_e$}
 \label{fig:convergence}
 \end{figure}
 
