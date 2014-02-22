@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.3.4)  21 FEB 2014 17:04
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2013.3.4)  21 FEB 2014 18:35
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -345,7 +345,7 @@ cted.png used on input line 8.
  [2]
 
 LaTeX Warning: Citation `shamma2007cooperative' on page \thepage  undefined on 
-input line 31.
+input line 35.
 
 
 LaTeX Warning: Citation `zlatic2010' on page \thepage  undefined on input line 
@@ -356,15 +356,14 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-LaTeX Warning: Reference `' on page \thepage  undefined on input line 67.
+LaTeX Warning: Reference `' on page \thepage  undefined on input line 60.
 
 
-LaTeX Warning: Reference `fig:convergence' on page \thepage  undefined on input
- line 67.
+LaTeX Warning: Reference `' on page \thepage  undefined on input line 60.
 
 
 LaTeX Warning: Citation `caldarelli' on page \thepage  undefined on input line 
-75.
+68.
 
 [3 <./Figures/Category_Feminist_writerstriangle_matrix_corrected.png>])
 (./sections/data.tex
@@ -431,14 +430,15 @@ Overfull \hbox (41.17032pt too wide) in paragraph at lines 38--174
 pdf
  []
 
-(./sections/results.tex
-<Figures/rho_combined.png, id=33, 732.7375pt x 1198.4775pt>
+(./sections/results.tex [4 <./Figures/cumulative_snapshots_Feminist_Writers-eps
+-converted-to.pdf>]
+<Figures/rho_combined.png, id=40, 732.7375pt x 1198.4775pt>
 File: Figures/rho_combined.png Graphic file (type png)
 
 <use Figures/rho_combined.png>
 Package pdftex.def Info: Figures/rho_combined.png used on input line 15.
 (pdftex.def)             Requested size: 215.99854pt x 353.27348pt.
- [4 <./Figures/cumulative_snapshots_Feminist_Writers-eps-converted-to.pdf>]
+
 <Figures/landscape.png, id=41, 661.47125pt x 625.33624pt>
 File: Figures/landscape.png Graphic file (type png)
 
@@ -446,25 +446,22 @@ File: Figures/landscape.png Graphic file (type png)
 Package pdftex.def Info: Figures/landscape.png used on input line 35.
 (pdftex.def)             Requested size: 215.99854pt x 204.19559pt.
 ) (./sections/discussion.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 LaTeX Warning: Citation `Caldarelli' on page \thepage  undefined on input line 
 4.
 
-) (./sections/limitations.tex [5 <./Figures/rho_combined.png> <./Figures/landsc
-ape.png>]) (./sections/conclusion.tex) (./biPartiteWikipedia.bbl) [6]
-(./biPartiteWikipedia.aux)
+) [5 <./Figures/rho_combined.png> <./Figures/landscape.png>]
+(./sections/limitations.tex) (./sections/conclusion.tex)
+(./biPartiteWikipedia.bbl) [6] (./biPartiteWikipedia.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 2984 strings out of 493488
- 38839 string characters out of 3141327
- 101174 words of memory out of 3000000
- 6179 multiletter control sequences out of 15000+200000
+ 2986 strings out of 493488
+ 38855 string characters out of 3141327
+ 101198 words of memory out of 3000000
+ 6181 multiletter control sequences out of 15000+200000
  50089 words of font info for 69 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  41i,10n,26p,2202b,258s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -486,7 +483,7 @@ ist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2012/texmf-dis
 t/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts
 /type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/
 urw/times/utmb8a.pfb>
-Output written on biPartiteWikipedia.pdf (6 pages, 438188 bytes).
+Output written on biPartiteWikipedia.pdf (6 pages, 440582 bytes).
 PDF statistics:
  104 PDF objects out of 1000 (max. 8388607)
  69 compressed objects within 1 object stream
