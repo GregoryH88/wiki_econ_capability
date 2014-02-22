@@ -1,11 +1,11 @@
 \section{Method}
-Our method is strictly borrowed from Caldarelli et al. \cite{caldarelli2012network}. We investigate the properties of the biased Markov chains formulation of the reflexivity method, in the slightly different context of open collaboration: in this specific context, the bi-partite network has two types of nodes : the editors (i.e., the producing entities) and the articles (i.e. the products). While the method is unchanged, the nature of the input (i.e. the description of the bi-partite network) as well as the interpretation of the relationships are different. Specifically, editors are not competing for the production of an article. They rather cooperate, implicitly according to the rules of peer-production or explicitly through the discussion page attached to each article, in order to increase the quality of the article.
+Our method is strictly borrowed from Caldarelli et al. \cite{caldarelli2012network}. We investigate the properties of the biased Markov chains formulation of the {\it reflexion method}, in the slightly different context of open collaboration. In this specific context, the bi-partite network has two types of nodes : the editors (i.e., the producing entities) and the articles (i.e. the products). While the method is unchanged, the nature of the input (i.e. the description of the bi-partite network) as well as the interpretation of the relationships are different. Specifically, editors are not competing for the production of an article. They rather cooperate, implicitly according to the rules of peer-production or explicitly through the discussion page attached to each article, in order to increase the quality of the article.
 
 The simplest way to represent a bi-partite network of online collaboration is to consider that an editor is linked to an article when she has ever made a modification. The resulting input of our model is a binary matrix $\mathbf{M}$ of editors and the articles they have modified as shown on Figure \ref{fig:matrix}. 
 
 \begin{figure*}[!t]
 \centering
-\includegraphics[width=2.0\columnwidth]{Figures/Category_Feminist_writerstriangle_matrix_corrected.png}.
+\includegraphics[width=2.0\columnwidth]{Figures/Category_Feminist_writerstriangle_matrix_corrected.png}
 \caption{Typical $\mathbf{M}$ matrix for a Wikipedia category (here, {\it Feminist Writers}) ordered on both dimensions by descending order of number of articles modified by an editor (horizontal axis) and of number editors who have modified an article (vertical axis). The structure of $\mathbf{M}$ is triangular and shows that some editors have a pervasive activity over articles, while most editors edit only a few. Similarly, some articles receive widespread attention by editors, while most articles are modified only by a few editors.}
 \label{fig:matrix}
 \end{figure*}
@@ -42,6 +42,7 @@ where $d_{e}$ stands for diversification of editors and $u_{a}$ for the ubiquity
  \mathbf{w}^{(n+1)}_e (\alpha,\beta) = \sum_{p=1}^{N_a}  \mathbf{G}_{cp}(\beta) \mathbf{w}^{(n)}_a (\alpha,\beta)\\
 \mathbf{w}^{(n+1)}_a (\alpha,\beta) = \sum_{c=1}^{N_e}  \mathbf{G}_{pc}(\beta) \mathbf{w}^{(n)}_e (\alpha,\beta),\\
 \end{cases}
+\label{random_walker}
 \end{equation}
 
 with the Markov transition matrices $\mathbf{G}_{ea}(\beta)$ and $\mathbf{G}_{ae}(\alpha)$ control the biased of the random walk and are given by 
@@ -57,9 +58,8 @@ with the Markov transition matrices $\mathbf{G}_{ea}(\beta)$ and $\mathbf{G}_{ae
 
 \begin{figure}[!t]
 \centering
-%%\includegraphics[width=0.9\columnwidth]{Figures/Category_Feminist_writerstriangle_matrix_corrected.png}.
-\caption{The random walkers starting from editors jump on articles at odd steps, and back on editors from article at even steps. Figure \ref{} shows how the ranking typically converges over iterations. As shown on Figure \ref{fig:convergence}, the algorithm converges in a non-trivial way {\bf (explanation for this?)}. In the iterative solution we see how certain editors start low, but then climb in rankings. This means that they are editing few articles, but those articles are of higher quality. Likewise certain articles climb over iterations, they are edited by relatively few editors, but those editors are fitter.
-}
+\includegraphics[width=0.9\columnwidth]{Figures/fem_editors_iter_converge.png}.
+\caption{Typical evolution of the editors' ranking as a function of iterations of the biased random walker as  given by (\ref{random_walker}) with biases $\alpha = -0.5$ and $\beta = 0.5$ for the Wikipedia category \textit{\textbf{ Feminist Writers}}. The higher rank the higher the expertise of the editor. The algorithm nearly converges to stable ranks after a hundred iterations.}
 \label{fig:convergence}
 \end{figure}
 
@@ -71,8 +71,8 @@ is applied, an analytical solution can be derived \cite{caldarelli}, which is gi
 
 \begin{equation}
 \begin{cases}
- w^*_e = A(\sum^{N_a}_{p=1} M_{cp}k_a^{-\alpha})k_e^{-\beta} \\
-w^*_a = B(\sum^{N_e}_{c=1} M_{cp}k_e^{-\beta})k_a^{-\alpha}.
+ \mathbf{w}^*_e \sim (\sum^{N_a}_{p=1} \mathbf{M}_{cp} \mathbf{k}_a^{-\alpha}) \mathbf{k}_e^{-\beta} \\
+\mathbf{w}^*_a \sim (\sum^{N_e}_{c=1} \mathbf{M}_{cp} \mathbf{k}_e^{-\beta}) \mathbf{k}_a^{-\alpha},
 \end{cases}
 \end{equation}
 
