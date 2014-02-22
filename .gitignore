@@ -18,6 +18,7 @@ paper/biPartiteWikipedia.aux
 
 #save
 savedata
+savedata/*
 
 ./*.png
 ./*.eps
