@@ -3,6 +3,17 @@
 
 \subsection{Correlations with exogenous variables}
 
+To understand the results, we must have a firm grasp on what $\alpha$ and $\beta$ mean. They are more easily understood by roughly rewriting $\mathbf{w^*}$ as:
+\begin{equation}
+\begin{cases}
+w^{*}_{e} \sim k^{1-\beta}_{e} \langle k_{a}^{-\alpha}\rangle_e \\
+
+w^{*}_{a} \sim k^{1-\alpha}_{a} \langle k_{e}^{-\beta}\rangle_a
+\end{cases} \label{eqsim}
+\end{equation}
+
+Here we can see the similarity of $w^*$ is related to the product of two expression. Values of $\alpha$ and $\beta$ can make the one of the product close to one or and so the other parameter may dominate.
+
 The results of calibrating our model are encouraging as we find high correlations between the results of our $w^*_e$ algorithm and our exogenous variables $v$. 
 
 We define $\rho$ at the maximum achievable spearman rank correlation between $w^*$ and $v$ for editors or articles, by category, and over time. The variation of $\rho$, by for editor for any category ranges from 0.75 to 0.46 with a mean 0.64.  That same statistic for articles is articles from 0.91 to 0.57 with a mean of 0.72, which is overall higher.
@@ -27,8 +38,7 @@ Another surprising result is that we find at times, negative values for $\alpha$
 For editors, maximum $\rho$ always occurs strictly within a radius of 0.01 around the origin on the  $\alpha$-$\beta$ plane. The $(0,0)$ solution is significant in that it represents unbiased arithmetic averages.
 \ref{fig:landscape}
 
-For articles, the solutions have varied solutions, possibly including a negative alpha. For instance in Category Economic Theories we find a family of maximizing solutions with a negative values of $\alpha$ and $\beta$. \ref{fig:landscape} Why there should be this family is due optimizing solutions is due to a number of reasons. One is our use of the ranking correlation. Since we are comparing only ranks positions, there are many ways to achieve our best-prediction list and perturbing $\alpha$ and $\beta$ do not affect the rank being produced. This also means that the behaviour displayed by the  landscape indicates that one of several possibilities: That either $\alpha$ is positive but small, in which case $\beta$ is bounded tightly, which means that better editors are producing more obscure articles. Or that $\alpha$ is negative and that $\beta$ is more loosely bounded. This indicates that $\alpha$ is dominating, as is the case in equations (2). In our particular example we also find that this family is shifted towards the positive $\beta$ axis. So even as the trade off occurs, its favours $\beta$ which interpreted through equations (2) means that editors who edit relatively more obscure articles are important to success of articles in Category Economic Theories.
-%move to discussionIf $\alpha$ show the importance of the fittest editors contributing, negative alpha goes to imply that in these cases its actually important that less fit editors contribute at these points. This shows anti-competetiveness. Negative beta would mean that for an editor the production of ubiquitious, common, heavily otherwise-edited articles are important. Which again is a reward for anti-competitive behaviour.
+For articles, the solutions have 2-dimensional unbounded triangular solution space. For instance in Category:Economic Theories we find a typical solution space\ref{fig:landscape} . This solution space indicates that the behaviour displayed by the  landscape is a spectrum of possibilities. One one extreme that either $\alpha$ is positive but small, in which case $\beta$ is bounded tightly, which means that fitter editors are producing more obscure articles. Or that $\alpha$ is negative and that $\beta$ is less bounded. This indicates that $\alpha$ is dominating, as is the case in \eqref{eqsim}, and that less fit editors are contributing more, and the ubiquity of their contributions is relatively unimportant. Between categories variations in triangular solution space are rotations around the origin. In our particular example we also find that this solution space is rotated towards the positive $\beta$ axis. So even as the trade triangle occurs, its favours positive $\beta$. Interpreted means that editors who edit relatively more obscure articles are important to success of articles in Category Economic Theories. We do not encounter any rotation in any category that would be large enough to be equivalent to a reflection across the $\alpha = \pm \beta$ axes.
 
 \begin{figure}[!t]
 \centering
