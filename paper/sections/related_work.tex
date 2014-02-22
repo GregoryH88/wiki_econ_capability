@@ -1,26 +1,25 @@
 \section{Related Work}
+In this study, we build on a growing stream of literature that aims to see economies a complex network of entities (e.g., firms, countries) gaining a competitive advantage from a set of abilities, which in turn allow them sell products to other entities \cite{hidalgo2007}. Capabilities cannot be observed, and the approach assumes that products are a proxy of each entity's capabilities. As result, if they have overlapping sets of capabilities, entities may compete for selling similar products. From an economic perspective, the way entities compete on similar (resp. dissimilar) market segments allows comparing the structure, and arguably, the competitiveness of entities' economy. The relation between products and entities can be modeled by so-called {\it bi-partite networks} with remarkable properties \cite{hidalgo2009} that we leverage in this paper, for the sake of understanding better how content quality and editors' expertise emerge in open collaboration. The core idea is to introduce a reflexive metric, which helps understand the value of entities (i.e., {\it fitness}) from the products they sell, as well as the {\it fitness} of a product from the number of entities, which have the capabilities to produce and sell it. This is in fact the first step of an iterative method called {\it reflexivity}, in which at each step the value of an entity (resp. a product) can be evaluated from the previous fitness (resp. ubiquity) at the previous step. The reflexivity method is explained in much more details in the Method section, for Wikipedia articles and editors. However, in its initial formulation \cite{hidalgo2009}, the algorithm suffers a number of pitfalls,  among which the most important one is its convergence to a fixed point. Indeed, after a sufficient number of iterations, all entities have the same fitness, and all products have the same ubiquity, while the algorithm should on the contrary further discriminate entities and products as the number of iterations increases. 
 
-The model we present here is deeply influenced by a recent stream of research in economics that aims at explaining the GDP of countries based on the nature of goods they produce and export. The first model was proposed by \cite{hidalgo2007,hidalgo2009}, and reworked by 
-	
-A network analysis of countries’ export flows: firm grounds for the building blocks of the economy \cite{caldarelli2012network}; A new metrics for countries' fitness and products' complexity \cite{tacchella2012new}; Measuring the Intangibles: A Metrics for the Economic Complexity of Countries and Products \cite{cristelli2013measuring}; Economic complexity: Conceptual grounding of a new metrics for global competitiveness \cite{tacchella2013economic}; Competitors’ communities and taxonomy of products according to export fluxes
-  \cite{cristelli2012competitors}
-  
-The model proposed by Caldarelli et al. \cite{caldarelli2012network} is a sort of two-dimensional PageRank algorithm \cite{pagerank}. Instead of jumping from web page to webpage, the random walker goes from country to products, and from products to countries.
+Several alternative methods have been proposed to ensure non-convergence of the algorithm\cite{tacchella2012new,cristelli2012competitors,tacchella2013economic,cristelli2013measuring}. In particular, Caldarelli et al. \cite{caldarelli2012network} have explained in details the nature of the problem and proposed an alternative method, based on biased Markov chains, which allow get rid of the convergence problem on the on hand, and further understand the nature of the bi-partite network structure on the other hand. This reformulation and extension of the reflexivity algorithm initially proposed is comparable to the pageRank algorithm developed to rank web pages based on the number of time they are linked by other pages \cite{page1999pagerank}, only that there are two types of nodes (entity, product) instead of only one (webpage).
 
-We then applied the most general implementation of the $\mathbf{FQ}$ algorithm as developed for modelling the economy and competitiveness of countries. The $\mathbf{FQ}$ is a nonlinear generalization of the Hidalgo Hausman "Reflections Method". \cite{Caldarelli}. The algorithm has both a stochastic, iterative implementation, and an analytic solution. We demonstrate the iterative solution, to gain some intuition for the algorithm.
+%
+%
+%We then applied the most general implementation of the $\mathbf{FQ}$ algorithm as developed for modelling the economy and competitiveness of countries. The $\mathbf{FQ}$ is a nonlinear generalization of the Hidalgo Hausman "Reflections Method". \cite{Caldarelli}. The algorithm has both a stochastic, iterative implementation, and an analytic solution. We demonstrate the iterative solution, to gain some intuition for the algorithm.
+%
+%\begin{equation}
+%\begin{cases}
+% w^*_c = A(\sum^{N_p}_{p=1} M_{cp}k_p^{-\alpha})k_c^{-\beta} \\
+%w^*_p = B(\sum^{N_c}_{c=1} M_{cp}k_c^{-\beta})k_p^{-\alpha}
+%\end{cases}
+%\end{equation}
 
-\begin{equation}
-\begin{cases}
- w^*_c = A(\sum^{N_p}_{p=1} M_{cp}k_p^{-\alpha})k_c^{-\beta} \\
-w^*_p = B(\sum^{N_c}_{c=1} M_{cp}k_c^{-\beta})k_p^{-\alpha}
-\end{cases}
-\end{equation}
+The problem of ranking entities and their respective production is relevant to the 
+flourishing production of knowledge on the Web, and is directly related to two outstanding problems, which have been previously debated. First, how do we gauge the quality (resp. reliability) of blog posts, book reviews (e.g., on Amazon), or restaurant reviews (e.g., on Yelp) ?  Second,  how to grant editing and administrative privileges on community networks (e.g., Slashdot) and on online collaborative platforms (e.g. Wikipedia) \cite{halfaker2013}. 
 
-At each iterative step we simultaneously rank editor "fitness", and article "ubiquity". In the linear model, the first iteration of "fitness" is the sum of articles to which that editor has contributed, and the "ubiquity" is the sum of editor who have contributed to that article. In the second iteration, say a user is as fit as the average the ubiquities of the of the pages edited. But this is all things being equal.
+Some websites (e.g., ebay? Amazon?) allow rate the rater. This approach is similar to the very first steps of the reflexivity method ! \cite{citation needed.}
 
-In the economic domain, the best products are those that are made by the fewest countries. Therefore in our average we want to give more weight to those best producing countries. This measure of good contributors being more important to success, is measured by alpha. A higher alpha means that a good product needs to be exported by the best countries. In Caldarelli, to correlate best with GDP rankings alpha = 1.5 Our result we find the  opposite - negative values of alpha. in the not competitive but collaborative wikipedia, where the best articles are produced by the highest number of editors
+{\bf more citations needed here}
 
-
-Page Rank \cite{}
-
+In this paper, we investigate the properties of the biased Markov chains formulation of the reflexivity method, as proposed by Caldarelli et al. \cite{caldarelli2012network}, in the case of online collaboration, namely Wikipedia.
 
