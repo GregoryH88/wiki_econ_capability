@@ -1,8 +1,3 @@
 \begin{abstract}
-We introduce a new method to jointly rank the quality of articles and the expertise of editors in Categories of Wikipedia, based on the bi-partite network of contributions between editors and articles.
-We show that this so-called "reflexive" ranking method exhibits high correlations with usual article quality and user expertise metrics, which account for quality on Wikipedia (that we assume to be a grand truth here). 
-In particular, we find that the quality of an article can be captured very well by our method right after a few edits, while the expertise of editors is captured increasingly better over time. 
-Our results suggest that it is easier to predict the quality of an article from the 
-editors who touched it, rather than editor expertise from articles they have 
-edited.
+We introduce and test an algorithm to rank editors and articles on Wikipedia according to their expertise and their quality respectively. The approach, called wikiRanks, is an extension of the pageRank algorithm to bi-partite networks of relations between two kinds of nodes (here, editors making changes to articles): the expertise of editors is assessed from the quantity and quality of articles they have edited. Conversely, the quality of an article depends on the number and the expertise of editors who have modified the article. And so on recursively. While wikiRanks incorporates only bi-partite links input information, we find high rank correlations ($\rho = 0.7\pm0.1$) with usual Wikipedia editors' expertise and articles' quality metrics. The wikiRanks algorithm also provides deep insights on the structure of online collaboration. We find that editors in some categories of articles achieve more quality with a large number of editors per article, while for other categories quality is more achieved from the expertise of editors.
 \end{abstract}
