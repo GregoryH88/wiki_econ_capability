@@ -1,9 +1,32 @@
 \section{Introduction}
-As knowledge is increasingly produced collectively on collaborative platforms such as the Wikipedia Encyclopedia, Github for open source software code, or Twitter for information filtering \cite{}, it becomes ever more important to understand how high quality content can be achieved from the ``wisdom of crowds". While  high quality can be achieved \cite{giles2005internet} and complex problems solved \cite{cooper2010}, the fine-grained mechanisms of performance remain largely unknown. It has been theorized that peer-production -- the labor organization underlying open collaboration -- emerges from the availability of cheap communication means like the Internet, and relies on two principal ingredients : (i) task self-selection and (ii) peer-review. In other words, individuals choose the tasks they believe they are more qualified for on the one hand, and on the other hand, they review the work of others also according to their skills \cite{benkler2002}. The rules of peer-production are very open and it is therefore very hard to understand precisely the motivations behind each individual contribution \cite{vonKrogh2012}. It is even harder to understand how idiosyncratic contributions 
+As knowledge is increasingly produced collectively on collaborative platforms 
+such as the Wikipedia Encyclopedia, Github for open source software code, or 
+Twitter for information filtering \cite{}, it becomes ever more important to 
+understand how high quality content can be achieved from the ``wisdom of 
+crowds". While  high quality can be achieved \cite{giles2005internet} and 
+complex problems solved \cite{cooper2010}, the fine-grained mechanisms of 
+performance remain largely unknown. It has been theorized that peer-
+production -- the labor organization underlying open collaboration -- emerges 
+from the availability of cheap communication means like the Internet, and relies 
+on two principal ingredients : (i) task self-selection and (ii) peer-review. In other 
+words, individuals choose the tasks they believe they are more qualified for on 
+the one hand, and on the other hand, they review the work of others also 
+according to their skills \cite{benkler2002}. While the rules of peer-production 
+are very open, it is possible, in some circumstances, to measure collective 
+performance. For instance, in a series of Matlab contests aimed at having NP-
+hard problems solved collectively by submitting and executing code, it was 
+found that collaborative work helps quickly find algorithms with higher 
+performance \cite{gulley2010}. Unfortunately, measuring performance is 
+nearly impossible in most instances of open collaboration that do not involve 
+software code, which can be compiled, executed and tested on computers. For 
+instance, {\it natural language}, which is the most common way to code 
+knowledge cannot be executed and tested for performance by a machine. For 
+the time being, evaluation of written natural language knowledge remains the 
+realm of human subjective evaluation.
+
+We believe the it is possible to overcome this problem through the analysis of the bi-partite network of links between two kinds of nodes : (i) editors and (ii) the pieces of knowledge they have modified. Here, we present the wikiRanks algorithm, which is an extension of pageRank two bi-partite networks of editors and articles on Wikipedia. We test the algorithm against state-of-the-art  evaluations of editors' expertise and articles' quality, and we find that wikiRanks  achieves a high correlation with ground-truth metrics. We also find that the algorithm helps better understand the structure of online collaboration. We find that editors in some categories of Wikipedia articles achieve more quality with a large number of editors per article, while for other categories, quality is more achieved as a result of the expertise of editors.
+
+The paper is organized as follows. We first present the technical background in the related work section, the method and the data we have employed for our study. We then present and discuss the results of the wikiRanks algorithm with its limitation. We finally present some future work directions and conclude.
 
 
-
-
-From product reviews to online collaboration platforms, the Web is increasingly populated with knowledge contributed by the crowds. One positive aspect is the immediate sharing of information, which in turn helps others take more informed decisions about the quality of a product, the cleanliness of a restaurant, or whether it is worth buying a book. But the reliability of the contribution is limited by the level of expertise of the contributing editor. In many cases, repeated contributions of the same type by several individuals (e.g., reviews) average out idiosyncracies, assuming that individuals do not influence each others. 
-Many crowdsourcing mechanisms have been designed to exploit the "wisdom of the crowds". \cite{https://en.wikipedia.org/wiki/The_Wisdom_of_Crowds}. The reliability and quality of a contribution is however more critical  when the same contribution is not necessarily repeated, or repeatable. Open source collaboration projects face such an issue - unlike averaging star-ratings - determining quality of Wikipedia articles, or opensource codebases is hard. Yet these open collaboration projects can achieve remarkable quality \cite{nature paper}. This is achieved through {\it peer-production} a labor organization, which mainly relies on two main ingredients : (i) task self-selection and (ii) peer-review : individuals choose the tasks they believe they are more qualified for, and they review the work of others also according to their skills \cite{benkler2002}. These principles have been initially used for open source software development \cite{raymond1999}, for which it is possible to ultimately test the quality of the work by executing the code. However, for natural language knowledge, like  Wikipedia, there is no "machine" to execute the code. Without the testability afforded to Raymond, the quality of the knowledge remains subjective, yet we retain similar inputs - a quantity of contributors working on a quantity of files.
-Is there a way to assess relative quality of both articles and editors by only considering which editors have touched which articles on Wikipedia? This is the problem we are addressing in this paper.
+%Is there a way to assess relative quality of both articles and editors by only considering which editors have touched which articles on Wikipedia? This is the problem we are addressing in this paper.
