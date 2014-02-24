@@ -1,14 +1,14 @@
 \section{Results}
-For country-product bi-partite networks,  Caldarelli et al. \cite{caldarelli2012network} found that the ranking of countries correlates reasonably well with their ranking in terms of GDP, after calibration of $\alpha$ and $\beta$ (Pearson correlation $\approx 0.4$ for $\alpha \approx 1.1$ and $\beta \approx 0.8$). Similarly, we studied the correlations of the editors/articles ranking model with grand-truth exogenous values. We studied how these correlations evolve as more edits are contributed to a category of Wikipedia articles. Finally, we investigated the values of calibrated $\alpha$ and $\beta$ in the context of Wikipedia open collaboration.
+For country-product bi-partite networks,  Caldarelli et al. \cite{caldarelli2012network} found that the ranking of countries correlates reasonably well with their ranking in terms of GDP, after calibration of $\alpha$ and $\beta$ (Spearman correlation $\approx 0.4$ for $\alpha \approx 1.1$ and $\beta \approx 0.8$). Similarly, we studied the correlations of the editors/articles ranking model with grand-truth exogenous values. We studied how these correlations evolve as more edits are contributed to a category of Wikipedia articles. Finally, we investigated the values of calibrated $\alpha$ and $\beta$ in the context of Wikipedia open collaboration.
 
-Figure \ref{fig:rhotime} shows the evolution of the rank correlation (Spearman $\rho$) between $\mathbf{w}^*_e$ and $\mathbf{v}_e$, and $\mathbf{w}^*_a$ and $\mathbf{v}_a$ respectively, as a function of time for each of the ten categories ($\alpha$ and $\beta$ are calibrated for each category and each snapshot so that maximum correlation is found). The maximum rank correlation is obtained by a grid seach, and then visualization drawing a contour around the areas in the top 95th percentile.
+Figure \ref{fig:rhotime} shows the evolution of the maximum achievable rank correlation (Spearman $\rho$) between $\mathbf{w}^*_a$ and $\mathbf{v}_a$ and $\mathbf{w}^*_e$ and $\mathbf{v}_e$, respectively, as a function of time for each of the ten categories.  The maximum rank correlation is obtained by a grid search, and then visualization drawing a contour around the areas in the top 95th percentile.
 The correlations are generally quite high ( $ 0.46 < \rho_e < 0.75$ with $\langle \rho_e\rangle = 0.64$ for editors and $0.57 < \rho_a < 0.91$ with $\langle \rho_a\rangle = 0.72$ ). Yet the rank correlations of editors remain overall smaller than rank correlations obtained for articles. This difference might be due to the roughness of the grand truth for editors $v_e$, expressed in labor-hours, compared to the quality of $v_a$, which is an aggregate measure of five precise quality metrics. Nevertheless, the correlation of editors' ranking with $v_e$ increases: $\rho_e$ exhibits a convex increase over time, suggesting that it takes time (i.e., lots of edits) to capture well the expertise of editors as well as for editors. 
 
 
  \begin{figure}[!t]
  \centering
 \includegraphics[width=0.9\columnwidth]{Figures/rho_combined.png}.
-\caption{Evolution of Spearman $\rho$ rank correlations between the ranking obtained from the calibrated model and the grand-truth values for each category and for editors (upper panel)  and articles (lower panel). The correlations are generally quite high : $ 0.46 < \rho_e < 0.75$ with $\langle \rho_e\rangle = 0.64$ for editors and $0.57 < \rho_a < 0.91$ with $\langle \rho_a\rangle = 0.72$. $\rho_{a}$  is stable over time, which means that the quality of articles can be pretty well captured early on by the model. However, $\rho_e$ exhibits a convex increase over time, suggesting that it takes time (i.e., lots of edits) to capture well the expertise of editors.{\it [please add a label for the x-axis (i.e., Time [years]) and change $\rho$ into $\rho_e$ and $\rho_a$ respectively. You can remove the titles above the  plots]}}
+\caption{Evolution of Spearman $\rho$ rank correlations between the ranking obtained from the calibrated model and the grand-truth values for each category and for editors (upper panel)  and articles (lower panel). The correlations are generally quite high : $ 0.46 < \rho_e < 0.75$ with $\langle \rho_e\rangle = 0.64$ for editors and $0.57 < \rho_a < 0.91$ with $\langle \rho_a\rangle = 0.72$. $\rho_{a}$  is stable over time, which means that the quality of articles can be pretty well captured early on by the model. However, $\rho_e$ exhibits a convex increase over time, suggesting that it takes time (i.e., lots of edits) to capture well the expertise of editors.}
  \label{fig:rhotime}
  \end{figure}
 
@@ -16,12 +16,39 @@ The correlations are generally quite high ( $ 0.46 < \rho_e < 0.75$ with $\langl
 
 We now turn to the values of $\alpha$ and $\beta$ for which best correlation is achieved.  
 
-With regards to \eqref{eqsim}, we can see the similarity of $w^*$ is related to the product of two expressions. Values of $\alpha$ and $\beta$ can make the one of the product approach one or and so the other parameter may dominate {\bf [fix this sentence]} . In the article plot of Figure \ref{fig:landscape} our solution spaces moves linearly from $ \beta < 1 , \alpha \approx 0$ meaning that successful articles are largely uninfluenced by quality of the work its editors do elsewhere. For editors, on the other hand there is a more complex spectrum of interpretations. Roughly we find a maxmizing area bounded $ -2  <\alpha < 1 , 0 < \beta > 2 $. This means that good editors are charaterized minorly by the quality of the articles they've contributed to and partly by the size of their touched articles portfolio, or in the case that alpha becomes negative that contributed-to aritcle quality is supremely important that touching many articles is anti-important.
+With regards to \eqref{eqsim}, we can see the similarity of $w^*$ is related to the product of two expressions. Consider he limit as either $\alpha$ or $\beta$ approach $0$ independently, if one expression becomes unity, then the other expression dominates. In the article plot of Figure \ref{fig:landscape} our solution spaces moves linearly from $ \beta < 1 , \alpha \approx 0$ meaning that successful articles are largely uninfluenced by quality of the work its editors do elsewhere. This "spine" at $alpha = 0$ is a common feature in all our categories.
+ For editors, on the other hand there is a more complex spectrum of interpretations. In  \ref{fig:landscape}, we find a maximizing area roughly bounded $ -2  <\alpha < 1 , 0 < \beta > 2 $. This means that fit editors are characterized by a the spectrum defined by the extremes (i) minorly by the quality of the articles they've contributed to and partly by the size of their touched articles portfolio, or in the case that alpha becomes negative that contributed-to aritcle quality is supremely important that touching many articles is anti-important.
 
+The question remains if the intersection of the solution spaces for $\rho_a$ and $\rho_e$ is nonempty. That is whether the we can find values of $\alpha$ and $\beta$ for to which our editor ranking and article ranking are simultaneously optimized. We exploit two empirical facts from our data: the clear signal from article rankings that $alpha = 0$, and that for editor rankings the 95\textsuperscript{th} percentile maximizing boundary always includes values at $\alpha = 0$. Therefore, with $\alpha = 0$, we solve $\beta$ in the editor ranking that maximizes $\rho_e$, and thus $\rho_a$ simultaneously. 
 
-Figure \ref{fig:ladndscape} shows typical landscapes of correlation as a function of $\alpha$ and $\beta$ for editors and articles. It appears that there is no single value of $\alpha$ and $\beta$ for best correlation, but rather some areas (showed by the contour line on Figure \ref{fig:landscape} as the 95th percentile of the rank correlation).
+In \ref{landscape} the simultaneous maximizing solution exists at the $\alpha = 0, \beta \approx 0.7$. This means that article ubiquity is more important than editor prolific output, in ranking editors and articles.
 
-The question remains if the intersection of the solution spaces for $\rho_a$ and $\rho_e$ is nonempty. That is whether the we can find values of $\alpha$ and $\beta$ for to which our editor ranking and article ranking are simultaneously optimized. In \ref{landscape} such simultaneous optimizing solution space exists at the $\alpha \approx 0$ $\beta \approx 0.8$ Which is when article ubiquity is more important than editor prolific output.
+\ref{tab:maxbeta} lists each category by its maximizing $\beta$ value.. Recall higher $\beta$ indicates the importance of article ubiquity. Noting that \eqref{eqsim} has a singularity at $\beta = 1$ we see that if $\beta > 1$ we actually enter into the symmetric reflection of the plot where the sign of our correlations is reverse. Since the magnitude of the anti-correlation is equal along the $\alpha = 0$ spine, this is not a problem.
+We also find, as in the first two entries of \ref{tab:maxbeta}, that a maximizing $\beta$ may be $0$, in this case, the original \cite{hidalgo2009} algorithm would be just as predictive. 
+
+\begin{table}
+\end{table}
+\begin{tabular}{lll}
+\toprule
+                                       Category &   Spearman $\rho$ &  $\beta$ \\
+\midrule
+                         Bicycle parts &  0.8953 &     0 \\
+ Military history of the US &  0.5767 &     0 \\
+                  Computability theory &  0.7748 &  0.32 \\
+               American male novelists &  0.6729 &   0.4 \\
+                            2013 films &  0.7220 &  0.48 \\
+                     Economic theories &  0.7382 &  0.48 \\
+              American women novelists &  0.6304 &  0.64 \\
+                      Feminist writers &  0.7036 &  0.72 \\
+                                  Yoga &  0.6355 &  1.12 \\
+           Nobel Peace Prize laureates &  0.9096 &   1.2 \\
+              Counterculture festivals &  0.8031 &  1.36 \\
+                           Sexual acts &  0.6341 &  1.52 \\
+\bottomrule
+\end{tabular}
+\caption{Maximizing values of $\beta$ when $\alpha = 0$, sorted by $\beta$.}
+\label{tab:maxbeta}
+\end{table}
 
 \begin{figure}[!t]
 \centering
