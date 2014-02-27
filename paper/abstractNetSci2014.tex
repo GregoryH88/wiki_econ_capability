@@ -1,0 +1,175 @@
+\documentclass[letterpaper,10pt,a4paper]{article}
+\usepackage{ulem}
+\usepackage{url}
+
+\usepackage{epsfig}
+\usepackage{graphicx,color}% Include figure files
+\usepackage{wrapfig,caption}
+\usepackage{epstopdf}
+
+\usepackage{fancyhdr,graphicx,epsfig,lastpage}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{latexsym}
+\usepackage[latin1,applemac]{inputenc}
+
+%\usepackage{natbib}
+
+
+
+\usepackage{mdwlist}
+%\usepackage{enumitem}
+
+%\usepackage[sort&compress,sectionbib]{natbib}
+% \usepackage{german,isolatin1}
+\usepackage{indentfirst}
+%\usepackage{natbib}
+
+\setlength{\parindent}{0in}
+%\usepackage[superscript]{cite}
+
+\usepackage{setspace} % Allows spacing of sections with \singlespacing and \doublespacing command
+
+\oddsidemargin 0pt 
+\evensidemargin 0pt 
+\marginparwidth 68pt 
+\marginparsep 10pt 
+\topmargin 0pt 
+\headheight 10pt 
+\headsep 5pt
+
+\voffset -40pt 
+\footskip 35pt 
+\textheight 23cm 
+\textwidth 16.8cm 
+\columnsep 10pt 
+\columnseprule 0pt 
+\sloppy 
+%\frenchspacing
+
+\linespread{1.27}
+
+%\setlength{\parindent}{0pt} 
+%\setlength{\parskip}{5pt plus 2pt minus 1pt}
+%\renewcommand{\baselinestretch}{1.095} %{1.2} %{1.095}
+%\clubpenalty=5000 \widowpenalty=5000
+%\renewcommand{\footnoterule}{\vspace{0.5cm}%
+%  \rule{2.5in}{0.4pt} \vspace{0.3cm}} \pagestyle{fancy}
+%\renewcommand{\headrulewidth}{0.4pt} \lhead{Research Plan} \chead{}
+%\rhead{\today} \renewcommand{\footrulewidth}{0.4pt} \lfoot{}
+%\cfoot{\thepage /\pageref{LastPage}} \rfoot{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Main
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%\noindent
+\begin{center}
+
+  %\textbf{\Large Research Plan}\\[10mm]
+
+%  \textbf{Title:}\\[5mm]
+% \textbf{\Large Measuring Incentives for Attacks \& Security, }\\[4mm]
+% \textbf{\Large and Managing Cyber Risk}\\ [10mm]
+
+  %{\today}\\[85mm]
+
+  %\textbf{PhD candidate:}\\
+ % \textbf{\large Thomas Maillart}\\[10mm]
+
+  %\textbf{Advisor:}\\
+  %Prof. Dr. Didier Sornette\\
+  %Chair of Entrepreneurial Risks\\
+  %ETH Z\"urich (Swiss Federal Institute of Technology in Z\"urich)\\[5mm]
+
+  % \textbf{Co-referee:}
+  % \\[5mm]
+  
+
+\vspace{-0.5cm}
+{\Large {\bf \textsc{Bringing Order to Wikipedia with Bi-Partite Network Rankings\\Ê}}}
+
+\vspace{0.2cm}
+{\large {\bf \textsc{Maximilian Klein, Thomas Maillart, John Chuang}}}
+\vspace{0.15cm}
+\end{center}
+
+%Open source software has been one of the most successful incarnations of open innovation, providing considerable amount of software code as a public good for the development of reliable Internet and Web infrastructures, operating systems, and a broad range of applications.  Moreover, open source software (OSS) has inspired many initiatives beyond software development, such as Wikipedia  which combines (i) task self-selection and (ii) peer-review by participants.
+\vspace{0.05cm}
+%{\Large \bf Research Interests} \vspace{0.25cm}\\
+
+
+%\clearpage
+%\bibliography{../tmaillart.bib}
+
+From open source software projects to online encyclopedias, open collaboration has become one of the greatest success of the Internet, with millions of individuals sharing effort and knowledge as a collective good for their own interest and for the advancement of society \cite{vonhippel2003oss}. Unfortunately, assessing quickly the value of knowledge produced on open collaboration platforms remains nearly impossible : software code must be compiled and executed beforehand, and the value of written text remains subjective. Moreover, large amounts of untangled contributions by heterogenous editors prevents proper capture of editors' expertise. Here, we tackle the problem of ranking the expertise of editors and the quality of articles on subsets of Wikipedia with a minimum information input, namely whether an editor has ever modified a given article or not. The approach, called {\it wikiRanks}, is an extension of the {\it pageRank} algorithm \cite{page1999pagerank} to bi-partite networks of relations between two kinds of nodes \cite{hidalgo2009}: the expertise of editors is assessed from the quantity and quality of articles they have edited. Conversely, the quality of an article depends on the number and the expertise of editors who have modified the article. Each iteration, quality (resp. expertise) information is recursively incorporated until the algorithm converges. As shown on Figure \ref{fig1}A, the wikiRanks method can be assimilated to a random walker jumping from one node to another type of node with some probability controlled by a biased metric of efferent node connectivity, with the bias $\beta$ putting more or less emphasis on quality ($\beta > 1$) or on quantity ($\beta < 1$) of efferent links \cite{caldarelli2012network}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\columnwidth]{Figures/figure_abstract.eps}
+\caption{{\bf (A)} Bi-partite network with Article and Editor nodes. Dashed arrows show how the random walker jumps from one node to another type of node with some probability controlled by the appropriately biased connectivity of the each node. {\bf (B)} Table shows the best rank-correlation $\rho_a$ and $\rho_e$ of the algorithm with the ground truth for each Wikipedia category, as well the value of the bias $\beta$.}
+\label{fig1}
+\end{figure}
+
+Despite the very limited amount of input information, wikiRanks can achieve very high levels of rank correlation with exogenous ground-truth state-of-the-art article quality \cite{wang} and editor expertise \cite{geiger2013} as shown on Figure \ref{fig1}B. Interestingly, when we look at the evolution of wikiRanks accuracy as a category of articles gets more contributions, we find that it takes more time for the algorithm to achieve high levels of correlation with the ground-truth (not shown). Actually there are much more editors than articles in a Wikipedia category. Therefore, it take more contributions in the category for the algorithm to get sufficient information to assess the expertise of an editor. We also find that the calibration of $\beta$ informs us on the importance of editor's expertise versus the quantity of editors who have contributed to the quality of articles in selected Wikipedia categories (c.f. Figure \ref{fig1}B). 
+
+
+%While wikiRanks incorporates only bi-partite links input information, we find high rank correlations ($\rho = 0.7\pm0.1$) with usual Wikipedia editors' expertise and articles' quality metrics. The wikiRanks algorithm also provides deep insights on the structure of online collaboration. We find that editors in some categories of Wikipedia articles achieve more quality with a large number of editors per article, while for other categories, quality is more achieved as a result of expertise of editors.
+
+
+
+
+
+\clearpage
+\vspace{1cm}
+\bibliographystyle{abbrv}
+\bibliography{sigproc,tmaillart}  
+
+
+\end{document}
+
+%\vspace{3cm}
+%
+%
+%However, the potentially large number of participants with various engagement levels generate non-linear contribution dynamics as a result of complicated interaction feed-back loops. These {\it productive bursts} raises outstanding challenges for management -- in particular overload and illusion of control , which might in turn impede the desired innovation process. Hence rather than controlling, our recent research suggeasts the manager should steer the community towards her goals according to the principles of open innovation organizational design \cite{vonKrogh2012cmr}. However, to be enforced, these principles still require close monitoring and even forecast by the manager to react and adapt the ``game" rules. Fortunately, nowadays large parts of open innovation ventures are mediated through Internet platforms that record big data on user contributions and behaviors. And unfortunately, managers currently lack metrics to monitor, forecast and adequately organize and steer open innovation as a collective action of interacting individuals with heterogenous motives.\\
+%
+%Building on research in  physics of complex systems, quantitative sociology and economics, and in particular on our research on :
+%
+%\begin{itemize}
+%\singlespacing
+%  \item self-organization of knowledge reuse as a {\it rich-get-richer} effect \cite{maillart2008},
+%  \item economic origins of long-memory processes in human timing \cite{maillart2011},
+%  \item collective dynamics of open source software (OSS) production \cite{maillart2011wp,maillart2011mechanisms},
+%  \item machine learning and predictability of contribution epidemics in OSS \cite{pautex2012},
+%  \item the effects of diversity of open source licenses and cumulative innovation \cite{maillart2012osslicenses},
+%\end{itemize}
+%
+%I propose to investigate the mechanisms of interactions and self-organization in open innovation, with the goals to understand the conditions of collective action emergence in society \cite{ostrom1990} and to provide managers with tailored tools to successfully implement and organize open innovation. 
+%
+%\vspace{1cm}
+%{\bf a. Exogenous vs. Endogenous Dynamics of Contributions and Social Interactions}\\
+%A class of models is particularly suitable to investigate social processes, especially when taking into account long-memory of human timing \cite{maillart2011}. Initially, proposed by Hawkes \cite{hawkes1971b,hawkes1971}, the conditional Poisson process can be regarded as the generalization of the non-homogeneous Poisson process, whose intensity $\lambda(t)$ defined such that $\lambda(t)dt$ is the expected value of the number of events in the time interval $[t,t+dt)$, depends not only on time $t$ but also on the history of the process according to
+%
+%\begin{equation}
+%\lambda(t) = \mu(t) + \sum_{t_i < t} h(t-t_{i}),
+%\label{monoexcited}
+%\end{equation}
+%
+%where $t_i$ are the time stamps of past events, $\mu(t)$ is the background intensity, and $h(t-t_{i})$ is the memory kernel function that weights how much past events influence future generations of events and controls the amplitude of endogenous feedback mechanisms, i.e. how many daughters events an initial exogenous shock will trigger. As initially proposed by Hawkes \cite{hawkes1971}, formula (\ref{monoexcited}) generalizes into a multivariate process \cite{liniger09}, which is well-suited to capture interactions between various processes such as streams of programmers' work in OSS projects and to what extent the mutually excite \cite{saichev2012}. While the mono variate version of the self-excited point process has been repeatedly found to be a robust model in various socio-economic systems such as open source software \cite{maillart2011wp} and social networks \cite{crane2009}, the multi-variate method has only been used to model contagion across financial markets \cite{ait-sahalia2010} and interactions between cyber attacks \cite{baldwin2012}. To perform calibration in high dimensional social systems (i.e. with large groups of contributors), this method requires important amount of data to capture enough signal. Therefore, this method shall be well suited for testing with big data of open source software repositories. 
+%
+%
+%
+%\vspace{1cm}
+%{\bf b. Managing Cooperation, Free-Riding and Conflicts}\\
+%Current research on open source is generally highly biased in favor of open source: on the contrary to common wisdom developers do not only cooperate, they also free-ride and defect. The open source community is regularly shaken by conflicts that weaken or even simply endanger projects. Beyond providing a more balanced view of research on success of open innovation, studying conflicts in open source software is an opportunity for research and for management. Attributing a cost to social interactions, it is possible to reverse engineer scenarios of cooperation, free-riding and conflict directly from time series, and to rationalize them in the game theory framework. While quantification of interaction intensity can be directly extracted from activity time series, the challenge consists in identifying the reasons of cooperation and conflicts between individuals and groups of individuals. For that two options are possible: (i) extract emotions expressed on development forums \cite{mitrovic2010} and/or (ii) characterize the nature of interactions directly from content of contributions. For instance, if a developer systematically deletes the work of others, this might be a signal of conflict. Furthermore, exploring the dynamics of interactions can help understand and model how conflicts arise and how they are eventually resolved either by involving third party mediators or bargaining on produced content. This work package shall be seen as an extension of Granovetter's strength of weak ties to the time dimension \cite{granovetter1973}.
+%
+%\vspace{1cm}
+%{\bf c. Bi-Partite Networks of Knowledge Production}\\
+%Open innovation occurs with unpredictable engagement and various input quality. However, a large stream of management literature has described progressive integration of individual to projects (i.e. the {joining script}) as meritocratic process by which contributors demonstrate increase of expertise to approach the development core at the top of the hierarchy \cite{vonKrogh2003}. However apart for source code that can be compiled, executed and {\it hardware} benchmarked \cite{gulley2010}, knowledge value cannot directly be assessed and {\it a fortiori} individual contributions cannot be easily disentangled. Indeed, an endogenous reinforcing process occurs between social status and quality of production. Characterization, measurement, modeling and calibration of this endogenous ``growth" process through bi-partite networks of producing entities with specific skills and products \cite{hidalgo2009} provides rich insights and predictions capabilities of individual work as a contributing part of the collective production process \cite{maillart2012b}. 
+%
+%\vspace{1cm}
+%{\bf d. Emergence and Sustainability of Hierarchical Organizations}\\
+%The open source community and to some extent related literature \cite{raymond1999} has praised the {\it bazaar} organization of open source projects. In 2002, Benkler proposed that peer-production should be a third way of production organization \cite{benkler2002}, besides market and firm as theorized by R. Coase \cite{coase1937}. The main argument for extending Coase's theory of transaction costs as a driver for the emergence of firms was that the Internet provides communication capabilities at negligible costs. Yet communities tend to self-organize to cope with internal inefficiencies and therefore spontaneously recreate various levels of hierarchies. A vivid example of this phenomenon is Wikipedia: while modifications on any page was initially allowed to anyone, some barriers have been progressively raised to protect articles against defacement and to ensure quality. Nowadays, Wikipedia is a well structures open source project, which requires contributors to follow a precise {\it joining script}.  This suggests that open innovation can have various degrees of organization ranging from market (i.e. peer transactions in production ) to firm (i.e.principal-agent configuration) as a function of time, number of developers, complexity of work to achieve, etc. Armed with the tools developed to monitor, characterize, and model open source production and social interactions at work in open source projects, and the capabilities to measure transaction costs between developers, I finally propose to test the Coase's theorem in the context of open innovation, by data mining social interactions and production details of thousands of open source projects, and by identifying and extracting transaction costs between contributors or groups of contributors.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
