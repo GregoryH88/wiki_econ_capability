@@ -8,6 +8,13 @@ While it relies on the same principles as \cite{caldarelli2012network}, our prop
 \label{fig:triangle}
 \end{figure*}
 
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.7\columnwidth]{Figures/bi-partite_net.eps}.
+\caption{}
+\label{fig:convergence}
+\end{figure}
+
 
 A matrix $\mathbf{M}$, between editors and articles in Wikipedia category is defined to be $1$ when an article has a contribution by a given editor and $0$ otherwise. The example shown in \ref{fig:triangle} displays the matrix ordered on both dimensions by decreasing order of editors who have changed more articles (vertical axis) and by decreasing order of articles that have been changed by most editors (horizontal axis) for a category of Wikipedia articles (here Category:Feminist Writers). The matrix describes the activity of an editor in the given category by the sum of articles contributed to; and the attention an article has received from editors by the sum of editors contributing to it. 
 
@@ -79,11 +86,6 @@ it is the analytical formulation we use onwards. It is important to note a cruci
 \end{figure}
 
 
-\begin{figure}[!t]
-\centering
-\includegraphics[width=0.7\columnwidth]{Figures/bi-partite_net.eps}.
-\caption{}
-\label{fig:convergence}
-\end{figure}
+
 
 Our aim here is to calibrate $\alpha$ and $\beta$ for various categories of articles on Wikipedia against some exogenous metrics of editors' expertise and articles' quality, to understand how the biases can inform on the emergence of respectively expertise and quality.
