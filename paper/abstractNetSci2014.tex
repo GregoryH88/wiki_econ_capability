@@ -103,7 +103,33 @@
 %\clearpage
 %\bibliography{../tmaillart.bib}
 
-From open source software projects to online encyclopedias, open collaboration has become one of the greatest success of the Internet, with millions of individuals sharing effort and knowledge as a collective good for their own interest and for the advancement of society \cite{vonhippel2003oss}. Unfortunately, assessing quickly the value of knowledge produced on open collaboration platforms remains nearly impossible : software code must be compiled and executed beforehand, and the value of written text remains subjective. Moreover, large amounts of untangled contributions by heterogenous editors prevents proper capture of editors' expertise. Here, we tackle the problem of ranking the expertise of editors and the quality of articles on subsets of Wikipedia with a minimum information input, namely whether an editor has ever modified a given article or not. The approach, called {\it wikiRanks}, is an extension of the {\it pageRank} algorithm \cite{page1999pagerank} to bi-partite networks of relations between two kinds of nodes \cite{hidalgo2009}: the expertise of editors is assessed from the quantity and quality of articles they have edited. Conversely, the quality of an article depends on the number and the expertise of editors who have modified the article. Each iteration, quality (resp. expertise) information is recursively incorporated until the algorithm converges. As shown on Figure \ref{fig1}A, the wikiRanks method can be assimilated to a random walker jumping from one node to another type of node with some probability controlled by a biased metric of efferent node connectivity, with the bias $\beta$ putting more or less emphasis on quality ($\beta > 1$) or on quantity ($\beta < 1$) of efferent links \cite{caldarelli2012network}.
+From open source software projects to online encyclopedias, open collaboration has become one of the greatest successes of the Internet, with millions of individuals sharing knowledge as a collective good. \cite{vonhippel2003oss}. One way that these projects are successful is that they can capture the efforts of the most highly active users - {\it power-users} - just as well as the smaller users. \cite{ The long tail or similar} When it comes to the the quality of the final product, we would like to know how important power-users are to success.
+Specifically here, we tackle the problem of characterizing how heavily a Wikipedia category is controlled by power users.
+
+The category level has been described as the {\it meso-level} of Wikipedia, and can be viewed as a bi-partite network between editors and articles \cite{jesus2009}. 
+
+Performing calculations on the bi-partite network as model has been proposed in Economics to rank countries and products \cite{hidalgo2009}, and the method has been shown to be able to predict GDP. \cite{caldarelli2012network}.
+
+In the Wikipedia bi-partite network, we adopt the premise that the quality of an editor depends on the size and quality of the portfolio of touched articles. And that the quality of an article depends on the size and quality of the log of touching editors. Although this many seem circular a solution is available \cite{caldarelli2012network}
+
+Therefore we borrow their quality metric $\mathbf{w^*}$ for editors $e$ and articles as $a$ defined by:
+\begin{equation}
+\begin{cases}
+w^{*}_{e} \sim k^{1-\beta}_{e} \langle k_{a}^{-\alpha}\rangle_e \\
+w^{*}_{a} \sim k^{1-\alpha}_{a} \langle k_{e}^{-\beta}\rangle_a
+\end{cases} \label{eqsim}
+\end{equation} 
+
+Where $k_e$ is the number of articles touched by editor $e$, and $k_a$  is number of editors touching article $a$. Similarly $\langle k_{a}^{-\alpha}\rangle_e$ is the arithmetic average of $k_{a}^{-\alpha}$ the articles touched by editor $e$, and $\langle k_{e}^{-\beta}\rangle_a$ is arithmetic average of $k_{e}^{-\beta}$ the editors touching article $e$.
+
+Meanwhile we calculate state of the art ground truth exogenous ranks $v_e$ and $v_a$ which are labour hours of editors \cite{geiger2013}, and a suite of text analysis measures on articles \cite{wang}.
+
+----------
+
+Despsite the calculation appearing to be circular, it can be solved recursively. The quality of editors and articles can be viewed as a heatmap of most touched nodes on a random walk along the bi-partite network of editors and articles shown on Figure \ref{fig1}A. We can tune our models by the probabilities of landing on more ubiquitously edited articles, and more diversified editors, by variables we call $\alpha$ and $\beta$. Therefore when we maximize the correlations between the ranking given by the bi-partite model, and standard metrics of editor and article quality, we find the most characteristic measurements of a category given by $\alpha$ and $\beta$.
+----------
+
+
 
 \begin{figure}[h]
 \centering
@@ -112,7 +138,15 @@ From open source software projects to online encyclopedias, open collaboration h
 \label{fig1}
 \end{figure}
 
-Despite the very limited amount of input information, wikiRanks can achieve very high levels of rank correlation with exogenous ground-truth state-of-the-art article quality \cite{wang} and editor expertise \cite{geiger2013} as shown on Figure \ref{fig1}B. Interestingly, when we look at the evolution of wikiRanks accuracy as a category of articles gets more contributions, we find that it takes more time for the algorithm to achieve high levels of correlation with the ground-truth (not shown). Actually there are much more editors than articles in a Wikipedia category. Therefore, it take more contributions in the category for the algorithm to get sufficient information to assess the expertise of an editor. We also find that the calibration of $\beta$ informs us on the importance of editor's expertise versus the quantity of editors who have contributed to the quality of articles in selected Wikipedia categories (c.f. Figure \ref{fig1}B). 
+We calibrate our model by finding values of $\alpha$ and $\beta$ that maximally correlate the rank produced by the bi-partite network and the exogenous ranks. We achieve high correlations around $0.7$  which means that we may turn to see what values of  $\alpha$ and $\beta$ caused this correlation and what it means as an exhibited behaviour of those categories.
+
+The most notable result is in correlating article rankings there is a very clear solution space along $\alpha = 0$ across all categories. Namely that article quality is mostly explained as a simple count of contributing editors.  
+
+We would like to find solutions which maximize editor and article ranking correlations simultaneously so we could make a complete statement about all aspects of the category. We search the solution space of editor ranking correlations along $\alpha = 0$, whose interpretation in editor ranking is that the quality of articles in their edit portfolio is inconsequential. For each category we find different maximizing values of $\beta$, which is a measure of importance of portfolio size. High $\beta$ means that portfolio size is less important for successful editors, and vice-versa, low $\beta$ means article diversity counts more.
+
+Looking at \ref{fig1}B, we find interesting extremes. The best editors in {\it Category:Military history of the US} - a category known for being very competitive -  are characterized by emphasizing their article portfolio size. On the other end, the editors in {\it Category:Sexual acts} - a taboo subject where much editing could be considered perverse - are characterized by de-emphasizing their portfolio size in the category.
+
+Now if we allow that portfolio size, the number of articles that an editor has touched, is a proxy for a power-user, then our $\beta$ measure is an indicator for power-user domination of a category. Therefore using this method, open collaborations online can detect the importance of power-users to a specific project. 
 
 
 %While wikiRanks incorporates only bi-partite links input information, we find high rank correlations ($\rho = 0.7\pm0.1$) with usual Wikipedia editors' expertise and articles' quality metrics. The wikiRanks algorithm also provides deep insights on the structure of online collaboration. We find that editors in some categories of Wikipedia articles achieve more quality with a large number of editors per article, while for other categories, quality is more achieved as a result of expertise of editors.
