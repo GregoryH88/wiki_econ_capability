@@ -90,7 +90,7 @@
   
 
 \vspace{-1cm}
-{\large {\bf \textsc{Characterizing Contribution Strategies and Quality \\ with Bi-Partite Networks\\}}}
+{\large {\bf \textsc{Characterizing Contribution Strategies and Quality \\ with Bi-Partite Networks in Wikipedia\\}}}
 \begin{center}
 \vspace{-0.cm}
 \footnotesize{order of preference : (1) talk, (2) ignite talk, (3) poster}
@@ -101,7 +101,7 @@
 \end{center}
 
 \vspace{0.05cm}
-According to the adage {\it ``given enough eyeballs, all bugs are shallow"} \cite{raymond1999}, open source projects achieve high quality from the variety of edits performed by many contributors. We aim to test this adage by characterizing the contribution strategies by editors in $12$ categories of Wikipedia articles, using networks models with two node types: articles and editors. The {\it biased random walk} method in bi-partite networks \cite{caldarelli2012network} is a reflexive method, in which produced entities are ranked as a function of producing entities, and conversely in a recursive way \cite{hidalgo2009}. This approach is a two node-type version of the {\it pageRank} algorithm \cite{page1999pagerank} and compares with a random walker jumping between editors and articles (see Figure \ref{fig1}A). Jumps are controlled by parameters $\alpha$ and $\beta$, which determine the probability to jump from editors to articles with more afferent links (resp. from articles to editors). $\alpha$ or $\beta$ equal zero indicate an equal probability to jump to a neighboring node. However, larger $\alpha$ (resp. $\beta$) indicates a lower probability to jump to a node with more links. In other words, for a node of a given type, $\alpha$ (or $\beta$ depending on the node type) controls the importance of the connectivity of neighboring nodes with nodes of same type as the original one. $\alpha$ or $\beta$ therefore provide direct information on the structure of influence between articles and editors.
+According to the adage {\it ``given enough eyeballs, all bugs are shallow"} \cite{raymond1999}, open source projects achieve high quality from the variety of edits performed by many contributors. We aim to test this adage by characterizing the contribution strategies by editors in $12$ categories of Wikipedia articles, using networks models with two node types: articles and editors. The {\it biased random walk} method in bi-partite networks \cite{caldarelli2012network} is a reflexive method, in which produced entities are ranked as a function of producing entities, and conversely in a recursive way \cite{hidalgo2009}. This approach is a two node-type version of the {\it pageRank} algorithm \cite{page1999pagerank} and compares to a random walker jumping between editors and articles (see Figure \ref{fig1}A). Jumps are controlled by parameters $\alpha$ and $\beta$, which determine the probability to jump from editors to articles with more links (resp. from articles to editors with more links). When $\alpha$ or $\beta$ equal zero, this indicates an equal probability to jump to a neighboring node. However, larger $\alpha$ (resp. $\beta$) indicates a lower probability to jump to a node with more links. In other words, for a node of a given type, $\alpha$ (or $\beta$ depending on the node type) controls the importance of the connectivity of neighboring nodes with nodes of same type as the original one. $\alpha$ or $\beta$ therefore provide direct information on the structure of influence between articles and editors.
 
 \begin{figure}[h]
 \centering
@@ -110,12 +110,12 @@ According to the adage {\it ``given enough eyeballs, all bugs are shallow"} \cit
 \label{fig1}
 \end{figure}
 
-Calibration of $\alpha$ and $\beta$ by maximizing rank-correlation with ground-truth quality metrics for editors \cite{geiger2013} and articles \cite{wang} shows that the bi-partite model of influence accounts particularly well for both quality of articles ($0.58 < \rho_a < 0.91$) and expertise of editors ($0.46 < \rho_e < 0.75 $), and the best rank-correlation is obtained for $\alpha= 0$ and $0 \leqslant \beta \leqslant 1.52$ (c.f. Figure 1B). Since $\alpha = 0$, articles always benefit from scrutiny by more editors, hence confirming the famous adage. However, for categories with $\beta >0$ the quality of an article is also negatively influenced by the portfolio of its editors. In other words, when $\beta$ is large, the more articles an editor edits, the lower his or her contributed value to one single article. $\beta$ also characterizes each category and the way quality is achieved through the cumulative contribution of information. For $\beta$ small, all editors have a fairly equal chance to contribute positively to any article, while for $\beta$ large, an editor can only contribute positively to a subset of articles (the larger $\beta$ the smaller the set). Typically, it is unlikely for a single person to have visited all {\it counterculture festivals}, performed all {\it sexual acts} or {\it Yoga} practices, while it is easier for anyone to gather relevant information on {\it bicycle parts} or the {\it US military history}. In conclusion, Raymond's adage should be appended in the following way : {\it ``given enough eyeballs, all bugs are shallow. But each pair of eyeballs cannot kill all bugs"}.
+Calibration of $\alpha$ and $\beta$ by maximizing rank-correlation with ground-truth quality metrics for editors \cite{geiger2013} and articles \cite{wang} shows that the bi-partite model of influence accounts particularly well for both quality of articles ($0.58 < \rho_a < 0.91$) and expertise of editors ($0.46 < \rho_e < 0.75 $). The best rank-correlation is obtained for $\alpha= 0$ and $0 \leqslant \beta \leqslant 1.52$ (c.f. Figure 1B). Since $\alpha = 0$, articles always benefit from scrutiny by more editors, hence confirming the famous adage. However, for categories with $\beta >0$ the quality of an article is also negatively influenced by the portfolio size of its editors. In other words, when $\beta$ is large, the more articles an editor edits, the lower his or her contributed value to one single article. $\beta$ also characterizes each category and the way quality is achieved through the cumulative contribution of information. For $\beta$ small, all editors have a fairly equal chance to contribute positively to any article, while for $\beta$ large, an editor can only contribute positively to a subset of articles (the larger $\beta$ the smaller the set). Typically, it is unlikely for a single person to have visited all {\it counterculture festivals}, performed all {\it sexual acts} or {\it Yoga} practices, while it is easier for anyone to gather relevant information on {\it bicycle parts} or the {\it US military history}. In conclusion for $\beta > 0$, Raymond's adage should be appended in the following way : {\it ``given enough eyeballs, all bugs are shallow. But each pair of eyeballs cannot kill all bugs"}.
 
 
 %\begin{tabular}{llcccccc}
 %\toprule
-%         &                     Category & Articles & Editors & $\rho\_a$ & $\rho\_e$ & $\alpha$ & $\beta$ \\
+%         &                     Category & Articles & Editors & $\rho_a$ & $\rho_e$ & $\alpha$ & $\beta$ \\
 %\midrule
 % 1&                        Bicycle parts &       70 &     210 &     0.90 &     0.46 &     0.00 &    0.00 \\
 % 2&Military history of the United States &      180 &     854 &     0.58 &     0.70 &     0.00 &    0.00 \\
@@ -131,7 +131,7 @@ Calibration of $\alpha$ and $\beta$ by maximizing rank-correlation with ground-t
 %        12&                   Sexual acts &       93 &    2190 &     0.63 &     0.66 &     0.00 &    1.52 \\
 %\bottomrule
 %\end{tabular}
-%
+
 
 
 \bibliographystyle{Science}
