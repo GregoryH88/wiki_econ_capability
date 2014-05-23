@@ -1,4 +1,4 @@
-\documentclass[letterpaper,9pt,a4paper]{article}
+\documentclass[letterpaper,10pt,a4paper]{article}
 \usepackage{ulem}
 \usepackage{url}
 
@@ -38,12 +38,12 @@
 \marginparwidth 68pt 
 \marginparsep 10pt 
 \topmargin 0pt 
-\headheight 0pt 
+\headheight 10pt 
 \headsep 5pt
 
 \voffset -40pt 
-\footskip 0pt 
-\textheight 25cm 
+\footskip 35pt 
+\textheight 23cm 
 \textwidth 16.8cm 
 \columnsep 10pt 
 \columnseprule 0pt 
@@ -89,52 +89,68 @@
   % \\[5mm]
   
 
-\vspace{-1cm}
-{\large {\bf \textsc{Characterizing Contribution Strategies and Quality \\ with Bi-Partite Networks\\}}}
-\begin{center}
-\vspace{-0.cm}
-\footnotesize{order of preference : (1) talk, (2) ignite talk, (3) poster}
-\end{center}
-\vspace{-0.cm}
-{ {\bf \textsc{Maximilian Klein, Thomas Maillart, John Chuang}}}
+\vspace{-0.5cm}
+{\Large {\bf \textsc{Characterizing Contribution Strategies in Wikipedia with Bi-Partite Network Rankings\\}}}
+
 \vspace{0.2cm}
+{\large {\bf \textsc{Maximilian Klein, Thomas Maillart, John Chuang}}}
+\vspace{0.15cm}
 \end{center}
 
+%Open source software has been one of the most successful incarnations of open innovation, providing considerable amount of software code as a public good for the development of reliable Internet and Web infrastructures, operating systems, and a broad range of applications.  Moreover, open source software (OSS) has inspired many initiatives beyond software development, such as Wikipedia  which combines (i) task self-selection and (ii) peer-review by participants.
 \vspace{0.05cm}
-According to the adage {\it ``given enough eyeballs, all bugs are shallow"} \cite{raymond1999}, open source projects achieve high quality from the variety of edits performed by many contributors. We aim to test this adage by characterizing the contribution strategies by editors in $12$ categories of Wikipedia articles, using networks models with two node types: articles and editors. The {\it biased random walk} method in bi-partite networks \cite{caldarelli2012network} is a reflexive method, in which produced entities are ranked as a function of producing entities, and conversely in a recursive way \cite{hidalgo2009}. This approach is a two node-type version of the {\it pageRank} algorithm \cite{page1999pagerank} and compares with a random walker jumping between editors and articles (see Figure \ref{fig1}A). Jumps are controlled by parameters $\alpha$ and $\beta$, which determine the probability to jump from editors to articles with more afferent links (resp. from articles to editors). $\alpha$ or $\beta$ equal zero indicate an equal probability to jump to a neighboring node. However, larger $\alpha$ (resp. $\beta$) indicates a lower probability to jump to a node with more links. In other words, for a node of a given type, $\alpha$ (or $\beta$ depending on the node type) controls the importance of the connectivity of neighboring nodes with nodes of same type as the original one. $\alpha$ or $\beta$ therefore provide direct information on the structure of influence between articles and editors.
+%{\Large \bf Research Interests} \vspace{0.25cm}\\
 
+
+%\clearpage
+%\bibliography{../tmaillart.bib}
+One of the very fundamental principles of peer-production in open collaboration projects is the ability for individuals to decide what tasks they want to 
+take on \cite{benkler2002}. For instance, in Wikipedia editors touch varying numbers of articles, at different levels of development. The outstanding question is how individual contribution strategies are likely to influence the {\it investment} of each editor, the {\it quality} of articles \cite{wang}, and ultimately the quality of a project \cite{geiger2013}. One way to tackle the problem consists in considering a project -- here a category of Wikipedia articles -- as a bi-partite network of articles and their related editors \cite{jesus2009}. Assessing the value of the two types of components of such a network has previously been undertaken in the context of macro-economics (ranking countries by the type of products they export) by Hidalgo and Haussmann \cite{hidalgo2009}, and by Caldarelli et al. \cite{caldarelli2012network}. The investment of editors is assessed from the quantity and quality of articles they have edited. Conversely, the development of an article depends on the number and the investment of editors who have modified the article. The method is a two node-type version of the Google pageRank algorithm \cite{page1999pagerank} and can be compared to a random walker jumping between editors and articles. Walking is controlled by biased parameters $\alpha$ for the probability to jump to more developed articles, and $\beta$ for the probability to jump more invested editors (see Figure \ref{fig1}A). 
 \begin{figure}[h]
 \centering
-\includegraphics[width=1.\columnwidth]{Figures/figure_abstract.eps}
-\caption{\footnotesize {\bf (A)} Bi-partite network with Article and Editor nodes. Dashed arrows show how the random walker jumping between articles and editors with  probability controlled by the appropriately biased connectivity of the each node. {\bf (B)} Table shows the best rank-correlation $\rho_a$ and $\rho_e$ of the algorithm with the ground truth for each Wikipedia category, as well the value of the divestment bias $\beta$.}
+\includegraphics[width=0.8\columnwidth]{Figures/figure_abstract.eps}
+\caption{{\bf (A)} Bi-partite network with Article and Editor nodes. Dashed arrows show how the random walker jumping between articles and editors with  probability controlled by the appropriately biased connectivity of the each node. {\bf (B)} Table shows the best rank-correlation $\rho_a$ and $\rho_e$ of the algorithm with the ground truth for each Wikipedia category, as well the value of the divestment bias $\beta$.}
 \label{fig1}
 \end{figure}
 
-Calibration of $\alpha$ and $\beta$ by maximizing rank-correlation with ground-truth quality metrics for editors \cite{geiger2013} and articles \cite{wang} shows that the bi-partite model of influence accounts particularly well for both quality of articles ($0.58 < \rho_a < 0.91$) and expertise of editors ($0.46 < \rho_e < 0.75 $), and the best rank-correlation is obtained for $\alpha= 0$ and $0 \leqslant \beta \leqslant 1.52$ (c.f. Figure 1B). Since $\alpha = 0$, articles always benefit from scrutiny by more editors, hence confirming the famous adage. However, for categories with $\beta >0$ the quality of an article is also negatively influenced by the portfolio of its editors. In other words, when $\beta$ is large, the more articles an editor edits, the lower his or her contributed value to one single article. $\beta$ also characterizes each category and the way quality is achieved through the cumulative contribution of information. For $\beta$ small, all editors have a fairly equal chance to contribute positively to any article, while for $\beta$ large, an editor can only contribute positively to a subset of articles (the larger $\beta$ the smaller the set). Typically, it is unlikely for a single person to have visited all {\it counterculture festivals}, performed all {\it sexual acts} or {\it Yoga} practices, while it is easier for anyone to gather relevant information on {\it bicycle parts} or the {\it US military history}. In conclusion, Raymond's adage should be appended in the following way : {\it ``given enough eyeballs, all bugs are shallow. But each pair of eyeballs cannot kill all bugs"}.
+\begin{table}
+\begin{tabular}{llll}
+\toprule
+                              Category & Editor divestment $\beta$  & $\rho_e$ & $\rho_a$ \\
+\midrule
+                         Bicycle parts &    0.00 &     0.46 &     0.90 \\
+ Military history of the US &    0.00 &     0.70 &     0.58 \\
+                  Computability theory &    0.32 &     0.56 &     0.77 \\
+               American male novelists &    0.40 &     0.75 &     0.67 \\
+                            2013 films &    0.48 &     0.55 &     0.72 \\
+                     Economic theories &    0.48 &     0.70 &     0.74 \\
+              American women novelists &    0.64 &     0.75 &     0.63 \\
+                      Feminist writers &    0.72 &     0.69 &     0.70 \\
+                                  Yoga &    1.12 &     0.57 &     0.64 \\
+           Nobel Peace Prize laureates &    1.20 &     0.66 &     0.91 \\
+              Counterculture festivals &    1.36 &     0.61 &     0.80 \\
+                           Sexual acts &    1.52 &     0.66 &     0.63 \\
+\bottomrule
+\end{tabular}
 
 
-%\begin{tabular}{llcccccc}
-%\toprule
-%         &                     Category & Articles & Editors & $\rho\_a$ & $\rho\_e$ & $\alpha$ & $\beta$ \\
-%\midrule
-% 1&                        Bicycle parts &       70 &     210 &     0.90 &     0.46 &     0.00 &    0.00 \\
-% 2&Military history of the United States &      180 &     854 &     0.58 &     0.70 &     0.00 &    0.00 \\
-%  3&                Computability theory &       92 &     272 &     0.77 &     0.56 &     0.00 &    0.32 \\
-%   4&            American male novelists &     2460 &    9946 &     0.67 &     0.75 &     0.00 &    0.40 \\
-%    5&                        2013 films &     1896 &    5215 &     0.72 &     0.55 &     0.00 &    0.48 \\
-%     6&                Economic theories &      212 &    1145 &     0.74 &     0.70 &     0.00 &    0.48 \\
-%     7&         American women novelists &     1936 &    5968 &     0.63 &     0.75 &     0.00 &    0.64 \\
-%     8&                 Feminist writers &      233 &    1357 &     0.70 &     0.69 &     0.00 &    0.72 \\
-%     9&                             Yoga &      123 &     730 &     0.64 &     0.57 &     0.00 &    1.12 \\
-%     10&      Nobel Peace Prize laureates &      104 &    4165 &     0.91 &     0.66 &     0.00 &    1.20 \\
-%      11&        Counterculture festivals &       66 &     578 &     0.80 &     0.61 &     0.00 &    1.36 \\
-%        12&                   Sexual acts &       93 &    2190 &     0.63 &     0.66 &     0.00 &    1.52 \\
-%\bottomrule
-%\end{tabular}
-%
+\end{table}
 
 
-\bibliographystyle{Science}
-\bibliography{tmaillart}  
+
+The variables $\alpha$ and $\beta$ provide a direct measure of the nonlinear "importance" of the number of highly developed articles, and the nonlinear importance of highly invested editors, respectively. Both $\alpha$ and $\beta$ are optimized to maximize the rank correlations of editors ($0.46 < \rho_e < 0.75 $) and articles ($0.58 < \rho_a < 0.91$) between the algorithm and ground-truth metrics obtained by state-of-the-art quality metrics of editors \cite{geiger2013} and articles \cite{wang}, for 12 categories on Wikipedia. We find that the best value for $\alpha$ is $0$, while $0 \leqslant \beta \leqslant 1.52$ (c.f. Figure 1B). 
+
+%We find that the importance of editor divestment is concave increasing as a function of the number of articles they have edited for categories with $\beta > 1$ and decreasing when $0 < \beta < 1$. For two categories ({\it bicycle parts} and {\it Military history of the US}), $\beta = 0$, so the investment of editors is actually a linear function of the number of articles they have edited. Regarding article correlations, the development is a linear function of the number of editors, and a function of the expertise of these editors, which in turn varies depending on the values of $\beta$. For $\beta = 0$, the expertise of editors has no influence, while for $\beta > 0$, the expertise provided by editors decreases as a function of the number of articles they have edited. 
+
+Looking at \ref{fig1}B, we find telling extremes. The best editors in {\it Category:Military history of the US} - a category known for being very competitive -  are characterized by emphasizing investment (number of articles edited in the category). On the other end, the editors in {\it Category:Sexual acts} - a taboo subject where much editing could be considered perverse - are characterized by divesting in touching many articles in the category.
+
+
+
+
+%\clearpage
+\vspace{1cm}
+\bibliographystyle{abbrv}
+\bibliography{sigproc,tmaillart}  
+
 
 \end{document}
