@@ -1,31 +1,8 @@
 \section{Introduction}
-As knowledge is increasingly produced collectively on collaborative platforms 
-such as the Wikipedia Encyclopedia, Github for open source software code, or 
-Twitter for information filtering \cite{}, it becomes ever more important to 
-understand how high quality content can be achieved from the ``wisdom of 
-crowds". While  high quality can in some case be achieved \cite{giles2005internet} and  complex problems solved \cite{cooper2010}, the fine-grained mechanisms of 
-performance remain largely unknown. It has been theorized that peer-
-production -- the labor organization underlying open collaboration -- emerges 
-from the availability of cheap communication means like the Internet, and relies 
-on two principal ingredients : (i) task self-selection and (ii) peer-review. In other 
-words, individuals choose the tasks they believe they are more qualified for on 
-the one hand, and on the other hand, they review the work of others also 
-according to their skills \cite{benkler2002}. While the rules of peer-production 
-are very open, it is possible, in some circumstances, to measure collective 
-performance. For instance, in a series of Matlab contests aimed at having NP-
-hard problems solved collectively by submitting and executing code, it was 
-found that collaborative work helps quickly find algorithms with higher 
-performance \cite{gulley2010}. Unfortunately, measuring performance is 
-nearly impossible in most instances of open collaboration that do not involve 
-software code, which can be compiled, executed and tested on computers. For 
-instance, {\it natural language}, which is the most common way to code 
-knowledge cannot be executed and tested for performance by a machine. For 
-the time being, evaluation of written natural language knowledge remains the 
-realm of human subjective evaluation.
+In open collaboration, knowledge is produced by a multitude of contributors, according to the rules of peer-production as a form of labor organization emerging in computer and Internet supported environments \cite{benkler2002}. The most basic component of peer-production is {\it task self-selection}: participants in open collaboration freely choose how and when to contribute, with limited or no vertical organization.  Starting with open source software development, open collaboration has permeated in a broad variety of industries \cite{benkler2011leviathan}. Wikipedia is one of the most successful examples of open collaboration, going head-to-head with major online content providers, and competing on accuracy with traditionally edited encyclopedia \cite{giles2005internet}. 
 
-We believe the it is possible to overcome this problem through the analysis of the bi-partite network of links between two kinds of nodes : (i) editors and (ii) the pieces of knowledge they have modified. Here, we present the wikiRanks algorithm, which is an extension of pageRank two bi-partite networks of editors and articles on Wikipedia. We test the algorithm against state-of-the-art  evaluations of editors' expertise and articles' quality, and we find that wikiRanks  achieves a high correlation with ground-truth metrics. We also find that the algorithm helps better understand the structure of online collaboration. We find that editors in some categories of Wikipedia articles achieve more quality with a large number of editors per article, while for other categories, quality is more achieved as a result of the expertise of editors.
+Nonetheless, it remains hard to understand how knowledge is pulled from the self-organization of many contributing individuals with their heterogenous backgrounds and motivations. The production process of many open collaboration communities exhibits complex critical cascades of input, which in turn lead to super-linear productive bursts of contributions \cite{sornette2014howmuch}. In other words, the dynamics of contributions remain deeply entangled, and therefore, tell little on how the heterogenous inputs by individuals in open collaboration are organized to achieve best quality. Moreover, the multiplicity of contribution organization in open collaboration suggests that community organization is ``tuned" to a specific kind of knowledge. 
 
-The paper is organized as follows. We first present the technical background in the related work section, the method and the data we have employed for our study. We then present and discuss the results of the wikiRanks algorithm with its limitation. We finally present some future work directions and conclude.
+Here, we propose that the contribution structure is deeply tied to type of knowledge produced. We develop an iterative approach to account for the complex relationships (i.e. the bi-partite network) between contributors and units of knowledge, such as articles in Wikipedia. For 12 Wikipedia categories, we demonstrate how the structure of knowledge contribution can be disentangled, and how it influences the quality of knowledge produced.
 
-
-%Is there a way to assess relative quality of both articles and editors by only considering which editors have touched which articles on Wikipedia? This is the problem we are addressing in this paper.
+The paper is organized as follows. The reader is first introduced to relevant literature . The method, data employed and results are then presented and discussed. We finally present future research directions and conclude.
