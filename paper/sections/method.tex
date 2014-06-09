@@ -1,88 +1,113 @@
 \section{Method}
-Our method is strictly borrowed from Caldarelli et al. \cite{caldarelli2012network}. We investigate the properties of the biased Markov chains formulation of the {\it reflexion method}, in the slightly different context of open collaboration. In this specific context, the bi-partite network has two types of nodes : the editors (i.e., the producing entities) and the articles (i.e. the products). While the method is unchanged, the nature of the input (i.e. the description of the bi-partite network) as well as the interpretation of the relationships are different. Specifically, editors are not competing for the production of an article. They rather cooperate, implicitly according to the rules of peer-production or explicitly through the discussion page attached to each article, in order to increase the quality of the article.
+\label{method}
+Measuring the structure of value creation by individuals is nearly impossible in most in open collaboration projects, in particular when they do not involve writing software code, which can be compiled, executed and tested on computers. As exemplified in Wikipedia, the most common way to code knowledge is natural language (e.g. English, Chinese, Spanish, French, German), which can hardly be systematically tested for performance. Natural language is indeed the realm of subjective interpretation by humans. Here, we present a method to model value creation and performance in such environments, without relying on the content or on subjective metrics, such as the number of edits, or the number of bytes changed overall or per edit. We recognize that value can be brought by each editor, regardless of the frequency, or the length of her contributions. Only the number and the expertise of editors bring value to an article.  And the expertise of editors can be measured from the number and the quality of articles they have modified at least once.
 
-The simplest way to represent a bi-partite network of online collaboration is to consider that an editor is linked to an article when she has ever made a modification. The resulting input of our model is a binary matrix $\mathbf{M}$ of editors and the articles they have modified as shown on Figure \ref{fig:matrix}.
+For that, we consider a simple input, which is a representation of the bi-partite network of editors and their contributions to articles.  Namely, let us consider a matrix $M_{ea} \equiv M$ of all editors having contributed to a category of articles on Wikipedia. $M_{ea}$ takes value $1$ if editor $e$ has edited article $a$, and $0$ otherwise. Note that $M$ only shows which editors have ever touched an article. For the category {\it Feminist Writers}, as presented on Figure \ref{fig:triangle}, $M$ exhibits a triangular structure in which editors (resp. articles) are sorted (max on the bottom-left corner) by the number of articles they have touched (resp. by the number of editors who have touched each article). $M$ is the only input of the {\it bi-partite random walker} model described thereafter, for recursively characterizing the structure and the value of contributions in open collaboration, through the evaluation of editor expertise and articles quality.
 
 \begin{figure*}[!t]
 \centering
-\includegraphics[width=2.0\columnwidth]{Figures/Category_Feminist_writerstriangle_matrix_corrected.png}
-\caption{Typical $\mathbf{M}$ matrix for a Wikipedia category (here, {\it Feminist Writers}) ordered on both dimensions by descending order of number of articles modified by an editor (horizontal axis) and of number editors who have modified an article (vertical axis). The structure of $\mathbf{M}$ is triangular and shows that some editors have a pervasive activity over articles, while most editors edit only a few. Similarly, some articles receive widespread attention by editors, while most articles are modified only by a few editors.}
-\label{fig:triangle_matrix}
+\includegraphics[width=2.0\columnwidth]{../Figures/Category_Feminist_writerstriangle_matrix_corrected.png}
+\caption{Typical $\mathbf{\mathit{M}}$ matrix for a Wikipedia category (here, {\it Feminist Writers}) ordered on both dimensions by descending order of number of articles modified by an editor (horizontal axis) and of number editors who have modified an article (vertical axis). The structure of $\mathbf{\mathit{M}}$ is triangular and shows that some editors have a pervasive activity over articles, while most editors edit only a few. Similarly, some articles receive widespread attention by editors, while most articles are modified only by a few editors.}
+\label{fig:triangle}
 \end{figure*}
 
 
-The matrix $\mathbf{M}$ shown in Figure \ref{fig:triangle_matrix} shows when an article has changed at some point by a given editor. The matrix is ordered on both dimensions by decreasing order of editors who have changed more articles (vertical axis) and by decreasing order of articles that have been changed by most editors (horizontal axis) for a category of Wikipedia articles (here Feminist Writers). Although it is a rough count, the matrix tells already about the experience of an editor in the given category, and the attention an article has gotten from editors, which is an implicit quality measure according to the second principle of peer-production : peer-review. This count is the zero order of the Article/Editor ranking algorithm, and thus the initiation step is given by
-
-When ordered on both dimensions by decreasing order of editors who have changed more articles (vertical axis) and by decreasing order of articles that have been changed by most editors (horizontal axis), the matrix $\mathbf{M}$ exhibits a triangular structure, which is at odds with the traditionally accepted idea that editors tend to specialize \cite{}. In that later case, $\mathbf{M}$ should rather be diagonal. On the contrary, some editors have a pervasive activity over all articles, while most editors edit only a few. Similarly, some articles receive widespread attention by editors, while most articles are modified only by a few editors. The matrix $\mathbf{M}$ gives also immediate information on the zero\textsuperscript{th} iteration of the reflexion method: the number of articles modified (horizontal axis) gives information on the expertise of the editor, while the number of editors who have modified an article give an information on the quality of the article : one of the fundamental rules of open source development is that {\it ``Given enough eyeballs, all bugs shallow"} \cite{raymond1999}. The initiation step of the reflexive algorithm is therefore given by,
+Given $M$, the simplest way to assess the contribution value, the {\it expertise}, of an editor is obtained by summing the number of articles ever edited out of a set of articles. Similarly, a simple {\it quality} measure for an article is the sum of editors who have ever modified it, following the famous adage on open source development: ``Given enough eyeballs, all bugs are shallow" \cite{raymond1999}. These crude expertise and quality metrics for editors and articles, respectively  given by,
 
 \begin{equation}
 \begin{cases}
- \mathbf{d}_{e}^{(0)} = \sum_{a=1}^{N_{a}} \mathbf{M}_{ea} \equiv \mathbf{k}_e\\
- \mathbf{u}_{a}^{(0)} = \sum_{e=1}^{N_{e}} \mathbf{M}_{ea} \equiv \mathbf{k}_a.\\
+ u_{e}^{(0)} = \sum_{a=1}^{N_{a}} M \equiv k_e\\[7pt]
+ u_{a}^{(0)} = \sum_{e=1}^{N_{e}} M \equiv k_a
 \end{cases}
 \label{HHinit}
 \end{equation}
 
-The principal argument for going to further steps is following : the zero\textsuperscript{th} is quite rough: the number of articles modified tells actually little on expertise of editors because we don't know the value of the modified articles. Similarly the number of editors tells little about the quality of an article because the expertise of the editors who have modified the article is unknown. The second step of the algorithm is therefore the following: if an article has been changed by editors who edited more articles, then the quality of the article should be higher. Similarly, if an editor has edited articles that have been edited by more editors, then the expertise of the editor should be higher {\bf [(the only reason for making this claim is the collaborative nature of Wikipedia, and learning by imitation)]}. Accordingly, the third step is the following : if an article has been changed by editors who edited more articles, which in turn have been edited by more editors, then the quality of the article should be higher. Similarly, if an editor has edited articles that have been edited by more editors, who in turn have edited more articles, then the expertise of the editor should be higher. The algorithm goes on recursively, incorporating the quality (resp. expertise) information of the article (resp. editor) at the previous step. The way the iterative step was initially formulated is the following,
+are the zero\textsuperscript{th} order of our algorithm. They are the initial step of the {\it method of reflections} proposed by Hidalgo et al. \cite{hidalgo2007,hidalgo2009}, which derives the value of producing entities (i.e. editors) from products (i.e. articles), and {\it vice versa}. To help capture the intuition behind the method of reflections for open collaboration, we walk through the first and second iterations, as they are adapted to our study of Wikipedia:
+
+\begin{itemize}
+  \item {\bf 1\textsuperscript{st} order iteration,}  
+  \begin{itemize}
+  \item {\bf Articles}: If an article has been edited by higher expertise editors, it is of higher quality. That is, quality is a function of expertise calculated from zero\textsuperscript{th} iteration expertise scores.
+  \item {\bf Editors}: Conversely, if an editor has contributed to higher quality articles, her expertise is higher. That is, expertise is a function of quality calculated from zero\textsuperscript{th} iteration quality scores.
+  \end{itemize}
+  \item {\bf 2\textsuperscript{nd} order iteration,}
+    \begin{itemize}
+  \item {\bf Articles}: If an article has been changed by higher expertise editors who have edited higher value articles, which in turn have been edited by higher expertise contributors, the article quality is higher. That is, quality is a function of expertise calculated from 1\textsuperscript{st} iteration expertise scores.
+  \item {\bf Editors}: Conversely, if an editor has edited higher quality articles, which have been edited by better editors who have edited higher quality articles, then expertise is higher. That is, expertise is a function of quality calculated from 1\textsuperscript{st} iteration quality scores.
+  \end{itemize}
+ \item {\bf And so on, recursively.}\\
+\end{itemize}
+
+Although interpretation is difficult past the very first iteration steps, at each iteration, the algorithm incorporates additional information on the quality of the articles and expertise of editor from the neighboring nodes in the bi-partite network. The higher order iterations of the method of reflections are written as,
 
 \begin{equation}
 \begin{cases}
- \mathbf{d}_{e}^{(n+1)} = \frac{1}{\mathbf{k}_a} \sum_{a=1}^{N_{a}} \mathbf{M}_{ea} \mathbf{u}_{a}^{(n)}\\
- \mathbf{u}_{a}^{(n+1)} = \frac{1}{\mathbf{k}_e}\sum_{e=1}^{N_{e}} \mathbf{M}_{ea} \mathbf{d}_{e}^{(n)}\\
+ u_{e}^{(n+1)} = \frac{1}{k_{e}}\sum_{a=1}^{N_{a}} M \, u_{a}^{n}\\[7pt]
+ u_{a}^{(n+1)} = \frac{1}{k_{a}}\sum_{e=1}^{N_{e}} M \, u_{e}^{n}\\
 \end{cases}
-\label{HHalgo}
+\label{HHhigher}
 \end{equation}
 
-where $d_{e}$ stands for diversification of editors and $u_{a}$ for the ubiquity of articles.
+The method of reflections however suffers from a problem, which is rooted in the equal weights given to article and editor scores obtained at the previous iteration. As a result, the method converges to a fixed point with all editors (resp. all articles) having the same value, as a case of consensus dynamics \cite{caldarelli2012network}. It has therefore been proposed to consider giving variable weights to the scores from the previous iteration as a Markov process of random walkers on a bi-partite network, jumping with some probability from one node type to another node type \cite{caldarelli2012network}. A schematic representation of the random walk process on a bi-partite network is depicted in Figure \ref{fig:jumpers}. The intuition is the following: a random walker jumps with some probability from an editor to a given article (i.e. the editor's expertise is positively influenced by the article's quality), and with another probability from an article to a given editor (i.e. the value of the article is positively by the editor's expertise). The matrix $M$ determines whether a jump between each pair of nodes is possible. If two nodes $e$ and $a$ are not directly connected $M_{ea} = 0$, and the transition probability is 0. Conceptually, the {\it bi-partite network random walker} model is an extension of the single node type (i.e. Web pages) {\it Page Rank} Google search algorithm \cite{page1999pagerank} to two kind of nodes.
 
-{\bf While it is following very well the intuition behind the algorithm, ``The major problem of this formulation is that it is a case of consensus dynamics \cite{shamma2007cooperative}, i.e. the state of a node at iteration t is just the average of the state of its neighbors at iteration t-1".[ reformulate] } This approach converges rapidly to a fixed point, which is undesirable if the goal is precisely to discriminate as best as possible between editors and articles. The idea of Caldarelli et al. \cite{caldarelli2012network} is to treat the problem as a problem of a {\it random walker} jumping from one node to another along the edges of the bi-partite network. In other words, the random walker jumps with some probability from an editor to a linked article, or from an article to a linked editor. The weights of vertices are proportional to the time spent by the random walker in the large time limit \cite{zlatic2010}. The intuition is that an editor (resp. an article) with more links from articles (resp. from editors) has more chances to be visited by the random walker. However, if the random walker is unbiased, the algorithm is not different from the zero\textsuperscript{th} order of the reflections method given by (\ref{HHinit}). Therefore, some biases $\alpha$ (resp. $\beta$) on the probability to jump from an article to an editor (resp. from an editor to an article). Such weights are the generalization of $k_e$ and $k_a$, and give a measure of editors' expertise and of articles' quality. At the $n$\textsuperscript{th} step, the algorithm writes,
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.7\columnwidth]{../Figures/bi-partite_net.eps}.
+\caption{Representation of random walkers jumping from editors to articles (red dotted arrows) and from articles to editors (blue dotted arrows). The intuition is the following: a random walker jumps with some probability from an editor to a given article (i.e. the editor's expertise is positively influenced by the article's quality), and with another probability from an article to a given editor (i.e. the value of the article positively influences the editor's expertise).}
+\label{fig:jumpers}
+\end{figure}
+
+According to  Caldarelli et al. \cite{caldarelli2012network}, we reformulate the method of reflections to account for jumps of the random walker on the bi-partite network of editors and articles. We call $w^{(n)}_e$ the expertise of an editor and $w^{(n)}_a$ the quality of an article at the $n^{th}$ iteration. We define the following Markov process on the bi-partite network of collaboration, 
 
 \begin{equation}
 \begin{cases}
- \mathbf{w}^{(n+1)}_e (\alpha,\beta) = \sum_{p=1}^{N_a} \mathbf{G}_{cp}(\beta) \mathbf{w}^{(n)}_a (\alpha,\beta)\\
-\mathbf{w}^{(n+1)}_a (\alpha,\beta) = \sum_{c=1}^{N_e} \mathbf{G}_{pc}(\beta) \mathbf{w}^{(n)}_e (\alpha,\beta),\\
+w^{(n+1)}_e (\alpha,\beta) = \sum_{a=1}^{N_a}  G_{ea}(\beta) \,w^{(n)}_a (\alpha,\beta)\\[7pt]
+w^{(n+1)}_a (\alpha,\beta) = \sum_{e=1}^{N_e}  G_{ae}(\alpha) \, w^{(n)}_e (\alpha,\beta)\\
 \end{cases}
 \label{random_walker}
 \end{equation}
 
-with the Markov transition matrices $\mathbf{G}_{ea}(\beta)$ and $\mathbf{G}_{ae}(\alpha)$ control the biased of the random walk and are given by
+with $G_{ea}$ the probability  to jump from article $a$ to editor $e$ in a single step, and the probability $G_{ae}$ to jump from editor $e$ to article $a$ also in a single step. These transition probabilities are given by,
 
 \begin{equation}
 \begin{cases}
-\mathbf{G}_{ea}(\beta) = \frac{\mathbf{M}_{ea} \mathbf{k}_{e}^{-\beta}}{\sum_{e' = 1}^{N_e} \mathbf{M}_{e'a} \mathbf{k}_{e'}^{-\beta}}\\
-\mathbf{G}_{ae}(\alpha) = \frac{\mathbf{M}_{ea} \mathbf{k}_{a}^{-\beta}}{\sum_{a' = 1}^{N_a} \mathbf{M}_{e'a} \mathbf{k}_{a'}^{-\beta}}\\
+G_{ea}(\beta) = \frac{M_{ea} k_{e}^{-\beta}}{\sum_{e' = 1}^{N_e} M_{e'a} k_{e'}^{-\beta}}\\[10pt]
+G_{ae}(\alpha) = \frac{M_{ea} k_{a}^{-\alpha}}{\sum_{a' = 1}^{N_a} M_{ea'} k_{a'}^{-\alpha}}.\\
  \end{cases}
 \end{equation}
 
-{\bf with $c'$ and $p'$ are XXX [to be completed]} Here $G_{ea}$ gives the probability to jump from article $a$ to editor $e$ in a single step, and $G_{ae}$ the probability to jump from editor $e$ to article $a$ also in a single step. We shall give more insights on how $\alpha$ and $\beta$ influence the random walker by analyzing the transition matrices $\mathbf{G}_{ea}(\beta)$ and $\mathbf{G}_{ae}(\alpha)$. The transition matrices depend only from the initial conditions $\mathbf{M}$ and $k_e$ and $k_a$ given by (\ref{HHinit}). Since both transition matrices have the same structure, we only consider $\alpha$ and $\mathbf{G}_{ae}(\alpha)$. $\alpha$ is the power exponent of the inverse of $k_a$, and therefore the bias depends on the possible values taken by $\alpha$. If $\alpha = 0$, we recover the zero\textsuperscript{th}. For $\alpha > 0$, the probability to jump is weighted by a concave function of the sum of editors who have modified the article. The larger $\alpha$ the less the number of editors is important to an article. On the contrary, if $\alpha < 0$ the probability to jump from an editor to an article is a positive function of the sum of editors who have modified the article. For $-1 < \alpha < 0$, the function is concave, while for $\alpha < -1$, the function is convex, which means that the more editors, the even more the weight on the article. The same considerations hold for $\beta$ and the probability $\mathbf{G}_{ea}$ to jump from an article to an editor.
+The transition matrices $G_{ea}(\beta)$ and $G_{ae}(\alpha)$ depend only on the initial conditions: the binary matrix $M$, as well as $k_e$ and $k_a$ given by (\ref{HHinit}). The variables $\alpha$ and $\beta$ control the transition probabilities in a similar way. We shall therefore explain only how $\beta$ influences the probability to jump from an article to an editor (i.e. the value of the article positively influences the editor's expertise). For $\beta = 0$, we recover the zero\textsuperscript{th} order iteration (\ref{HHinit}). For $\beta > 0$, the probability to jump from article $a$ to editor $e$ is a power law function $\sim 1/k_{e}^{\beta}$ of the sum of articles $k_{e}$  modified by editor $e$. Hence, the larger $k_{e}$, the lower the probability to jump from $a$ to $e$ relative to other editors. On the contrary, if $\beta < 0$ the probability to jump from an article to an editor is a positive function of the sum of articles modified by the editor. For $-1 < \beta < 0$, the function is concave, while for $\beta < -1$, the function is convex, which means that the more articles have been edited by the editor, the even more the positive influence on articles. In a nutshell, $\beta$ relates the amount of articles edited on the overall editor's expertise, which in turn has an influence on each edited article (along with the influence of other editors). If $\beta >> 0$, the positive influence of the number of contributed articles on the editor's expertise decreases. If $\beta$ close to $0$, the number of contributed articles increases linearly the editor's expertise. The same considerations hold for $\alpha$ and the probability $G_{ae}(\alpha)$ to jump from an editor to an article (i.e. the expertise of the editor positively influences the quality of an article).
+
+After each iteration, we have expertise and quality scores, which allow ranking editors and articles. When the rankings for both editors and articles do not change in two successive iterations we consider that the {\it bi-partite network random walker} model has converged. We have verified that the method converges on all our 12 Wikipedia categories.  Figure \ref{fig:convergence} shows the evolution of expertise $w_e$ ranked among editors having contributed to articles in the {\it Feminist Writers} category on Wikipedia for arbitrary control parameters: $(\alpha,\beta) =(0, 0.72)$. Starting from the sum of contributed articles as the initial step, we can see how the algorithm progressively ranks editors: some editors with initial low rank (i.e. with few articles edited), get a higher rank as the number of iterations increases. They most probably have edited and contributed to few, but high quality articles. Similarly, some initially high ranked editors, gradually drop in the ranking. They have edited many, but low quality articles. In the case of category {\it Feminist Writers}, the algorithm converges with clearly stable ranks, after nearly $64$ iterations.
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.9\columnwidth]{Figures/fem_editors_iter_converge.png}.
-\caption{Typical evolution of the editors' ranking as a function of iterations of the biased random walker as given by (\ref{random_walker}) with biases $\alpha = -0.5$ and $\beta = 0.5$ for the Wikipedia category \textit{\textbf{ Feminist Writers}}. The higher rank the higher the expertise of the editor. The algorithm nearly converges to stable ranks after a hundred iterations.}
+\includegraphics[width=0.9\columnwidth]{../Figures/fem_editors_iter_converge.png}.
+\caption{Convergence of the ranked expertise $w_e$ of editors having contributed to articles in the Feminist Writers category on Wikipedia for arbitrary control parameters: $\mathbf{(\alpha,\beta) =(0, 0.72)}$. Starting from the sum of contributed articles as the initial step, we can see how the algorithm progressively ranks editors: some editors with initial lowest rank, i.e. with few articles edited, get a higher rank as the number of iterations increases. Similarly, some initially high ranked editors, gradually drop in the ranking. In the case Wikipedia categories, the algorithm converges with clearly stable ranks, after $\mathbf{64}$ iterations.}
 \label{fig:convergence}
 \end{figure}
 
-If the balance condition $\mathbf{G}_{pc} \mathbf{w}^*_e = \mathbf{G}_{cp} \mathbf{w}^*_a$
+
+The parameters $\alpha$ and $\beta$ control how editors and articles influence each other at the level of the whole bi-partite collaboration network. Upon calibration with ground-truth editor expertise and article quality metrics, these control parameters thus directly inform on the structure of peer-production, and how contributions benefit the whole open collaboration project. 
+
+%Whenever calibration shows that the evolution of $\alpha$ and $\beta$ can be predicted, then editor expertise and articles quality can also be predicted up to statistical errors. 
+%Here, we explain the calibration steps for$\alpha$ and $\beta$ and how the control parameters inform on the structure of value creation in open collaboration. We also document the evolution of these parameters as Wikipedia categories get increasingly enriched with new contributions.
+
+%A property of this algorithm, is that with the following balance condition,
+%
 %\begin{equation}
-%\mathbf{G}_{pc} \mathbf{w}^*_e = \mathbf{G}_{cp} \mathbf{w}^*_a
+%\mathbf{G}_{ae} \mathbf{w}^*_e = \mathbf{G}_{ea} \mathbf{w}^*_a
 %\end{equation}
-is applied, an analytical solution can be derived \cite{caldarelli}, which is given by,
+%
+%which can be rewritten as,
+%
+%\begin{equation}
+%\begin{cases}
+%\mathbf{w}^{*}_{e} \sim \mathbf{k}^{1-\beta}_{e} \langle \mathbf{k}_{a}^{-\alpha}\rangle_e \\
+%\mathbf{w}^{*}_{a} \sim \mathbf{k}^{1-\alpha}_{a} \langle \mathbf{k}_{e}^{-\beta}\rangle_a
+%\end{cases} \label{eqsim}
+%\end{equation}
+%
+%it is the analytical formulation we use onwards. It is important to note a crucial difference in the way we apply the weighted random walk model in the case of open collaboration compared to the countries-products problem. In \cite{caldarelli2012network}, $w^*_p$ is a measure of ubiquity (i.e. dis-quality) because many countries can sell the product, while here $w^*_a$ is also a measure of ubiquity in the sense that many editors have modified the article. In the case of open collaboration, $w^*_a$ is a measure of quality.
 
-\begin{equation}
-\begin{cases}
- \mathbf{w}^*_e \sim (\sum^{N_a}_{p=1} \mathbf{M}_{cp} \mathbf{k}_a^{-\alpha}) \mathbf{k}_e^{-\beta} \\
-\mathbf{w}^*_a \sim (\sum^{N_e}_{c=1} \mathbf{M}_{cp} \mathbf{k}_e^{-\beta}) \mathbf{k}_a^{-\alpha},
-\end{cases}
-\end{equation}
 
-%\begin{figure}[!t]
-%\centering
-%\includegraphics[width=0.9\columnwidth]{Figures/accumulative snapshot points for Feminist Writers.png}
-%\caption{Convergence}
-%\label{fig:convergence}
-%\end{figure}
-
-that we use onwards. It is important to note a crucial difference in the way we apply the weighted random walk model in the case of open collaboration compared to the countries-products problem. In \cite{caldarelli2012network}, $w^*_p$ is a measure of ubiquity (i.e. dis-quality) because many countries can sell the product, while here $w^*_a$ is also a measure of ubiquity in the sense that many editors have modified the article. In the case of open collaboration, $w^*_a$ is a measure of quality.
-
-Our aim here is to calibrate $\alpha$ and $\beta$ for various categories of articles on Wikipedia against some exogenous metrics of editors' expertise and articles' quality, to understand how the biases can inform on the emergence of respectively expertise and quality.
