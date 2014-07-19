@@ -36,12 +36,14 @@ Bicycle parts                         &        70 &    210 &    4,981 \\
 \end{figure}
 
 %\subsection{Editors Expertise and Articles Quality}
-To calibrate $\alpha$ and $\beta$, we resorted to state-of-the-art ground-truth evaluations for editor expertise $\bar{w}_e$ and article quality $\bar{w}_a$. From these exogenous evaluations, we ranked editors and articles according to their expertise and quality respectively. We then performed  a grid search for values of $\alpha^*$ and $\beta^*$, which maximize the Spearman rank-correlation $\rho_e$ and $\rho_a$ between rankings obtained from the bi-partite random walker model $(w_e,w_a)$ and from exogenous metrics $(w_a,\bar{w}_a)$. Actually, $(\alpha^*,\beta^*)$ must maximize both $\rho_e$ and $\rho_a$, even though $\rho_e$ and $\rho_a$ might actually be different. The optimization function  of $(\alpha^*,\beta^*)$ is given by,
+To calibrate $\alpha$ and $\beta$, we resorted to state-of-the-art ground-truth evaluations for editor expertise $\bar{w}_e$ and article quality $\bar{w}_a$. From these exogenous evaluations, we ranked editors and articles according to their expertise and quality respectively. We then performed  a grid search for values of $\alpha^*$ and $\beta^*$, which maximize the Spearman rank-correlation $\rho_e$ and $\rho_a$ between rankings obtained from the bi-partite random walker model $(w_e,w_a)$ and from exogenous metrics $(\bar{w}_e,\bar{w}_a)$. Actually, $(\alpha^*,\beta^*)$ must maximize both $\rho_e$ and $\rho_a$, even though $\rho_e$ and $\rho_a$ might actually be different. The optimization function  of $(\alpha^*,\beta^*)$ is given by,
+
+\newcommand{\argmax}{\arg\!\max}
 
 \begin{equation}
 \begin{cases}
-(\alpha^*,\beta^*) = argmax(\rho_e)\\
-(\alpha^*,\beta^*) = argmax(\rho_a).\\
+(\alpha^*,\beta^*) = \argmax_{\alpha, \beta}(\rho_e)\\
+(\alpha^*,\beta^*) =\argmax_{\alpha, \beta}(\rho_a).\\
 \end{cases}
 \end{equation}
 $(\alpha^*,\beta^*)$ characterize how value flows from editors to articles, and from articles to editors, in the bi-partite network of collaboration in Wikipedia.
