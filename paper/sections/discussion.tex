@@ -7,22 +7,22 @@ This difference might be due to the roughness of the actual metrics for editors 
 
 We have also found $\alpha \approx 0$ for all categories. This result shares similarity  with \cite{keegan2012}, who found that "editor experience and the features of articles in their contribution history have a stronger influence on self-organization than article features and the attributes of their editors". In this way if editor expertise is more important, it makes sense that we find it, $\alpha$, to be a near-constant (although that doesn't explain why it should be zero). Allowing for a moment, $\alpha = 0$ we can simplify our analytic solutions to gain a more intuitive interpretation of the calibration results.
 
-\begin{equation}
-\begin{cases}
- w^{*}_{e} \sim k_{e}^{1-\beta}\langle k_{a}^{-\alpha} \rangle_{e}\\[7pt]
- w^{*}_{a} \sim k_{a}^{1-\alpha}\langle k_{e}^{-\beta} \rangle_{a}\\[7pt]
-\end{cases}
-\end{equation}
-
-
+ %\begin{cases}
+ \begin{equation}
+ w^{*}_{e} \sim k_{e}^{1-\beta}\langle k_{a}^{-\alpha} \rangle_{e},\\
+ w^{*}_{a} \sim k_{a}^{1-\alpha}\langle k_{e}^{-\beta} \rangle_{a}
+ \end{equation}
+ %\end{cases}
+ 
 Then letting $\alpha = 0$, we can simplify to:
+%\begin{cases}
 \begin{equation}
-\begin{cases}
  w^{*}_{e} \sim k_{e}^{1-\beta}\\[7pt]
  w^{*}_{a} \sim k_{a}
  \langle k_{e}^{-\beta} \rangle_{a}\\[7pt]
-\end{cases} 
-\end{equation}
+ \end{equation}
+ %\end{cases} 
+
  
  Recalling that the variables $\alpha$ and $\beta$ control the preferential attachment to move to more connected editor or article nodes in the transition matrix. We will talk about the importance of "super-users" and "super-articles" as those nodes nodes that would be effected greatly by preferential attachment.  We concentrate on our unfix variable, $\beta$, as it influences editor ranking \ref{fig:influence_editors} and article ranking.\ref{fig:influence_artilces}. Over all categories and snapshots we found $-2 < \beta < 2$, which has a related spectrum of interpretations. With examples from both ends of the spectrum we find footing to consider $\beta$ as a proxy for ``collaborativeness". 
  
