@@ -672,7 +672,7 @@
 
 \if@ll
   \NeedsTeXFormat{LaTeX2e}
-  \ProvidesClass{chi2012} [2011/06/06 - V0.16]  % DLC
+  \ProvidesClass{sigchi} [2011/06/06 - V0.16]  % DLC
   \RequirePackage{latexsym}% QUERY: are these two really needed?
   \let\dooptions\ProcessOptions
 \else
